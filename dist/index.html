@@ -1,219 +1,677 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TANG Dev | Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - TANG Dev</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" defer></script>
+     <script src="https://cdn.jsdelivr.net/npm/particles.js" defer></script> 
+     <!-- AOS CSS -->
+     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+     <!-- Swiper Script -->
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+
+     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="output.css">
+
+    <script defer src="script.js"></script>
     <style>
-      .loader {
-        border: 6px solid #f3f3f3;
-        border-top: 6px solid #3498db;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-        margin: 100px auto;
-      }
-      @keyframes spin {
-        0% { transform: rotate(0deg);}
-        100% { transform: rotate(360deg);}
-      }
-      .scrollbar-hide::-webkit-scrollbar { display: none; }
-
-      #modal {
-  display: none; /* Par défaut, le modal est caché */
-}
-#modal-content {
-  position: relative;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  width: 100%;
-}
-
-    </style>
-  </head>
-  
-<body class="font-sans text-gray-200 bg-gray-900">
-<!-- Loader -->
-<div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
-  <div class="loader"></div>
-</div>
-
-<!-- Dark Mode Toggle -->
-<div class="fixed z-50 right-6 top-6">
-  <button onclick="toggleDarkMode()" class="px-4 py-2 text-white bg-gray-700 rounded hover:bg-gray-600">🌓 Mode</button>
-</div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 p-6 bg-gray-800 shadow-lg">
-    <div class="flex items-center justify-between mx-auto max-w-7xl">
-      <h1 class="text-2xl font-bold text-white"><span class="text-blue-500">TANG</span> Dev</h1>
-      <nav class="space-x-4">
-        <a href="#" class="hover:text-blue-400">Accueil</a>
-        <a href="#articles" class="hover:text-blue-400">Blog</a>
-        <a href="#contact" class="hover:text-blue-400">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="py-20 text-center">
-    <h2 class="mb-4 text-4xl font-bold">Bienvenue sur mon blog</h2>
-    <p class="max-w-xl mx-auto text-gray-400">Je suis développeur front-end, designer UI/UX, et freelancer passionné. Ici, je partage mes projets, tutoriels, astuces et inspirations tech !</p>
-  </section>
-
-  <!-- Section À propos -->
-  <section class="py-20 text-center bg-gray-900">
-    <div class="max-w-4xl px-4 mx-auto">
-      <img src="https://i.pravatar.cc/150?img=60" alt="Moi" class="mx-auto mb-4 rounded-full shadow-lg w-36 h-36" />
-      <h2 class="text-3xl font-bold text-blue-400">Qui suis-je ?</h2>
-      <p class="mt-4 text-gray-400">Développeur front-end passionné depuis plus de 10 ans, je transforme des idées en interfaces élégantes, performantes et accessibles. Mon but : créer des expériences digitales mémorables.</p>
-    </div>
-  </section>
-  
- 
-  
-  <!-- Section outils -->
-  <section class="py-20 bg-gray-800">
-    <h2 class="mb-10 text-3xl font-bold text-center text-blue-400">Mes outils favoris</h2>
-    <div class="flex flex-wrap items-center justify-center gap-8 px-4">
-      <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML" class="w-16 transition duration-300 hover:scale-125" />
-      <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS" class="w-16 transition duration-300 hover:scale-125" />
-      <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JS" class="w-16 transition duration-300 hover:scale-125" />
-      <img src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" alt="Tailwind" class="w-16 transition duration-300 hover:scale-125" />
-      <img src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" alt="Figma" class="w-16 transition duration-300 hover:scale-125" />
-    </div>
-  </section>
-
-  
-  <section id="projects" class="py-16 bg-gray-900">
-    <div class="mb-8 text-center">
-      <h2 class="text-3xl font-bold text-green-400">Derniers Projets</h2>
-    </div>
-    <div class="flex gap-6 px-6 overflow-x-auto scrollbar-hide">
-      <img src="https://source.unsplash.com/400x200/?web" class="transition rounded-lg shadow-lg hover:scale-105" />
-      <img src="https://source.unsplash.com/400x200/?app" class="transition rounded-lg shadow-lg hover:scale-105" />
-      <img src="https://source.unsplash.com/400x200/?dashboard" class="transition rounded-lg shadow-lg hover:scale-105" />
-      <img src="https://source.unsplash.com/400x200/?mobile" class="transition rounded-lg shadow-lg hover:scale-105" />
-    </div>
-  </section>
-  
-  <!-- Blog Filters & Articles -->
-  <div class="max-w-4xl mx-auto mb-10 text-center">
-    <input id="searchInput" type="text" placeholder="Rechercher un article..." class="w-full p-3 mb-4 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
-    <div class="flex flex-wrap justify-center gap-3">
-      <button class="px-4 py-2 text-white bg-blue-500 rounded-full filter-btn hover:bg-blue-600" data-filter="all">Tous</button>
-      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="ux">UX/UI</button>
-      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="dev">Dév</button>
-      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="freelance">Freelance</button>
-    </div>
-  </div>
-
-  <!-- Article (catégorie: design) -->
-   <div class="grid grid-cols-3 gap-6">
-<!-- Première carte blog -->
-<div class="blog-card ux">
-  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('figma')">
-    <img src="https://source.unsplash.com/400x200/?figma,ui" class="mb-4 rounded-lg" />
-    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Créer une maquette Figma comme un pro</h4>
-    <p class="text-sm text-gray-400">Les bonnes pratiques pour concevoir une interface.</p>
-  </div>
-</div>
-
-<!-- Deuxième carte blog -->
-<div class="blog-card dev">
-  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('tailwind')">
-    <img src="https://source.unsplash.com/400x200/?tailwindcss,code" class="mb-4 rounded-lg" />
-    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Introduction à Tailwind CSS</h4>
-    <p class="text-sm text-gray-400">Découvre pourquoi ce framework est si populaire.</p>
-  </div>
-</div>
-
-<!-- Troisième carte blog -->
-<div class="blog-card dev">
-  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('gsap')">
-    <img src="https://source.unsplash.com/400x200/?animation,gsap" class="mb-4 rounded-lg" />
-    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Animations Web avec GSAP</h4>
-    <p class="text-sm text-gray-400">Apporte de la vie à tes interfaces avec GSAP.</p>
-  </div>
-</div>
-</div>
-
-
-
-  <!-- Modal pour afficher le contenu des posts -->
-<div id="modal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
-  <div id="modal-content" class="w-full max-w-3xl p-6 bg-white rounded-lg">
-    <!-- Contenu dynamique ici -->
-    <button onclick="closeModal()" class="absolute text-gray-500 top-2 right-2 hover:text-gray-700">&times;</button>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
-
-  <section id="comments" class="py-16 text-center bg-gray-900">
-    <h2 class="mb-6 text-2xl font-bold text-white">Laisse un commentaire</h2>
-    <form class="max-w-xl mx-auto space-y-4">
-      <input type="text" placeholder="Ton nom" class="w-full p-3 text-white bg-gray-800 border border-gray-700 rounded" />
-      <textarea placeholder="Ton commentaire" rows="4" class="w-full p-3 text-white bg-gray-800 border border-gray-700 rounded"></textarea>
-      <button class="px-6 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Envoyer</button>
-    </form>
-  </section>
-  
-  <!-- Footer -->
-  <footer id="contact" class="p-10 mt-20 text-center bg-gray-800">
-    <div class="flex flex-col items-center justify-center max-w-5xl gap-4 mx-auto sm:flex-row sm:justify-between">
-      <div>
-        <h3 class="text-xl font-bold text-white"><span class="text-blue-500">TANG</span> Dev</h3>
-        <p class="text-gray-400">Freelancer & Front-End Expert</p>
-      </div>
-      <div class="flex gap-4 mt-4 sm:mt-0">
-        <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
-        <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
-        <a href="#" class="text-gray-400 hover:text-blue-400">GitHub</a>
-      </div>
-    </div>
-    <p class="mt-6 text-sm text-gray-500">&copy; 2024 TANG Dev — Tous droits réservés</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    const searchInput = document.getElementById('searchInput');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const blogCards = document.querySelectorAll('.blog-card');
-
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      blogCards.forEach(card => {
-        const title = card.querySelector('h4').textContent.toLowerCase();
-        const match = title.includes(query);
-        card.style.display = match ? 'block' : 'none';
-      });
-    });
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        blogCards.forEach(card => {
-          const match = filter === 'all' || card.classList.contains(filter);
-          card.style.display = match ? 'block' : 'none';
-        });
-      });
-    });
-
-    function openImage(src) {
-      document.getElementById('imgDisplay').src = src;
-      document.getElementById('imgViewer').classList.remove('hidden');
+         html {
+            scroll-behavior: smooth;
+        }
+       
+        #geometric-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeOut 2s ease-in-out 4s forwards;
     }
-  </script>
-<script src="module.js"></script>
+
+    #intro-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+        .project-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(88, 166, 255, 0.5);
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 30;
+        }
+        
+        .hero canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        nav ul li a {
+            position: relative;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: #58a6ff;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #58a6ff;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        /* */
+        .typed-text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        #loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+    </style>
+    
+    
+</head>
+<body class="text-white">
+      <!-- Intro avec formes géométriques -->
+  <div id="geometric-intro">
+    <canvas id="intro-canvas"></canvas>
+    <h1 class="z-10 text-4xl font-bold text-center text-white md:text-6xl">Bienvenue dans mon univers</h1>
+  </div>
+    
+  <header class="fixed top-0 z-50 w-full text-white bg-gray-800 ">
+ 
+        <!-- Menu de navigation -->
+         <div class="">
+          <nav id="menu" class="flex items-center justify-between w-full p-2">
+            <div class="">
+              
+                <img src="image/image/logo.png" alt="error" class="w-20 h-20">
+              
+            </div>
+          
+            <!-- 1️⃣ Bouton mobile (visible < lg) -->
+            <button id="mobile-btn" class="text-gray-300 md:hidden focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                   viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                   d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+          
+            <!-- 2️⃣ Menu complet (desktop ≥ lg) -->
+            <ul class="items-center hidden space-x-6 md:flex">
+              <li><a href="#about">À propos</a></li>
+          
+              <!-- Dropdown “Projets” -->
+              <li class="relative group">
+                <button class="flex items-center space-x-1 focus:outline-none">
+                  <span>Projets</span>
+                  <svg class="w-4 h-4 transition-transform transform group-hover:-rotate-180"
+                       fill="none" stroke="currentColor" stroke-width="2"
+                       viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                       d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <!-- Sous-menu (caché par défaut, visible au hover) -->
+                <ul
+                  class="absolute left-0 invisible w-48 mt-2 transition-all duration-200 bg-gray-800 rounded-md shadow-lg opacity-0 top-full group-hover:opacity-100 group-hover:visible">
+                  <li><a href="#projects"         class="block px-4 py-2 hover:bg-gray-700">Projets web</a></li>
+                  <li><a href="#design-projects"  class="block px-4 py-2 hover:bg-gray-700">Design</a></li>
+                  <li><a href="#blog"             class="block px-4 py-2 hover:bg-gray-700">Blog</a></li>
+                  <li><a href="#certifications"   class="block px-4 py-2 hover:bg-gray-700">Certifications</a></li>
+                  <li><a href="#newsletter"       class="block px-4 py-2 hover:bg-gray-700">Newsletter</a></li>
+                </ul>
+              </li>
+          
+              <li><a href="#testimonials">Commentaire</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          
+            <!-- 3️⃣ Menu mobile (≤ lg) -->
+            <div id="mobile-menu" class="fixed inset-0 z-50 transition-transform transform -translate-x-full bg-gray-900 bg-opacity-90 md:hidden">
+              <div class="p-6">
+                <button id="close-btn" class="mb-6 text-gray-300 focus:outline-none">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                       viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                       d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+                <ul class="space-y-4 text-lg">
+                  <li><a href="#about">À propos</a></li>
+                  <li><a href="#projects">Projets</a></li>
+                  <li><a href="#design-projects">Design</a></li>
+                  <li><a href="#testimonials">Commentaire</a></li>
+                  <li><a href="#blog">Blog</a></li>
+                  <li><a href="#certifications">Certifications</a></li>
+                  <li><a href="#faq">FAQ</a></li>
+                  <li><a href="#newsletter">Newsletter</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
+          
+          
+         </div>
+        
+    </div>
+</header>
+
+<script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+</script>
+
+    
+    <section class="relative z-10 flex items-center justify-center h-screen overflow-hidden text-center" id="about">
+        <!-- Image de fond -->
+        <div class="absolute inset-0 z-0">
+          <img src="image/image/image (4).jpg" alt="photo" class="relative z-0 object-cover w-full h-full" />
+          <div class="absolute inset-0 bg-black bg-opacity-60 "></div>
+          <!-- Particules -->
+        <div id="particles-js" class="absolute inset-0 z-10"></div>
+        </div>
+      
+        
+      
+        <!-- Contenu -->
+        <div class="relative z-20 text-white">
+          <div class="flex items-center justify-center mb-4" style="backdrop-filter: blur(15px);">
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+            <div class="text-xl font-bold text-green-400">Hello</div>
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+          </div>
+      
+          <h2 class="text-5xl font-bold">I Am <span class="text-blue-400 uppercase typed-text"></span></h2>
+          <p class="mt-4 text-lg" style="backdrop-filter: blur(15px);">Web Developer - UX/UI Designer - Web Designer</p>
+      
+          <div class="flex justify-center mt-4 space-x-4 text-2xl">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </div>
+        </div>
+      
+       
+      </section>
+      
+    <section class="relative z-10 py-5 text-white bg-gray-900">
+    
+    <div class="relative z-10 max-w-4xl mx-auto text-center text-white">
+        
+        <div class="w-32 h-32 mx-auto overflow-hidden border-4 border-white rounded-full shadow-lg">
+          <img src="image/image/image (1).jpg" alt="Profile" class="object-cover w-full h-full">
+        </div>
+        <h2 class="mt-4 text-3xl font-bold text-white">Ndoh Yannick Tang</h2>
+        <p class="mb-4 text-lg text-green-600">Web Developer/designer</p>
+        <p class="max-w-2xl mx-auto text-white">
+            "Créer, c’est traduire l’imaginaire en réalité.
+            En tant que développeur web et designer, je façonne des expériences, pas seulement des interfaces.
+            Chaque ligne de code est une brique, chaque pixel une intention.
+            Mon but : allier esthétique et performance pour donner vie à des idées qui marquent les esprits."
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2 mt-6">
+       
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">Html5</span>
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">Css3</span>
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">PSD</span>
+        
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">Github</span>
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">JavaScript</span>
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">PHP</span>
+       
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">Git</span>
+        <span class="px-4 py-1 text-sm text-gray-700 bg-gray-200 rounded-full">Photoshop</span>
+      </div>
+    </section>
+    
+
+<!-- Section Projets -->
+<section id="projects" class="relative z-10 p-10 mt-20">
+  <div class="flex items-center justify-center w-full">
+    <div class="flex items-center justify-center p-2 mb-4" style="backdrop-filter: blur(15px);">
+      <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+      <div class="text-2xl font-bold text-green-400 uppercase">Projets web</div>
+      <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+    </div>
+  </div>
+
+  <div class="container grid gap-8 mx-auto md:grid-cols-3">
+    <!-- Projet 1 -->
+    
+    
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg project-card">
+      <img src="image/image/image (2).png" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer preview-img" alt="Application Mobile">
+      <h3 class="mt-3 text-lg font-semibold">Générateur de CV</h3>
+      <h4><a href="https://cv-generator-virid-theta.vercel.app/" class="p-1 text-green-500 bg-green-200 rounded-sm">voir ici</a></h4>
+    </div>
+
+    <!-- Projet 2 -->
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg project-card">
+      <img src="image/image/images (1).png" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer preview-img" alt="Jeux de saisie">
+      <h3 class="mt-3 text-lg font-semibold">Jeux de saisie</h3>
+      <h4><a href="https://jeux-javascript1.vercel.app/" class="p-1 text-green-500 bg-green-200 rounded-sm">voir ici</a></h4>
+    </div>
+
+    <!-- Projet 3 -->
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg project-card">
+      <img src="image/image/image.png" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer preview-img" alt="Site de meuble">
+      <h3 class="mt-3 text-lg font-semibold">Site de meuble</h3>
+      <h4><a href="https://alfred-saker.vercel.app/" class="p-1 text-green-500 bg-green-200 rounded-sm">voir ici</a></h4>
+    </div>
+  </div>
+</section>
+
+<!-- Modal pour agrandir l'image -->
+<div id="imageModal" class="fixed inset-0 z-50 items-center justify-center hidden bg-black bg-opacity-80">
+  <span class="absolute text-3xl text-white cursor-pointer top-4 right-6" onclick="closeModal()">&times;</span>
+  <img id="modalImage" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl" alt="Image en plein écran">
+</div>
+
+<!-- Script -->
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+
+  document.querySelectorAll('.preview-img').forEach(img => {
+    img.addEventListener('click', () => {
+      modalImage.src = img.src;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+  }
+
+  // Fermer le modal si on clique en dehors de l'image
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+
+
+  
+<section id="design-projects" class="relative z-10 p-10 mt-20 text-white bg-gray-900">
+  <!-- Titre -->
+  <div class="flex items-center justify-center w-full mb-6">
+    <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+      <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+      <div class="text-2xl font-bold text-green-400 uppercase">Projets de Design</div>
+      <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+    </div>
+  </div>
+
+  <!-- Grid de projets -->
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <!-- Projet 1 -->
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg">
+      <img src="image/image/flyer.png" alt="Projet Photoshop" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer project-card" onclick="openImage(this)">
+      <h3 class="mb-2 text-xl font-semibold">Affiche Publicitaire</h3>
+      <p>Création d'une affiche promotionnelle pour une coiffeuse local.</p>
+    </div>
+    <!-- Projet 2 -->
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg">
+      <img src="design2.jpg" alt="Projet Figma" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer project-card" onclick="openImage(this)">
+      <h3 class="mb-2 text-xl font-semibold">Maquette d'Application</h3>
+      <p>Conception d'une interface utilisateur pour une application mobile.</p>
+    </div>
+    <!-- Projet 3 -->
+    <div class="p-5 bg-gray-800 rounded-lg shadow-lg">
+      <img src="design3.jpg" alt="Projet Illustrator" class="object-cover w-full h-48 mb-4 rounded-md cursor-pointer project-card" onclick="openImage(this)">
+      <h3 class="mb-2 text-xl font-semibold">Logo d'Entreprise</h3>
+      <p>Développement d'une identité visuelle pour une startup.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Lightbox Overlay -->
+<div id="lightbox" class="fixed inset-0 z-50 items-center justify-center hidden bg-black bg-opacity-80" onclick="closeImage()">
+  <img id="lightbox-img" class="max-w-full max-h-full rounded-lg shadow-2xl">
+</div>
+
+<!-- ✅ JS pour la lightbox -->
+<script>
+  function openImage(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+  }
+
+  function closeImage() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('flex');
+    lightbox.classList.add('hidden');
+  }
+</script>
+
+
+
+  <section id="testimonials" class="relative z-10 py-20 text-white bg-gray-900">
+    <div class="flex items-center justify-center w-full">
+        <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        <div class="text-2xl font-bold text-green-400 " >Témoignages</div>
+        <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        </div>
+        </div>
+    
+    <div class="grid max-w-6xl gap-8 px-6 mx-auto md:grid-cols-3">
+      <div class="p-6 bg-gray-800 rounded-lg shadow-md">
+        <p class="italic text-gray-300">“Un développeur très professionnel, toujours à l’écoute. Je recommande vivement !”</p>
+        <div class="flex items-center mt-4 space-x-4">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="client" class="w-10 h-10 rounded-full">
+          <div>
+            <h4 class="text-sm font-semibold">Alex Dupont</h4>
+            <span class="text-xs text-gray-400">CEO - StartupX</span>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-lg shadow-md">
+        <p class="italic text-gray-300">“Créatif, rapide et efficace. Le design était au-delà de mes attentes.”</p>
+        <div class="flex items-center mt-4 space-x-4">
+          <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="client" class="w-10 h-10 rounded-full">
+          <div>
+            <h4 class="text-sm font-semibold">Sophie Martin</h4>
+            <span class="text-xs text-gray-400">Designer UX</span>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-lg shadow-md">
+        <p class="italic text-gray-300">“Un partenaire de confiance pour tous nos projets web et mobile.”</p>
+        <div class="flex items-center mt-4 space-x-4">
+          <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="client" class="w-10 h-10 rounded-full">
+          <div>
+            <h4 class="text-sm font-semibold">Julien Leclerc</h4>
+            <span class="text-xs text-gray-400">Chef de projet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="blog" class="relative z-10 py-20 text-white bg-gray-800">
+    <div class="flex items-center justify-center w-full">
+        <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        <div class="text-3xl font-bold text-green-400 " >Blog & Actualités</div>
+        <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        </div>
+        </div>
+    
+    <div class="grid max-w-6xl gap-8 px-6 mx-auto md:grid-cols-3">
+      <div class="p-6 bg-gray-900 rounded-lg shadow-lg">
+        <img src="blog1.jpg" alt="blog" class="object-cover w-full h-48 mb-4 rounded-md">
+        <h3 class="mb-2 text-xl font-semibold">Créer une maquette Figma comme un pro</h3>
+        <p class="text-sm text-gray-400">Découvrez les bonnes pratiques pour concevoir des interfaces efficaces et attractives.</p>
+      </div>
+      <div class="p-6 bg-gray-900 rounded-lg shadow-lg">
+        <img src="blog2.jpg" alt="blog" class="object-cover w-full h-48 mb-4 rounded-md">
+        <h3 class="mb-2 text-xl font-semibold">Introduction à Tailwind CSS</h3>
+        <p class="text-sm text-gray-400">Pourquoi Tailwind est devenu l’un des frameworks les plus utilisés du moment ?</p>
+      </div>
+      <div class="p-6 bg-gray-900 rounded-lg shadow-lg">
+        <img src="blog3.jpg" alt="blog" class="object-cover w-full h-48 mb-4 rounded-md">
+        <h3 class="mb-2 text-xl font-semibold">Animations Web avec GSAP</h3>
+        <p class="text-sm text-gray-400">Ajoutez de la vie à vos sites grâce aux animations fluides de GSAP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fixed left-0 z-0 w-full h-96 bottom-28">
+    <div class="w-full h-full">
+      <img src="image/image/image (5).jpg" alt="error" class="object-cover w-full h-full">
+    </div>
+  </section>
+  
+  <section id="certifications" class="relative z-10 py-20 text-white">
+    <div class="flex items-center justify-center w-full">
+        <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        <div class="text-3xl font-bold text-green-400 " >Mes Certifications</div>
+        <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        </div>
+        </div>
+    <h2 class="mb-12 text-3xl font-bold text-center"></h2>
+    <div class="grid max-w-4xl gap-6 px-6 mx-auto md:grid-cols-2">
+      <div class="p-5 bg-gray-800 border-l-4 border-blue-400 rounded-lg shadow-md">
+        <h3 class="text-xl font-bold">Certification Développeur Web - OpenClassrooms</h3>
+        <p class="text-sm text-gray-400">Obtenue en 2023 - Frontend & Backend</p>
+      </div>
+      <div class="p-5 bg-gray-800 border-l-4 border-green-400 rounded-lg shadow-md">
+        <h3 class="text-xl font-bold">UX/UI Design - Google UX Certificate</h3>
+        <p class="text-sm text-gray-400">Formation intensive sur Figma et psychologie de l'utilisateur</p>
+      </div>
+      <div class="p-5 bg-gray-800 border-l-4 border-yellow-400 rounded-lg shadow-md">
+        <h3 class="text-xl font-bold">Photoshop & Illustrator Avancé</h3>
+        <p class="text-sm text-gray-400">Certificat Adobe - Design Graphique</p>
+      </div>
+    </div>
+  </section>
+  <section id="faq" class="relative z-10 py-20 text-white bg-gray-800">
+    <div class="flex items-center justify-center w-full">
+        <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        <div class="text-3xl font-bold text-green-400 " >FAQ - Questions fréquentes</div>
+        <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+        </div>
+        </div>
+    <h2 class="text-3xl font-bold text-center "></h2>
+    <div class="max-w-4xl px-6 mx-auto space-y-6">
+      <div class="p-4 bg-gray-900 rounded-lg shadow">
+        <h3 class="font-semibold">Combien de temps dure un projet ?</h3>
+        <p class="text-sm text-gray-400">Tout dépend de la complexité, mais en général entre 1 à 3 semaines.</p>
+      </div>
+      <div class="p-4 bg-gray-900 rounded-lg shadow">
+        <h3 class="font-semibold">Est-ce que tu fais le design et le développement ?</h3>
+        <p class="text-sm text-gray-400">Oui, je propose une solution complète : UX/UI, prototypage, développement frontend & backend.</p>
+      </div>
+      <div class="p-4 bg-gray-900 rounded-lg shadow">
+        <h3 class="font-semibold">Proposes-tu des paiements échelonnés ?</h3>
+        <p class="text-sm text-gray-400">Oui, selon le projet et les conditions. On peut en discuter ensemble.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="relative z-10 py-16 text-white bg-gray-900">
+    <div class="max-w-3xl mx-auto text-center">
+        <div class="flex items-center justify-center w-full">
+            <div class="flex items-center justify-center p-2" style="backdrop-filter: blur(15px);">
+                <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+            <div class="text-3xl font-bold text-green-400 " >Reste informé !</div>
+            <div class="w-2 h-2 mx-4 rounded-full bg-gradient-to-r from-green-100 to-green-500"></div>
+            </div>
+            </div>
+      <p class="mb-6 text-gray-400">Inscris-toi à la newsletter pour recevoir mes dernières créations, articles et offres exclusives.</p>
+      <form class="flex flex-col items-center justify-center gap-4 md:flex-row">
+        <input type="email" placeholder="Ton adresse email" class="w-full px-4 py-2 text-gray-900 rounded-md md:w-auto" required>
+        <button type="submit" class="px-6 py-2 bg-blue-500 rounded-md hover:bg-blue-700">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+  
+  <section id="contact" class="relative z-10 px-6 py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-500">
+        Me Contacter
+      </h2>
+      <p class="mt-4 text-gray-300">Une idée, une collaboration, une question ? Parlons-en !</p>
+    </div>
+  
+    <div class="max-w-2xl p-8 mx-auto mt-10 border shadow-2xl bg-white/5 backdrop-blur-md rounded-xl border-white/10">
+       <!-- 1️⃣ Le formulaire -->
+<form id="contact-form" class="max-w-lg mx-auto">
+  <div class="mb-6">
+    <label class="block mb-2 text-sm font-medium text-gray-300">Nom</label>
+    <div class="flex items-center gap-3 p-3 bg-gray-800 rounded-md focus-within:ring-2 focus-within:ring-blue-500">
+      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+           d="M5.121 17.804A4 4 0 006.343 19h11.314a4 4 0 001.222-1.196M16 11a4 4 0 10-8 0 4 4 0 008 0z" />
+      </svg>
+      <input type="text" name="from_name" required
+             class="w-full p-2 text-white bg-gray-700 rounded outline-none"
+             placeholder="Votre nom">
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <label class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+    <div class="flex items-center gap-3 p-3 bg-gray-800 rounded-md focus-within:ring-2 focus-within:ring-blue-500">
+      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+           d="M16 12H8m0 0l4-4m0 8l-4-4" />
+      </svg>
+      <input type="email" name="reply_to" required
+             class="w-full p-2 text-white bg-gray-700 rounded outline-none"
+             placeholder="Votre email">
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <label class="block mb-2 text-sm font-medium text-gray-300">Message</label>
+    <textarea name="message" required
+              class="w-full p-2 text-white bg-gray-700 rounded outline-none"
+              rows="4" placeholder="Votre message"></textarea>
+  </div>
+
+  <div class="text-center">
+    <button type="submit"
+            class="relative px-8 py-3 font-semibold text-white transition duration-300 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700"
+            id="submit-btn">
+      <span id="btn-text">Envoyer le message</span>
+      <div id="loading-spinner" class="absolute inset-0 flex items-center justify-center hidden">
+        <div class="w-6 h-6 border-4 border-blue-500 rounded-full border-t-transparent animate-spin">
+          <div class="w-2 h-2 bg-white rounded-full"></div>
+        </div>
+      </div>
+    </button>
+  </div>
+</form>
+
+<!-- 2️⃣ SweetAlert2 & EmailJS scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
+    </div>
+  </section>
+  
+
+  
+  <footer class="relative z-50 px-6 py-10 mt-10 text-gray-400 bg-gray-900">
+    <div class="flex flex-col items-center justify-between max-w-6xl mx-auto space-y-6 md:flex-row md:space-y-0">
+      
+      <!-- Logo et nom -->
+      <div class="flex items-center space-x-3">
+        <img src="image/image/logo.png" alt="Logo TANG Dev" class="w-40 h-40 rounded-full shadow-lg">
+       
+      </div>
+  
+      <!-- Navigation secondaire -->
+      <ul class="flex flex-wrap justify-center space-x-6 text-sm">
+        <li><a href="#about" class="transition hover:text-white">À propos</a></li>
+        <li><a href="#projects" class="transition hover:text-white">Projets</a></li>
+        <li><a href="#contact" class="transition hover:text-white">Contact</a></li>
+      </ul>
+  
+      <!-- Réseaux sociaux -->
+      <div class="flex space-x-5">
+        <a href="#" class="transition hover:text-white" aria-label="Twitter">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a href="#" class="transition hover:text-white" aria-label="LinkedIn">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="#" class="transition hover:text-white" aria-label="GitHub">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+      </div>
+    </div>
+  
+    <!-- Ligne du bas -->
+    <div class="mt-8 text-xs text-center text-gray-500">
+      &copy; 2024 TANG Dev. Tous droits réservés.
+    </div>
+  </footer>
+  
+  <!-- Font Awesome pour les icônes -->
+  <script src="https://kit.fontawesome.com/TON_ID_KIT.js" crossorigin="anonymous"></script>
+  
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- AOS JS -->
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
