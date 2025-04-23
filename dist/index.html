@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TANG Dev | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+      .loader {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 100px auto;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg);}
+        100% { transform: rotate(360deg);}
+      }
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+      #modal {
+  display: none; /* Par défaut, le modal est caché */
+}
+#modal-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+}
+
+    </style>
+  </head>
+  
+<body class="font-sans text-gray-200 bg-gray-900">
+<!-- Loader -->
+<div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
+  <div class="loader"></div>
+</div>
+
+<!-- Dark Mode Toggle -->
+<div class="fixed z-50 right-6 top-6">
+  <button onclick="toggleDarkMode()" class="px-4 py-2 text-white bg-gray-700 rounded hover:bg-gray-600">🌓 Mode</button>
+</div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 p-6 bg-gray-800 shadow-lg">
+    <div class="flex items-center justify-between mx-auto max-w-7xl">
+      <h1 class="text-2xl font-bold text-white"><span class="text-blue-500">TANG</span> Dev</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:text-blue-400">Accueil</a>
+        <a href="#articles" class="hover:text-blue-400">Blog</a>
+        <a href="#contact" class="hover:text-blue-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-20 text-center">
+    <h2 class="mb-4 text-4xl font-bold">Bienvenue sur mon blog</h2>
+    <p class="max-w-xl mx-auto text-gray-400">Je suis développeur front-end, designer UI/UX, et freelancer passionné. Ici, je partage mes projets, tutoriels, astuces et inspirations tech !</p>
+  </section>
+
+  <!-- Section À propos -->
+  <section class="py-20 text-center bg-gray-900">
+    <div class="max-w-4xl px-4 mx-auto">
+      <img src="https://i.pravatar.cc/150?img=60" alt="Moi" class="mx-auto mb-4 rounded-full shadow-lg w-36 h-36" />
+      <h2 class="text-3xl font-bold text-blue-400">Qui suis-je ?</h2>
+      <p class="mt-4 text-gray-400">Développeur front-end passionné depuis plus de 10 ans, je transforme des idées en interfaces élégantes, performantes et accessibles. Mon but : créer des expériences digitales mémorables.</p>
+    </div>
+  </section>
+  
+ 
+  
+  <!-- Section outils -->
+  <section class="py-20 bg-gray-800">
+    <h2 class="mb-10 text-3xl font-bold text-center text-blue-400">Mes outils favoris</h2>
+    <div class="flex flex-wrap items-center justify-center gap-8 px-4">
+      <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML" class="w-16 transition duration-300 hover:scale-125" />
+      <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS" class="w-16 transition duration-300 hover:scale-125" />
+      <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JS" class="w-16 transition duration-300 hover:scale-125" />
+      <img src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" alt="Tailwind" class="w-16 transition duration-300 hover:scale-125" />
+      <img src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" alt="Figma" class="w-16 transition duration-300 hover:scale-125" />
+    </div>
+  </section>
+
+  
+  <section id="projects" class="py-16 bg-gray-900">
+    <div class="mb-8 text-center">
+      <h2 class="text-3xl font-bold text-green-400">Derniers Projets</h2>
+    </div>
+    <div class="flex gap-6 px-6 overflow-x-auto scrollbar-hide">
+      <img src="https://source.unsplash.com/400x200/?web" class="transition rounded-lg shadow-lg hover:scale-105" />
+      <img src="https://source.unsplash.com/400x200/?app" class="transition rounded-lg shadow-lg hover:scale-105" />
+      <img src="https://source.unsplash.com/400x200/?dashboard" class="transition rounded-lg shadow-lg hover:scale-105" />
+      <img src="https://source.unsplash.com/400x200/?mobile" class="transition rounded-lg shadow-lg hover:scale-105" />
+    </div>
+  </section>
+  
+  <!-- Blog Filters & Articles -->
+  <div class="max-w-4xl mx-auto mb-10 text-center">
+    <input id="searchInput" type="text" placeholder="Rechercher un article..." class="w-full p-3 mb-4 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+    <div class="flex flex-wrap justify-center gap-3">
+      <button class="px-4 py-2 text-white bg-blue-500 rounded-full filter-btn hover:bg-blue-600" data-filter="all">Tous</button>
+      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="ux">UX/UI</button>
+      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="dev">Dév</button>
+      <button class="px-4 py-2 text-white bg-gray-700 rounded-full filter-btn hover:bg-gray-600" data-filter="freelance">Freelance</button>
+    </div>
+  </div>
+
+  <!-- Article (catégorie: design) -->
+   <div class="grid grid-cols-3 gap-6">
+<!-- Première carte blog -->
+<div class="blog-card ux">
+  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('figma')">
+    <img src="https://source.unsplash.com/400x200/?figma,ui" class="mb-4 rounded-lg" />
+    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Créer une maquette Figma comme un pro</h4>
+    <p class="text-sm text-gray-400">Les bonnes pratiques pour concevoir une interface.</p>
+  </div>
+</div>
+
+<!-- Deuxième carte blog -->
+<div class="blog-card dev">
+  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('tailwind')">
+    <img src="https://source.unsplash.com/400x200/?tailwindcss,code" class="mb-4 rounded-lg" />
+    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Introduction à Tailwind CSS</h4>
+    <p class="text-sm text-gray-400">Découvre pourquoi ce framework est si populaire.</p>
+  </div>
+</div>
+
+<!-- Troisième carte blog -->
+<div class="blog-card dev">
+  <div class="p-5 transition bg-gray-800 shadow-lg cursor-pointer rounded-xl hover:shadow-blue-500/30 group" onclick="openPost('gsap')">
+    <img src="https://source.unsplash.com/400x200/?animation,gsap" class="mb-4 rounded-lg" />
+    <h4 class="mb-2 text-xl font-bold group-hover:text-blue-400">Animations Web avec GSAP</h4>
+    <p class="text-sm text-gray-400">Apporte de la vie à tes interfaces avec GSAP.</p>
+  </div>
+</div>
+</div>
+
+
+
+  <!-- Modal pour afficher le contenu des posts -->
+<div id="modal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
+  <div id="modal-content" class="w-full max-w-3xl p-6 bg-white rounded-lg">
+    <!-- Contenu dynamique ici -->
+    <button onclick="closeModal()" class="absolute text-gray-500 top-2 right-2 hover:text-gray-700">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+
+  <section id="comments" class="py-16 text-center bg-gray-900">
+    <h2 class="mb-6 text-2xl font-bold text-white">Laisse un commentaire</h2>
+    <form class="max-w-xl mx-auto space-y-4">
+      <input type="text" placeholder="Ton nom" class="w-full p-3 text-white bg-gray-800 border border-gray-700 rounded" />
+      <textarea placeholder="Ton commentaire" rows="4" class="w-full p-3 text-white bg-gray-800 border border-gray-700 rounded"></textarea>
+      <button class="px-6 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Envoyer</button>
+    </form>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="contact" class="p-10 mt-20 text-center bg-gray-800">
+    <div class="flex flex-col items-center justify-center max-w-5xl gap-4 mx-auto sm:flex-row sm:justify-between">
+      <div>
+        <h3 class="text-xl font-bold text-white"><span class="text-blue-500">TANG</span> Dev</h3>
+        <p class="text-gray-400">Freelancer & Front-End Expert</p>
+      </div>
+      <div class="flex gap-4 mt-4 sm:mt-0">
+        <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
+        <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
+        <a href="#" class="text-gray-400 hover:text-blue-400">GitHub</a>
+      </div>
+    </div>
+    <p class="mt-6 text-sm text-gray-500">&copy; 2024 TANG Dev — Tous droits réservés</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      blogCards.forEach(card => {
+        const title = card.querySelector('h4').textContent.toLowerCase();
+        const match = title.includes(query);
+        card.style.display = match ? 'block' : 'none';
+      });
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        blogCards.forEach(card => {
+          const match = filter === 'all' || card.classList.contains(filter);
+          card.style.display = match ? 'block' : 'none';
+        });
+      });
+    });
+
+    function openImage(src) {
+      document.getElementById('imgDisplay').src = src;
+      document.getElementById('imgViewer').classList.remove('hidden');
+    }
+  </script>
+<script src="module.js"></script>
+</body>
+</html>
