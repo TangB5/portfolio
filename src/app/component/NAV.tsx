@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence,easeInOut, easeOut , Spring  } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { FaCrown } from "react-icons/fa";
 
-// Définir les constantes pour les couleurs et les animations
+
 const COLORS = {
   primary: '#E9B826', // Or africain
   secondary: '#BB141A', // Rouge terre
@@ -14,7 +16,7 @@ const COLORS = {
 };
 
 const TRANSITIONS = {
-  fast: { type: "spring" as const, stiffness: 400, damping: 30 }, // ✅ 'as const' corrige le type
+  fast: { type: "spring" as const, stiffness: 400, damping: 30 }, 
   slow: { duration: 0.6, ease: easeOut },
   menu: { duration: 0.3, ease: easeInOut },
 };
@@ -30,6 +32,17 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('');
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const currentPath = pathname.toLowerCase();
+    const activeNav = NAV_ITEMS.find(item => item.path.toLowerCase() === currentPath);
+    if (activeNav) {
+      setActiveItem(activeNav.id);
+    } else {
+      setActiveItem(''); // Reset if no item matches
+    }
+  }, [pathname]);
 
   // S'assurer que le menu se ferme lors du redimensionnement
   useEffect(() => {
@@ -91,23 +104,14 @@ const menuVariants = {
         <Link
           href="/"
           className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded"
-          onMouseEnter={() => setActiveItem("home")}
-          onMouseLeave={() => setActiveItem("")}
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <motion.i
-            className="pi pi-crown mr-2 text-3xl"
-            style={{ color: COLORS.primary }}
-            whileHover={{ rotate: 15, scale: 1.1 }}
-            transition={TRANSITIONS.fast}
-          />
-          <motion.span
-            style={{ color: COLORS.primary }}
-            whileHover={{ color: COLORS.light }}
-            transition={{ duration: 0.2 }}
-          >
-            KingTang
-          </motion.span>
+          <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md">
+            <FaCrown
+              className="text-[#1A1A2E] transition-colors duration-500 group-hover:text-[#F1E5AC] -rotate-45"
+              size={30}
+            />
+          </span>
         </Link>
 
         {/* Navigation Desktop */}
@@ -228,7 +232,6 @@ const menuVariants = {
                       }}
                       onClick={() => {
                         setIsMobileMenuOpen(false);
-                        setActiveItem(item.id);
                       }}
                       onMouseEnter={() => setActiveItem(item.id)}
                       onMouseLeave={() => setActiveItem("")}
