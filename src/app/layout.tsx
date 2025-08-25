@@ -1,4 +1,5 @@
 import Footer from './component/FOOTER';
+import LogoIntro from './component/LogoIntro';
 import Navigation from './component/NAV';
 import './globals.css';
 import { Roboto, Playfair_Display, Ubuntu } from 'next/font/google';
@@ -21,6 +22,7 @@ export default function RootLayout({
    <html lang="fr" className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
     
       <body>
+        <LogoIntro/>
         <Navigation/>
         {children}
 
