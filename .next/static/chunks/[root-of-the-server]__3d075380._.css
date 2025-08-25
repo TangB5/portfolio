@@ -139,7 +139,6 @@
   :root, :host {
     --font-sans: Arial, Helvetica, sans-serif;
     --font-mono: ui-monospace, monospace;
-    --color-amber-500: #f99c00;
     --color-gray-700: #364153;
     --color-gray-900: #101828;
     --color-black: #000;
@@ -176,7 +175,6 @@
     --radius-lg: .5rem;
     --radius-xl: .75rem;
     --radius-2xl: 1rem;
-    --blur-sm: 8px;
     --blur-md: 12px;
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -189,7 +187,6 @@
 
   @supports (color: color(display-p3 0 0 0)) {
     :root, :host {
-      --color-amber-500: color(display-p3 .93994 .620584 .0585367);
       --color-gray-700: color(display-p3 .219968 .253721 .318679);
       --color-gray-900: color(display-p3 .070423 .0928982 .151928);
     }
@@ -197,7 +194,6 @@
 
   @supports (color: lab(0% 0 0)) {
     :root, :host {
-      --color-amber-500: lab(72.7183% 31.8672 97.9407);
       --color-gray-700: lab(27.1134% -.956401 -12.3224);
       --color-gray-900: lab(8.11897% .811279 -12.254);
     }
@@ -684,10 +680,6 @@
     z-index: 10;
   }
 
-  .z-20 {
-    z-index: 20;
-  }
-
   .z-40 {
     z-index: 40;
   }
@@ -885,10 +877,6 @@
     min-height: 100vh;
   }
 
-  .w-0 {
-    width: calc(var(--spacing) * 0);
-  }
-
   .w-0\.5 {
     width: calc(var(--spacing) * .5);
   }
@@ -964,6 +952,14 @@
   .-translate-x-1\/2 {
     --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .-rotate-45 {
+    rotate: -45deg;
+  }
+
+  .rotate-45 {
+    rotate: 45deg;
   }
 
   .transform {
@@ -1243,8 +1239,8 @@
     border-style: dashed;
   }
 
-  .bg-amber-500 {
-    background-color: var(--color-amber-500);
+  .bg-\[\#D4AF37\] {
+    background-color: #d4af37;
   }
 
   .bg-black {
@@ -1473,6 +1469,10 @@
     white-space: nowrap;
   }
 
+  .text-\[\#1A1A2E\] {
+    color: #1a1a2e;
+  }
+
   .capitalize {
     text-transform: capitalize;
   }
@@ -1483,11 +1483,6 @@
 
   .italic {
     font-style: italic;
-  }
-
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   .opacity-0 {
@@ -1546,12 +1541,6 @@
     backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
   }
 
-  .backdrop-blur-sm {
-    --tw-backdrop-blur: blur(var(--blur-sm));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
-    backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
-  }
-
   .transition {
     transition-property: color, background-color, border-color, outline-color, -webkit-text-decoration-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1598,12 +1587,6 @@
   }
 
   @media (hover: hover) {
-    .group-hover\:w-full:is(:where(.group):hover *) {
-      width: 100%;
-    }
-  }
-
-  @media (hover: hover) {
     .group-hover\:scale-105:is(:where(.group):hover *) {
       --tw-scale-x: 105%;
       --tw-scale-y: 105%;
@@ -1618,6 +1601,12 @@
       --tw-scale-y: 110%;
       --tw-scale-z: 110%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+
+  @media (hover: hover) {
+    .group-hover\:text-\[\#F1E5AC\]:is(:where(.group):hover *) {
+      color: #f1e5ac;
     }
   }
 

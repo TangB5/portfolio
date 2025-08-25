@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { motion, easeInOut, easeOut } from 'framer-motion';
+import { FaCrown } from "react-icons/fa"; // Added FaCrown import
 
 // Couleurs inspirées de l'art africain
 const colors = {
@@ -125,13 +126,12 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="md:col-span-1">
             <Link href="/" className="inline-block mb-4">
               <div className="flex items-center">
-                <motion.i 
-                  className="pi pi-crown text-3xl mr-2"
-                  style={{ color: colors.primary }}
-                  whileHover={{ rotate: 15, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                ></motion.i>
-                <span className="text-2xl font-bold" style={{ color: colors.primary }}>KingTang</span>
+                <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md">
+                    <FaCrown
+                        className="text-[#1A1A2E] transition-colors duration-500 group-hover:text-[#F1E5AC] -rotate-45"
+                        size={30}
+                    />
+                </span>
               </div>
             </Link>
             <p className="text-sm opacity-80 mb-4" style={{ color: colors.light }}>

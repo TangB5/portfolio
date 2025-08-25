@@ -19,9 +19,14 @@ export default function RootLayout({
 }>) {
   return (
    <html lang="fr" className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
-    <Navigation/>
-      <body>{children}</body>
-      <Footer/>
+    
+      <body>
+        <Navigation/>
+        {children}
+
+         <Footer/>
+      </body>
+     
     </html>
   );
 }

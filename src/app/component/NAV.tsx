@@ -109,7 +109,7 @@ const menuVariants = {
           <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md">
             <FaCrown
               className="text-[#1A1A2E] transition-colors duration-500 group-hover:text-[#F1E5AC] -rotate-45"
-              size={30}
+              size={20}
             />
           </span>
         </Link>
