@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import 'primeicons/primeicons.css';
 import { easeOut } from "framer-motion";
+import Plan from '../component/arrierplan';
 
 
 
@@ -76,15 +77,15 @@ export default function Contact() {
     {
       icon: 'pi-envelope',
       label: 'Email',
-      value: 'contact@kingtang.com',
-      link: 'mailto:contact@kingtang.com',
+      value: 'kingtang337@gmail.com',
+      link: 'mailto:kingtang337@gmail.com',
       color: colors.primary
     },
     {
       icon: 'pi-whatsapp',
       label: 'WhatsApp',
-      value: '+237 XXX XXX XXX',
-      link: 'https://wa.me/237XXXXXXXXX',
+      value: '+237 653 53 91 02',
+      link: 'https://wa.me/237 653 53 91 02',
       color: '#25D366'
     },
     {
@@ -97,11 +98,10 @@ export default function Contact() {
   ];
 
   const socialNetworks = [
-    { icon: 'linkedin', url: 'https://linkedin.com/in/kingtang', label: 'LinkedIn' },
-    { icon: 'github', url: 'https://github.com/kingtang', label: 'GitHub' },
-    { icon: 'behance', url: 'https://behance.net/kingtang', label: 'Behance' },
-    { icon: 'dribbble', url: 'https://dribbble.com/kingtang', label: 'Dribbble' },
-    { icon: 'twitter', url: 'https://twitter.com/kingtang', label: 'Twitter' }
+    { icon: 'linkedin', url: 'https://www.linkedin.com/in/ndoh-yannick-tang-5b004934a', label: 'LinkedIn' },
+    { icon: 'github', url: 'https://github.com/TangB5', label: 'GitHub' },
+    { icon: 'instagram', url: 'https://www.instagram.com/kingtang337', label: 'instagram' },
+    { icon: 'facebook', url: 'https://twitter.com/kingtang', label: 'facebook' }
   ];
 
   return (
@@ -110,18 +110,13 @@ export default function Contact() {
 
       {/* Hero Section Contact */}
       <div className="pt-28 pb-16 px-4 text-center relative overflow-hidden">
-        {/* Arrière-plan avec motif Adinkra */}
-        <div className="absolute inset-0 opacity-5 z-0">
-          <div className="absolute top-20 left-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-sankofa.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-dwennimmen.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16" style={{ backgroundImage: "url('/adinkra-akoma.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-        </div>
+        <Plan/>
         
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-playfair font-bold mb-6"
+          className="text-5xl md:text-6xl font-playfair font-bold mb-6 relative z-10"
           style={{ color: colors.primary }}
         >
           Travaillons Ensemble
@@ -131,7 +126,7 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-xl max-w-2xl mx-auto mb-10"
+          className="text-xl max-w-2xl mx-auto mb-10 relative z-10"
         >
           {`Discutons de votre projet et créons quelque chose d'extraordinaire qui célèbre l'innovation et le patrimoine africain`}
         </motion.p>

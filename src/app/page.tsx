@@ -41,9 +41,21 @@ export default function Home() {
       {/* Hero Section avec animation du slogan */}
       <main className="flex flex-col items-center justify-center h-screen text-center px-4 relative overflow-hidden">
         {/* Arrière-plan avec motif Adinkra */}
-        <div className="absolute inset-0 opacity-10 z-0">
-          <div className="absolute top-10 left-10 w-20 h-20" style={{ backgroundImage: "url('/adinkra-sankofa.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute bottom-10 right-10 w-20 h-20" style={{ backgroundImage: "url('/adinkra-dwennimmen.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
+        <div className="absolute inset-0 opacity-100 z-0">
+          <div className="absolute top-0 left-10 w-20 h-20" style={{
+  backgroundImage: "url('/images/image1.png')",
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+}}></div>
+          <div className="absolute bottom-10 right-10 w-20 h-20" style={{
+  backgroundImage: "url('/images/image1.png')",
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+}}></div>
         </div>
         
         <motion.div
@@ -52,20 +64,29 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="relative z-10"
         >
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Image
-              src="/logo.png"
-              alt="KingTang Logo"
-              width={150}
-              height={150}
-              className="rounded-full mb-6 border-4"
-              style={{ borderColor: colors.primary }}
-              priority
-            />
-          </motion.div>
+
+          
+        <motion.div
+  whileHover={{ scale: 1.05, rotate: 2 }}
+  transition={{ type: "spring", stiffness: 100 }}
+  className="relative w-40 h-40 mb-6 overflow-hidden rounded-full border-4 flex justify-center"
+  style={{ borderColor: colors.primary }}
+>
+  <Image
+    src="/2.png"
+    alt="KingTang Logo"
+    width={170}
+    height={170}
+    className="object-cover object-center bg-primary-gold"
+    priority
+  />
+</motion.div>
+
+
+
+
+
+
           
           <motion.h1 
             className="text-5xl md:text-6xl font-playfair mb-6 font-bold"
@@ -130,10 +151,10 @@ export default function Home() {
               image: "/projet1.jpg"
             },
             { 
-              title: "App Culture Cameroun", 
-              description: "Application éducative sur les cultures et traditions",
-              tags: ["React Native", "Firebase", "Design"],
-              image: "/projet2.jpg"
+              title: "SITE vitrine Culture AFRICAINE", 
+              description: "site éducative sur les proverbes AFRICAIN",
+              tags: ["HTML", "TAILWINDCSS", "NEXTJS"],
+              image: "/images/project.png"
             },
             { 
               title: "Visual Identity Branding", 

@@ -1,8 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { motion, easeInOut, easeOut } from 'framer-motion';
-import { FaCrown } from "react-icons/fa"; // Added FaCrown import
-
+import Image from 'next/image';
 // Couleurs inspirées de l'art africain
 const colors = {
   primary: '#E9B826', // Or africain
@@ -18,42 +17,38 @@ export default function Footer() {
   const socialNetworks = [
     { 
       icon: 'linkedin', 
-      url: 'https://linkedin.com/in/kingtang', 
+      url: 'https://www.linkedin.com/in/ndoh-yannick-tang-5b004934a', 
       label: 'LinkedIn',
       description: 'Rejoignez mon réseau professionnel'
     },
     { 
       icon: 'github', 
-      url: 'https://github.com/kingtang', 
+      url: 'https://github.com/TangB5', 
       label: 'GitHub',
       description: 'Découvrez mes projets open source'
     },
     { 
       icon: 'whatsapp', 
-      url: 'https://wa.me/tonnumero', 
+      url: 'https://wa.me/237653539102', 
       label: 'WhatsApp',
       description: 'Contactez-moi directement'
     },
     { 
-      icon: 'behance', 
-      url: 'https://behance.net/kingtang', 
-      label: 'Behance',
-      description: 'Voir mes créations design'
+      icon: 'instagram', 
+      url: 'https://www.instagram.com/kingtang337', 
+      label: 'instagram',
+      description: 'suivez mes avetures'
     },
-    { 
-      icon: 'dribbble', 
-      url: 'https://dribbble.com/kingtang', 
-      label: 'Dribbble',
-      description: 'Explorer mes designs UI/UX'
-    }
+    
+    
   ];
 
   const quickLinks = [
     { name: 'Accueil', path: '/' },
-    { name: 'À Propos', path: '/about' },
-    { name: 'Projets', path: '/projects' },
-    { name: 'Culture', path: '/culture' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'À Propos', path: '/ABOUT' },
+    { name: 'Projets', path: '/PROJECT' },
+    { name: 'Culture', path: '/CULTURE' },
+    { name: 'Contact', path: '/CONTACT' }
   ];
 
   const serviceLinks = [
@@ -101,21 +96,27 @@ export default function Footer() {
       }}></div>
       
       {/* Motifs décoratifs africains */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-10 left-10 w-20 h-20" style={{ 
-          backgroundImage: "url('/adinkra-sankofa.svg')", 
-          backgroundSize: 'contain', 
-          backgroundRepeat: 'no-repeat' 
+      <div className="absolute inset-0 opacity-100 pointer-events-none">
+        <div className="absolute top-10 left-10 w-20 h-20" style={{
+          backgroundImage: "url('/images/image1.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
         }}></div>
-        <div className="absolute bottom-20 right-10 w-20 h-20" style={{ 
-          backgroundImage: "url('/adinkra-dwennimmen.svg')", 
-          backgroundSize: 'contain', 
-          backgroundRepeat: 'no-repeat' 
+        <div className="absolute bottom-20 right-10 w-20 h-20 z-0" style={{
+          backgroundImage: "url('/images/image2.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
         }}></div>
-        <div className="absolute top-1/3 left-1/4 w-16 h-16" style={{ 
-          backgroundImage: "url('/adinkra-akoma.svg')", 
-          backgroundSize: 'contain', 
-          backgroundRepeat: 'no-repeat' 
+        <div className="absolute top-[42%] left-[40%] w-16 h-16" style={{
+          backgroundImage: "url('/images/image3.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
         }}></div>
       </div>
 
@@ -124,16 +125,21 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <motion.div variants={itemVariants} className="md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <div className="flex items-center">
-                <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md">
-                    <FaCrown
-                        className="text-[#1A1A2E] transition-colors duration-500 group-hover:text-[#F1E5AC] -rotate-45"
-                        size={30}
-                    />
-                </span>
-              </div>
-            </Link>
+            <Link
+  href="/"
+  className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded mb-6"
+  
+>
+  <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md overflow-hidden">
+    <Image
+      src="/2.png" // ton logo
+      alt="KingTang Logo"
+      width={30}
+      height={30}
+      className="transition-all duration-500 -rotate-45 group-hover:brightness-110"
+    />
+  </span>
+</Link>
             <p className="text-sm opacity-80 mb-4" style={{ color: colors.light }}>
               Fusion innovation technologique et patrimoine culturel africain pour créer des expériences digitales uniques et mémorables.
             </p>
@@ -142,7 +148,7 @@ export default function Footer() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/contact" 
+                href="/CONTACT" 
                 className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all"
                 style={{ 
                   backgroundColor: colors.primary, 

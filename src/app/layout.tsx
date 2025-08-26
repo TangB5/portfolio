@@ -11,6 +11,20 @@ const ubuntu = Ubuntu({ subsets: ['latin'], weight: ['400', '700'], variable: '-
 export const metadata = {
   title: 'KingTang Portfolio',
   description: 'Frontend Developer | UX Designer | Innovateur Culturel',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'manifest',
+        url: '/site.webmanifest',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -19,16 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-   <html lang="fr" className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
-    
+    <html lang="fr" className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
       <body>
-        <LogoIntro/>
-        <Navigation/>
+        <LogoIntro />
+        <Navigation />
         {children}
-
-         <Footer/>
+        <Footer />
       </body>
-     
     </html>
   );
 }

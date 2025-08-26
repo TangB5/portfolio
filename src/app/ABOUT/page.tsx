@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import 'primeicons/primeicons.css';
+import Plan from '../component/arrierplan';
 
 // Couleurs inspirées de l'art africain
 const colors = {
@@ -43,17 +44,13 @@ export default function About() {
       {/* Hero Section À Propos */}
       <div className="pt-24 pb-16 px-4 text-center relative overflow-hidden">
         {/* Arrière-plan avec motif Adinkra */}
-        <div className="absolute inset-0 opacity-5 z-0">
-          <div className="absolute top-20 left-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-sankofa.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-dwennimmen.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16" style={{ backgroundImage: "url('/adinkra-akoma.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-        </div>
+       <Plan/>
         
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-playfair font-bold mb-6"
+          className="text-5xl font-playfair font-bold mb-6 relative z-10"
           style={{ color: colors.primary }}
         >
           Mon Histoire
@@ -67,7 +64,7 @@ export default function About() {
         >
           <div className="relative w-40 h-40 mx-auto mb-6">
             <Image
-              src="/profile.jpg"
+              src="/images/profil.jpg"
               alt="KingTang"
               fill
               className="rounded-full object-cover border-4"
@@ -78,7 +75,7 @@ export default function About() {
           </div>
           
           <motion.blockquote 
-            className="text-xl italic mb-8 px-6 py-4 rounded-lg relative"
+            className="text-xl italic mb-8 px-6 py-4 rounded-lg relative z-10"
             style={{ backgroundColor: 'rgba(233, 184, 38, 0.1)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -126,10 +123,16 @@ export default function About() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-            <div className="absolute bottom-4 left-4 text-sm">
-              <span className="px-3 py-1 rounded-full mr-2" style={{ backgroundColor: colors.primary, color: colors.dark }}>Next.js</span>
-              <span className="px-3 py-1 rounded-full mr-2" style={{ backgroundColor: colors.secondary, color: colors.light }}>Angular</span>
-              <span className="px-3 py-1 rounded-full" style={{ backgroundColor: colors.tertiary, color: colors.light }}>UX Design</span>
+            <div className="absolute bottom-4 left-4 text-sm grid grid-cols-4 gap-4">
+               <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.primary, color: colors.dark }}>Html</span>
+              <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.secondary, color: colors.light }}>tailwindcsc</span>
+              <span className=" rounded-full p-1 md:p-2 text-center" style={{ backgroundColor: colors.tertiary, color: colors.light }}>javascript</span>
+              <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.primary, color: colors.dark }}>Next.js</span>
+              <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.secondary, color: colors.light }}>Angular</span>
+              <span className=" rounded-full p-1 md:p-2 text-center" style={{ backgroundColor: colors.tertiary, color: colors.light }}>UX Design</span>
+              <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.primary, color: colors.dark }}>photoshop</span>
+              <span className=" rounded-full  p-1 md:p-2 text-center" style={{ backgroundColor: colors.secondary, color: colors.light }}>canva</span>
+
             </div>
           </div>
         </motion.div>
@@ -140,9 +143,11 @@ export default function About() {
           <div className="absolute left-4 top-0 bottom-0 w-0.5 transform -translate-x-1/2" style={{ backgroundColor: colors.primary }}></div>
           
           {[
-            { year: "2022", title: "Début en Développement", desc: "Premiers projets académiques avec Angular" },
-            { year: "2023", title: "Spécialisation Frontend", desc: "Approfondissement de Next.js et React" },
-            { year: "2024", title: "Intégration Culturelle", desc: "Fusion des designs modernes et patrimoine africain" },
+            { year: "2022", title: "Début en Développement", desc: "Premiers projets académiques avec HTML/CSS , PHP , MySQL " },
+            { year: "2023", title: "prise de contacte et manipulation du concepte de framework", desc: "Approfondissement de HTML/CSS javascript Tailwincss" },
+            { year: "2024", title: "specialisation en frontend", desc: "Appronfondissement javascript et adaptation a nextjs et Angular" },
+            { year: "2024", title: "Intégration Culturelle", desc: "Fusion des designs modernes et patrimoine africain prise de contact avec des logiciel de design photoshop , canva" },
+            { year: "2025", title: "Début en backend", desc: "Premier projet avec ExpressJs et mongoDB" },
             { year: "2025", title: "Innovation Culturelle", desc: "Développement de projets à identité africaine forte" }
           ].map((item, index) => (
             <div key={index} className="relative pl-20 pb-10">
@@ -232,11 +237,19 @@ export default function About() {
           <div>
             <h3 className="text-2xl font-semibold mb-4">Compétences Techniques</h3>
             
-            {[
-              { skill: 'Next.js/React', level: 85, color: colors.primary },
+            {[{ skill: 'HTML/CSS', level: 90, color: colors.primary },
+              { skill: 'TAILWIN DCSS', level: 80, color: colors.secondary },
+              { skill: 'JAVASCRIPT', level: 75, color: colors.tertiary },
+              { skill: 'Next.js/React', level: 70, color: colors.primary },
               { skill: 'UX/UI Design', level: 80, color: colors.secondary },
               { skill: 'Angular', level: 75, color: colors.tertiary },
-              { skill: 'Design Culturel', level: 90, color: colors.primary }
+              { skill: 'Design Culturel', level: 90, color: colors.primary },
+              { skill: 'canva', level: 75, color: colors.tertiary },
+              { skill: 'photoshop', level: 70, color: colors.primary },
+              { skill: 'Express', level: 30, color: colors.secondary },
+              { skill: 'MongoDb', level: 30, color: colors.secondary },
+
+
             ].map((item, index) => (
               <div key={index} className="mb-4">
                 <div className="flex justify-between mb-1">

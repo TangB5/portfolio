@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import 'primeicons/primeicons.css';
 import { easeOut } from "framer-motion";
+import Plan from '../component/arrierplan';
 
 
 
@@ -70,10 +71,10 @@ export default function Projects() {
       id: 2,
       title: 'Application "Culture Cameroun"',
       description: 'Application éducative immersive explorant les richesses culturelles du Cameroun. Contient des galeries visuelles, des documents historiques et des expériences interactives.',
-      image: '/culture-cameroun.jpg',
+      image: '/images/project.png',
       link: 'https://culture-cameroun.vercel.app',
       github: 'https://github.com/kingtang/culture-cameroun',
-      tech: ['React Native', 'Firebase', 'Framer Motion'],
+      tech: ['html', 'tailwindcss', 'Framer Motion','Nextjs'],
       category: 'mobile',
       featured: true
     },
@@ -138,17 +139,13 @@ export default function Projects() {
       {/* Hero Section Projets */}
       <div className="pt-28 pb-16 px-4 text-center relative overflow-hidden">
         {/* Arrière-plan avec motif Adinkra */}
-        <div className="absolute inset-0 opacity-5 z-0">
-          <div className="absolute top-20 left-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-sankofa.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24" style={{ backgroundImage: "url('/adinkra-dwennimmen.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16" style={{ backgroundImage: "url('/adinkra-akoma.svg')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
-        </div>
+        <Plan/>
         
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-playfair font-bold mb-6"
+          className="text-5xl md:text-6xl font-playfair font-bold mb-6 relative z-10"
           style={{ color: colors.primary }}
         >
           Mes Réalisations
@@ -158,7 +155,7 @@ export default function Projects() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-xl max-w-2xl mx-auto mb-10"
+          className="text-xl max-w-2xl mx-auto mb-10 relative z-10"
         >
           Découvrez des projets qui fusionnent expertise technique et richesses culturelles africaines
         </motion.p>
@@ -167,21 +164,22 @@ export default function Projects() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-16  relative z-10 bg-primary-black/50 md:bg-none "
         >
-          <div className="inline-flex rounded-lg p-1" style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}>
+          <div className="inline-flex rounded-lg relative z-10 p-1" style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}>
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setFilter(category.id)}
-                className={`px-4 py-2 rounded-md text-sm font-medium flex items-center transition-all ${filter === category.id ? 'bg-opacity-20' : ''}`}
+                className={`px-4 py-2 rounded-md text-sm font-medium flex items-center  transition-all ${filter === category.id ? 'bg-opacity-20' : ''}`}
                 style={{ 
                   backgroundColor: filter === category.id ? `${colors.primary}30` : 'transparent',
                   color: filter === category.id ? colors.primary : colors.light
                 }}
               >
                 <i className={`${category.icon} mr-2`}></i>
-                {category.name}
+                <div className="hidden md:flex">{category.name}</div>
+                
               </button>
             ))}
           </div>
@@ -258,7 +256,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-5 py-2 rounded-lg font-medium flex items-center"
+                        className="md:px-5 py-2 rounded-lg font-medium flex items-center px-2"
                         style={{ backgroundColor: colors.primary, color: colors.dark }}
                       >
                         <i className="pi pi-external-link mr-2"></i>
@@ -398,16 +396,16 @@ export default function Projects() {
             className="flex justify-center gap-4"
           >
             <Link 
-              href="/contact" 
-              className="inline-flex items-center px-8 py-4 rounded-lg font-semibold text-lg"
+              href="/CONTACT" 
+              className="inline-flex items-center md:px-8 md:py-4 rounded-lg font-semibold text-lg py-1 px-1"
               style={{ backgroundColor: colors.primary, color: colors.dark }}
             >
               <i className="pi pi-send mr-2"></i>
               Me contacter
             </Link>
             <Link 
-              href="/culture" 
-              className="inline-flex items-center px-8 py-4 rounded-lg font-semibold text-lg border"
+              href="/CULTURE" 
+              className="inline-flex items-center md:px-8 py-4 rounded-lg font-semibold text-lg border px-4"
               style={{ borderColor: colors.primary, color: colors.primary }}
             >
               <i className="pi pi-compass mr-2"></i>

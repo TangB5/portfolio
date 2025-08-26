@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence,easeInOut, easeOut , Spring  } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { FaCrown } from "react-icons/fa";
-
+import Image from "next/image";
 
 const COLORS = {
   primary: '#E9B826', // Or africain
@@ -100,19 +99,23 @@ const menuVariants = {
           borderBottom: isScrolled ? `1px solid ${COLORS.primary}20` : "none",
         }}
       >
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md">
-            <FaCrown
-              className="text-[#1A1A2E] transition-colors duration-500 group-hover:text-[#F1E5AC] -rotate-45"
-              size={20}
-            />
-          </span>
-        </Link>
+       {/* Logo */}
+<Link
+  href="/"
+  className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded"
+  onClick={() => setIsMobileMenuOpen(false)}
+>
+  <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md overflow-hidden">
+    <Image
+      src="/2.png" // ton logo
+      alt="KingTang Logo"
+      width={30}
+      height={30}
+      className="transition-all duration-500 -rotate-45 group-hover:brightness-110"
+    />
+  </span>
+</Link>
+
 
         {/* Navigation Desktop */}
         <nav className="hidden md:flex space-x-8 items-center">
