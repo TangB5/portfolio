@@ -25,6 +25,7 @@ const NAV_ITEMS = [
   { id: 'projects', label: 'PROJETS', path: '/PROJECT', icon: 'pi-briefcase' },
   { id: 'culture', label: 'CULTURE', path: '/CULTURE', icon: 'pi-palette' },
   { id: 'contact', label: 'CONTACT', path: '/CONTACT', icon: 'pi-envelope' },
+  { id: 'service', label: 'SOLUTION', path: '/SOLUTION', icon: 'pi-envelope' },
 ];
 
 export default function Navigation() {

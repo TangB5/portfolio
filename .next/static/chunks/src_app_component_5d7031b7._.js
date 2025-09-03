@@ -1068,6 +1068,12 @@ const NAV_ITEMS = [
         label: 'CONTACT',
         path: '/CONTACT',
         icon: 'pi-envelope'
+    },
+    {
+        id: 'service',
+        label: 'SOLUTION',
+        path: '/SOLUTION',
+        icon: 'pi-envelope'
     }
 ];
 function Navigation() {
@@ -1179,17 +1185,17 @@ function Navigation() {
                                 className: "transition-all duration-500 -rotate-45 group-hover:brightness-110"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                lineNumber: 109,
+                                lineNumber: 110,
                                 columnNumber: 5
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/component/NAV.tsx",
-                            lineNumber: 108,
+                            lineNumber: 109,
                             columnNumber: 3
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/component/NAV.tsx",
-                        lineNumber: 103,
+                        lineNumber: 104,
                         columnNumber: 1
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1225,18 +1231,18 @@ function Navigation() {
                                                 transition: TRANSITIONS.fast
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                                lineNumber: 137,
+                                                lineNumber: 138,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/component/NAV.tsx",
-                                            lineNumber: 135,
+                                            lineNumber: 136,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, item.id, true, {
                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1254,26 +1260,26 @@ function Navigation() {
                                         className: "pi pi-star mr-1"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/component/NAV.tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 159,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Culture Innovation"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/component/NAV.tsx",
-                                        lineNumber: 159,
+                                        lineNumber: 160,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                lineNumber: 152,
+                                lineNumber: 153,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/component/NAV.tsx",
-                        lineNumber: 121,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1307,7 +1313,7 @@ function Navigation() {
                                 }
                             }, "close", false, {
                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                lineNumber: 173,
+                                lineNumber: 174,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].i, {
                                 className: "pi pi-bars text-xl",
@@ -1328,23 +1334,23 @@ function Navigation() {
                                 }
                             }, "menu", false, {
                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                lineNumber: 182,
+                                lineNumber: 183,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/component/NAV.tsx",
-                            lineNumber: 171,
+                            lineNumber: 172,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/component/NAV.tsx",
-                        lineNumber: 164,
+                        lineNumber: 165,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/component/NAV.tsx",
-                lineNumber: 92,
+                lineNumber: 93,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1364,7 +1370,7 @@ function Navigation() {
                             onClick: menuToggleHandler
                         }, void 0, false, {
                             fileName: "[project]/src/app/component/NAV.tsx",
-                            lineNumber: 199,
+                            lineNumber: 200,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].nav, {
@@ -1396,7 +1402,7 @@ function Navigation() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 223,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1406,18 +1412,18 @@ function Navigation() {
                                                 children: "Navigation"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                                lineNumber: 223,
+                                                lineNumber: 224,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/component/NAV.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 219,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                    lineNumber: 217,
+                                    lineNumber: 218,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1443,19 +1449,19 @@ function Navigation() {
                                                             className: "".concat(item.icon, " mr-3")
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/component/NAV.tsx",
-                                                            lineNumber: 242,
+                                                            lineNumber: 243,
                                                             columnNumber: 23
                                                         }, this),
                                                         item.label
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                                    lineNumber: 229,
+                                                    lineNumber: 230,
                                                     columnNumber: 21
                                                 }, this)
                                             }, item.id, false, {
                                                 fileName: "[project]/src/app/component/NAV.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 229,
                                                 columnNumber: 19
                                             }, this)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1470,39 +1476,39 @@ function Navigation() {
                                                     className: "pi pi-star mr-2"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                                    lineNumber: 253,
+                                                    lineNumber: 254,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Innovation Culturelle"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                                    lineNumber: 254,
+                                                    lineNumber: 255,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/component/NAV.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 249,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/component/NAV.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 227,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/component/NAV.tsx",
-                            lineNumber: 206,
+                            lineNumber: 207,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/app/component/NAV.tsx",
-                lineNumber: 196,
+                lineNumber: 197,
                 columnNumber: 7
             }, this)
         ]

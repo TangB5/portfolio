@@ -106,14 +106,11 @@ export default function About() {
           <div>
             <h3 className="text-2xl font-semibold mb-4">Formation & Développement</h3>
             <p className="text-lg leading-relaxed mb-4">
-              {`Je suis un ex-étudiant en licence, stagiaire académique, passionné par le frontend development, 
-              l'UX design et le full-stack en progression. Mon voyage a commencé avec des projets académiques 
-              en Angular et Next.js.`}
-            </p>
-            <p className="text-lg leading-relaxed">
-              {`Je me spécialise dans des designs inspirés de la culture africaine pour créer des expériences 
-              digitales authentiques et contrer l'uniformité visuelle occidentale.`}
-            </p>
+            {`Je suis titulaire d'une licence en informatique, spécialisée en administration système, réseaux et sécurité, et passionné par le frontend development, l'UX design et le full-stack en progression. Mon parcours a débuté avec des projets techniques en Angular et Next.js.`}
+          </p>
+          <p className="text-lg leading-relaxed">
+            {`Je me spécialise dans des designs inspirés de la culture africaine pour créer des expériences digitales authentiques et contrer l'uniformité visuelle occidentale.`}
+          </p>
           </div>
           <div className="relative h-64 rounded-lg overflow-hidden">
             <Image
