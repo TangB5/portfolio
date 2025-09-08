@@ -93,7 +93,7 @@ export default function Projects() {
       id: 4,
       title: 'Mini-site "Culture Africa"',
       description: 'Site interactif pour explorer et promouvoir la culture africaine à travers des animations et récits visuels. Intègre une carte interactive des traditions africaines.',
-      image: '/images/mvp.png',
+      image: '/images/mvp1.png',
       link: 'https://cultureafricaine.vercel.app',
       github: 'https://github.com/TangB5/mvp',
       tech: ['Next.js', 'Tailwind CSS', 'html/css'],
