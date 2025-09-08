@@ -71,7 +71,7 @@ export default function Projects() {
       id: 2,
       title: 'Application "Culture Cameroun"',
       description: 'Application éducative immersive explorant les richesses culturelles du Cameroun. Contient des galeries visuelles, des documents historiques et des expériences interactives.',
-      image: '/images/project.png',
+      image: '/images',
       link: 'https://culture-cameroun.vercel.app',
       github: 'https://github.com/kingtang/culture-cameroun',
       tech: ['html', 'tailwindcss', 'Framer Motion','Nextjs'],
@@ -93,10 +93,10 @@ export default function Projects() {
       id: 4,
       title: 'Mini-site "Culture Africa"',
       description: 'Site interactif pour explorer et promouvoir la culture africaine à travers des animations et récits visuels. Intègre une carte interactive des traditions africaines.',
-      image: '/culture-africa.jpg',
-      link: 'https://culture-africa.vercel.app',
-      github: 'https://github.com/kingtang/culture-africa',
-      tech: ['Next.js', 'Tailwind CSS', 'Mapbox'],
+      image: '/images/mvp.png',
+      link: 'https://cultureafricaine.vercel.app',
+      github: 'https://github.com/TangB5/mvp',
+      tech: ['Next.js', 'Tailwind CSS', 'html/css'],
       category: 'web'
     },
     {

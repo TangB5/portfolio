@@ -57,7 +57,7 @@ export default function Home() {
             filter: 'drop-shadow(0 0 5px white)' // contour lumineux
           }}></div>
         </div>
-        <div className="flex flex-col justify-center items-center z-10 relative top-20">
+        <div className="flex flex-col justify-center items-center z-10 relative h-full">
           <motion.div>
           <Image
             src="/profil.png"
