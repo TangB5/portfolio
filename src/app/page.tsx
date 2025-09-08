@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import 'primeicons/primeicons.css';
 
-// Couleurs inspirées de l'art africain
 const colors = {
   primary: '#E9B826', // Or africain
   secondary: '#BB141A', // Rouge terre
@@ -26,7 +25,7 @@ export default function Home() {
       }
     }
   };
-  
+
   const wordVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -35,29 +34,41 @@ export default function Home() {
   return (
     <div className="min-h-screen relative" style={{ backgroundColor: colors.dark, color: colors.light }}>
       {/* Header avec motif africain */}
-      
+
 
 
       {/* Hero Section avec animation du slogan */}
-      <main className="flex flex-col items-center justify-center h-screen text-center px-4 relative overflow-hidden">
+      <main className="flex flex-col items-center h-screen text-center px-4 relative overflow-hidden">
         {/* Arrière-plan avec motif Adinkra */}
+
         <div className="absolute inset-0 opacity-100 z-0">
-          <div className="absolute top-0 left-10 w-20 h-20" style={{
-  backgroundImage: "url('/images/image1.png')",
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  filter: 'drop-shadow(0 0 5px white)' // contour lumineux
-}}></div>
+          <div className="absolute top-20 left-10 w-20 h-20" style={{
+            backgroundImage: "url('/images/image1.png')",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+          }}></div>
           <div className="absolute bottom-10 right-10 w-20 h-20" style={{
-  backgroundImage: "url('/images/image1.png')",
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  filter: 'drop-shadow(0 0 5px white)' // contour lumineux
-}}></div>
+            backgroundImage: "url('/images/image1.png')",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+          }}></div>
         </div>
-        
+        <div className="flex flex-col justify-center items-center z-10 relative top-20">
+          <motion.div>
+          <Image
+            src="/profil.png"
+            alt="KingTang Logo"
+            width={1070}
+            height={1070}
+            className="object-cover object-center "
+            priority
+          />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,44 +77,8 @@ export default function Home() {
         >
 
           
-        <motion.div
-  whileHover={{ scale: 1.05, rotate: 2 }}
-  transition={{ type: "spring", stiffness: 100 }}
-  className="relative w-40 h-40 mb-6 overflow-hidden rounded-full border-4 flex justify-center"
-  style={{ borderColor: colors.primary }}
->
-  <Image
-    src="/2.png"
-    alt="KingTang Logo"
-    width={170}
-    height={170}
-    className="object-cover object-center bg-primary-gold"
-    priority
-  />
-</motion.div>
 
-
-
-
-
-
-          
-          <motion.h1 
-            className="text-5xl md:text-6xl font-playfair mb-6 font-bold"
-            variants={sloganVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ color: colors.primary }}
-          >
-            {"Think different. Act different. Be original.".split('.').map((phrase, i) => (
-              <motion.span key={i} variants={wordVariants} className="block">
-                {phrase.trim()}
-                {i < 2 && '.'}
-              </motion.span>
-            ))}
-          </motion.h1>
-          
-          <motion.p 
+          <motion.p
             className="text-xl mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -111,13 +86,13 @@ export default function Home() {
           >
             Frontend Developer | UX Designer | Innovateur Culturel
           </motion.p>
-          
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link 
-              href="/projects" 
+            <Link
+              href="/projects"
               className="px-8 py-3 rounded-lg inline-block font-semibold"
               style={{ backgroundColor: colors.primary, color: colors.dark }}
             >
@@ -125,45 +100,51 @@ export default function Home() {
             </Link>
           </motion.div>
         </motion.div>
+        </div>
+
         
+<div className="w-full flex justify-center items-center">
         {/* Indicateur de défilement */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-10"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
           <i className="pi pi-arrow-down text-2xl" style={{ color: colors.primary }}></i>
         </motion.div>
+      </div>
+
       </main>
+      
 
       {/* Section Projets avec aperçus interactifs */}
       <section className="py-20 px-4">
         <h2 className="text-3xl font-bold text-center mb-12" style={{ color: colors.primary }}>
           Mes Projets Innovants
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
-            { 
-              title: "MarketPlace Africaine", 
+            {
+              title: "MarketPlace Africaine",
               description: "Plateforme e-commerce mettant en avant l'artisanat local",
               tags: ["React", "Node.js", "UI/UX"],
               image: "/projet1.jpg"
             },
-            { 
-              title: "SITE vitrine Culture AFRICAINE", 
+            {
+              title: "SITE vitrine Culture AFRICAINE",
               description: "site éducative sur les proverbes AFRICAIN",
               tags: ["HTML", "TAILWINDCSS", "NEXTJS"],
               image: "/images/project.png"
             },
-            { 
-              title: "Visual Identity Branding", 
+            {
+              title: "Visual Identity Branding",
               description: "Identité visuelle pour une marque de mode africaine",
               tags: ["Branding", "Illustration", "UI Design"],
               image: "/projet3.jpg"
             }
           ].map((projet, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className="rounded-lg overflow-hidden shadow-lg group cursor-pointer"
               initial={{ opacity: 0, y: 50 }}
@@ -191,8 +172,8 @@ export default function Home() {
                 <p className="mb-3 opacity-80">{projet.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {projet.tags.map(tag => (
-                    <span 
-                      key={tag} 
+                    <span
+                      key={tag}
                       className="text-xs px-2 py-1 rounded-full"
                       style={{ backgroundColor: colors.secondary, color: colors.light }}
                     >
@@ -204,10 +185,10 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             className="inline-flex items-center px-6 py-3 rounded-lg font-medium"
             style={{ backgroundColor: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary }}
           >
@@ -224,13 +205,13 @@ export default function Home() {
             Innovation Culturelle & Identité Africaine
           </h2>
           <p className="text-xl mb-8 leading-relaxed">
-            Je mets l&rsquo;art et la culture africaine au cœur de mes créations digitales, 
+            Je mets l&rsquo;art et la culture africaine au cœur de mes créations digitales,
             combinant techniques modernes et patrimoine visuel pour une expérience unique.
           </p>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {['Cameroun', 'Art', 'Tradition', 'Innovation'].map((item, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 className="p-4 rounded-lg flex items-center justify-center flex-col"
                 whileHover={{ scale: 1.05 }}
@@ -243,13 +224,13 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          
+
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Link 
-              href="/culture" 
+            <Link
+              href="/culture"
               className="px-8 py-3 rounded-lg inline-flex items-center font-semibold"
               style={{ backgroundColor: colors.tertiary, color: colors.light }}
             >
@@ -260,7 +241,7 @@ export default function Home() {
         </div>
       </section>
 
-      
+
     </div>
   );
 }
