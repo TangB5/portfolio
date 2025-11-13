@@ -751,6 +751,10 @@
     margin-top: calc(var(--spacing) * 20);
   }
 
+  .mt-40 {
+    margin-top: calc(var(--spacing) * 40);
+  }
+
   .mt-auto {
     margin-top: auto;
   }
