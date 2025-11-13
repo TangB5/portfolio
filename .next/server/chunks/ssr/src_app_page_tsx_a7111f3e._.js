@@ -67,7 +67,7 @@ function Home() {
                                     backgroundSize: 'contain',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
-                                    filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+                                    filter: 'drop-shadow(0 0 2px white)' // contour lumineux
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",

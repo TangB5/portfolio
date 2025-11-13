@@ -106,13 +106,14 @@ const menuVariants = {
   className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded"
   onClick={() => setIsMobileMenuOpen(false)}
 >
-  <span className="transition-all duration-500 rotate-45 group-hover:scale-110 p-2 bg-[#D4AF37] rounded-md overflow-hidden">
+  <span className="transition-all duration-500 rotate-40 group-hover:scale-110 p-2 border-[#D4AF37] border rounded-md overflow-hidden">
     <Image
-      src="/2.png" // ton logo
+      src="/lettreK1.png" // ton logo
       alt="KingTang Logo"
       width={30}
       height={30}
       className="transition-all duration-500 -rotate-45 group-hover:brightness-110"
+      style={{filter: 'drop-shadow(0 0 0.1px #D4AF37)'}}
     />
   </span>
 </Link>

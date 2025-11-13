@@ -108,7 +108,7 @@ export default function LogoIntro() {
             >
               <div className="p-5 bg-gradient-to-br from-[#D4AF37] to-[#f5d76e] rounded-full shadow-2xl shadow-yellow-500/30 overflow-hidden flex items-center justify-center">
   <Image
-    src="/2.png"
+    src="/logoblue.png"
     alt="KingTang Logo"
     width={42}
     height={42}

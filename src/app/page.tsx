@@ -47,7 +47,7 @@ export default function Home() {
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'drop-shadow(0 0 5px white)' // contour lumineux
+            filter: 'drop-shadow(0 0 2px white)' // contour lumineux
           }}></div>
           <div className="absolute bottom-10 right-10 w-20 h-20" style={{
             backgroundImage: "url('/images/image1.png')",
