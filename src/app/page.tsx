@@ -14,7 +14,6 @@ const colors = {
 };
 
 export default function Home() {
-  // Animation pour le slogan
   const sloganVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -92,7 +91,7 @@ export default function Home() {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              href="/projects"
+              href="/PROJECT"
               className="px-8 py-3 rounded-lg inline-block font-semibold"
               style={{ backgroundColor: colors.primary, color: colors.dark }}
             >
@@ -125,70 +124,92 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
-            {
-              title: "MarketPlace Africaine",
-              description: "Plateforme e-commerce mettant en avant l'artisanat local",
-              tags: ["React", "Node.js", "UI/UX"],
-              image: "/projet1.jpg"
-            },
-            {
-              title: "SITE vitrine Culture AFRICAINE",
-              description: "site éducative sur les proverbes AFRICAIN",
-              tags: ["HTML", "TAILWINDCSS", "NEXTJS"],
-              image: "/images/project.png"
-            },
-            {
-              title: "Visual Identity Branding",
-              description: "Identité visuelle pour une marque de mode africaine",
-              tags: ["Branding", "Illustration", "UI Design"],
-              image: "/projet3.jpg"
-            }
+              {
+                  title: "MarketPlace Africaine",
+                  description: "Plateforme e-commerce mettant en avant l'artisanat local",
+                  tags: ["React", "Node.js", "UI/UX"],
+                  image: "/projet1.jpg",
+                  isCompleted: false,
+                  projectLink: "https://www.lien-marketplace.com"
+              },
+              {
+                  title: "SITE vitrine Culture AFRICAINE",
+                  description: "site éducative sur les proverbes AFRICAIN",
+                  tags: ["HTML", "TAILWINDCSS", "NEXTJS"],
+                  image: "/images/project.png",
+                  isCompleted: true,
+                  projectLink: "https://cultureafricaine.vercel.app/"
+              },
+              {
+                  title: "Visual Identity Branding",
+                  description: "Identité visuelle pour une marque de mode africaine",
+                  tags: ["Branding", "Illustration", "UI Design"],
+                  image: "/projet3.jpg",
+                  isCompleted: false,
+                  projectLink: "https://www.lien-branding.com"
+              }
           ].map((projet, index) => (
-            <motion.div
-              key={index}
-              className="rounded-lg overflow-hidden shadow-lg group cursor-pointer"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}
-            >
-              <div className="h-48 relative overflow-hidden">
-                <Image
-                  src={projet.image}
-                  alt={projet.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <span className="px-4 py-2 rounded" style={{ backgroundColor: colors.primary, color: colors.dark }}>
-                    Voir le projet
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{projet.title}</h3>
-                <p className="mb-3 opacity-80">{projet.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {projet.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-1 rounded-full"
-                      style={{ backgroundColor: colors.secondary, color: colors.light }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              <motion.div
+                  key={index}
+                  className="rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10 }}
+                  style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}
+              >
+                  {/* Conteneur cliquable : on utilise <a> si le projet est terminé, sinon un div simple */}
+                  <a
+                      href={projet.isCompleted ? projet.projectLink : undefined} // Le lien n'est actif que si isCompleted est true
+                      target={projet.isCompleted ? "_blank" : undefined} // Ouvre dans un nouvel onglet si actif
+                      rel={projet.isCompleted ? "noopener noreferrer" : undefined}
+                      // Ajoutez une classe pour indiquer que le curseur change, mais seulement si le projet est completed
+                      className={`block ${projet.isCompleted ? 'cursor-pointer' : 'cursor-default'}`}
+                  >
+                      <div className="h-48 relative overflow-hidden">
+                          <Image
+                              src={projet.image}
+                              alt={projet.title}
+                              fill
+                              className="object-cover group-hover:scale-110 transition duration-500"
+                          />
+                          {/* Overlay conditionnel */}
+                          <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span className="px-4 py-2 rounded" style={{ backgroundColor: colors.primary, color: colors.dark }}>
+            {/* AFFICHAGE CONDITIONNEL ICI */}
+              {projet.isCompleted ? 'Voir le projet' : 'Upcomming'}
+          </span>
+                          </div>
+                      </div>
+                      <div className="p-4">
+                          {/* Titre conditionnel pour le style 'Upcomming' */}
+                          <h3
+                              className={`text-xl font-semibold mb-2 ${!projet.isCompleted ? 'opacity-50 italic' : ''}`}
+                          >
+                              {projet.title} {!projet.isCompleted && '(à venir)'}
+                          </h3>
+                          <p className={`mb-3 opacity-80 ${!projet.isCompleted ? 'opacity-50' : ''}`}>{projet.description}</p>
+                          <div className="flex flex-wrap gap-2">
+                              {projet.tags.map(tag => (
+                                  <span
+                                      key={tag}
+                                      className={`text-xs px-2 py-1 rounded-full ${!projet.isCompleted ? 'opacity-50' : ''}`}
+                                      style={{ backgroundColor: colors.secondary, color: colors.light }}
+                                  >
+              {tag}
+            </span>
+                              ))}
+                          </div>
+                      </div>
+                  </a>
+              </motion.div>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <Link
-            href="/projects"
+            href="/PROJECT"
             className="inline-flex items-center px-6 py-3 rounded-lg font-medium"
             style={{ backgroundColor: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary }}
           >
@@ -230,7 +251,7 @@ export default function Home() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Link
-              href="/culture"
+              href="/CULTURE"
               className="px-8 py-3 rounded-lg inline-flex items-center font-semibold"
               style={{ backgroundColor: colors.tertiary, color: colors.light }}
             >

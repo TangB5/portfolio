@@ -12,8 +12,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$intersection$2d$observer$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-intersection-observer/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+// import { Motif } from '../type'; // J'ai commenté ceci car 'Motif' n'est pas défini ici.
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$motion$2d$utils$2f$dist$2f$es$2f$easing$2f$ease$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/motion-utils/dist/es/easing/ease.mjs [app-ssr] (ecmascript)");
-"use client";
+'use client';
 ;
 ;
 ;
@@ -79,7 +80,8 @@ function Culture() {
             title: 'Wax Moderne',
             description: 'Réinterprétation contemporaine des motifs Wax traditionnels avec une palette de couleurs vibrantes adaptée au digital.',
             origin: 'Inspiré des textiles d\'Afrique de l\'Ouest',
-            usage: 'Arrière-plans, éléments de navigation, séparateurs'
+            usage: 'Arrière-plans, éléments de navigation, séparateurs',
+            status: 'upcoming' // Disponible
         },
         {
             id: 2,
@@ -88,7 +90,8 @@ function Culture() {
             title: 'Adinkra Digital',
             description: 'Symboles Adinkra du Ghana adaptés aux interfaces modernes. Chaque symbole porte une signification philosophique profonde.',
             origin: 'Culture Akan, Ghana',
-            usage: 'Icônes, logos, éléments symboliques'
+            usage: 'Icônes, logos, éléments symboliques',
+            status: 'upcoming' // Disponible
         },
         {
             id: 3,
@@ -97,7 +100,8 @@ function Culture() {
             title: 'Ndop Contemporain',
             description: 'Motifs géométriques du Ndop camerounais transformés en patterns digitaux avec une approche minimaliste.',
             origin: 'Royaume Bamoun, Cameroun',
-            usage: 'Textures, bordures, éléments décoratifs'
+            usage: 'Textures, bordures, éléments décoratifs',
+            status: 'upcoming' // En révision
         },
         {
             id: 4,
@@ -106,7 +110,8 @@ function Culture() {
             title: 'Kente Numérique',
             description: 'Adaptation des motifs complexes du tissu Kente en designs web responsifs qui conservent leur essence culturelle.',
             origin: 'Peuple Ashanti, Ghana',
-            usage: 'Headers, footers, éléments de branding'
+            usage: 'Headers, footers, éléments de branding',
+            status: 'upcoming' // À venir
         },
         {
             id: 5,
@@ -115,7 +120,8 @@ function Culture() {
             title: 'Bogolan Digital',
             description: 'Réinterprétation des motifs Bogolan du Mali avec des textures et effets visuels modernes.',
             origin: 'Culture Bambara, Mali',
-            usage: 'Arrière-plans texturés, éléments naturels'
+            usage: 'Arrière-plans texturés, éléments naturels',
+            status: 'upcoming' // Disponible
         },
         {
             id: 6,
@@ -124,7 +130,8 @@ function Culture() {
             title: 'Shibu Connecté',
             description: 'Motifs de communication visuelle Shibu revisités pour créer des parcours utilisateur intuitifs et culturellement ancrés.',
             origin: 'Diverses cultures africaines',
-            usage: 'Indicateurs de navigation, éléments interactifs'
+            usage: 'Indicateurs de navigation, éléments interactifs',
+            status: 'upcoming' // À venir
         }
     ];
     const citations = [
@@ -170,6 +177,43 @@ function Culture() {
             example: "Silhouettes épurées pour les avatars et icônes utilisateur"
         }
     ];
+    // Fonction utilitaire pour gérer l'affichage du statut
+    const getStatusDisplay = (status)=>{
+        switch(status){
+            case 'available':
+                return {
+                    text: 'Disponible',
+                    icon: 'pi pi-check-circle',
+                    color: colors.tertiary,
+                    opacity: 'opacity-100',
+                    cursor: 'cursor-pointer'
+                };
+            case 'revision':
+                return {
+                    text: 'En Révision',
+                    icon: 'pi pi-sync',
+                    color: colors.secondary,
+                    opacity: 'opacity-70',
+                    cursor: 'cursor-default'
+                };
+            case 'upcoming':
+                return {
+                    text: 'À Venir',
+                    icon: 'pi pi-hourglass',
+                    color: colors.primary,
+                    opacity: 'opacity-50',
+                    cursor: 'cursor-default'
+                };
+            default:
+                return {
+                    text: '',
+                    icon: '',
+                    color: colors.dark,
+                    opacity: 'opacity-100',
+                    cursor: 'cursor-default'
+                };
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen relative",
         style: {
@@ -192,8 +236,8 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 160,
-                                columnNumber: 11
+                                lineNumber: 211,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute bottom-20 right-10 w-24 h-24",
@@ -204,8 +248,8 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 161,
-                                columnNumber: 11
+                                lineNumber: 212,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute top-1/2 left-1/4 w-16 h-16",
@@ -216,14 +260,14 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 162,
-                                columnNumber: 11
+                                lineNumber: 213,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 159,
-                        columnNumber: 9
+                        lineNumber: 208,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].h1, {
                         initial: {
@@ -244,8 +288,8 @@ function Culture() {
                         children: "Racines & Innovation"
                     }, void 0, false, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 165,
-                        columnNumber: 9
+                        lineNumber: 216,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].p, {
                         initial: {
@@ -262,8 +306,8 @@ function Culture() {
                         children: "Découvrez comment le patrimoine visuel africain inspire des designs digitaux contemporains et authentiques"
                     }, void 0, false, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 175,
-                        columnNumber: 9
+                        lineNumber: 226,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                         initial: {
@@ -290,27 +334,27 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 191,
-                                columnNumber: 11
+                                lineNumber: 242,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: "Exploration culturelle"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 192,
-                                columnNumber: 11
+                                lineNumber: 243,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 184,
-                        columnNumber: 9
+                        lineNumber: 235,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                lineNumber: 157,
-                columnNumber: 7
+                lineNumber: 206,
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].section, {
                 ref: ref,
@@ -329,8 +373,8 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 205,
-                                columnNumber: 11
+                                lineNumber: 256,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-3xl font-bold mx-4",
@@ -340,8 +384,8 @@ function Culture() {
                                 children: "Galerie de Motifs Revisités"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 206,
-                                columnNumber: 11
+                                lineNumber: 257,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex-1 h-0.5",
@@ -350,24 +394,29 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 207,
-                                columnNumber: 11
+                                lineNumber: 258,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 204,
-                        columnNumber: 9
+                        lineNumber: 255,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
-                        children: motifs.map((motif)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                        children: motifs.map((motif)=>{
+                            const statusDisplay = getStatusDisplay(motif.status);
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                 variants: fadeInUp,
-                                className: "rounded-xl overflow-hidden group cursor-pointer h-full flex flex-col",
+                                // Utilise le curseur approprié et rend non cliquable si le statut n'est pas "available"
+                                className: `rounded-xl overflow-hidden group h-full flex flex-col ${statusDisplay.cursor}`,
                                 style: {
-                                    backgroundColor: 'rgba(245, 245, 220, 0.03)'
+                                    backgroundColor: 'rgba(245, 245, 220, 0.03)',
+                                    opacity: motif.status === 'available' ? 1 : 0.8
                                 },
-                                onClick: ()=>setActiveMotif(activeMotif?.id === motif.id ? null : motif),
+                                // Empêche l'ouverture du modal si le statut n'est pas 'available'
+                                onClick: ()=>motif.status === 'available' && setActiveMotif(activeMotif?.id === motif.id ? null : motif),
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "relative h-48 overflow-hidden",
@@ -379,56 +428,85 @@ function Culture() {
                                                 className: "object-cover group-hover:scale-110 transition duration-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 220,
-                                                columnNumber: 17
+                                                lineNumber: 279,
+                                                columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 group-hover:opacity-30 transition duration-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 226,
-                                                columnNumber: 17
+                                                lineNumber: 285,
+                                                columnNumber: 37
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "absolute top-4 right-4 z-10",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: `px-3 py-1 rounded-full text-xs font-semibold flex items-center shadow-lg ${statusDisplay.opacity}`,
+                                                    style: {
+                                                        backgroundColor: statusDisplay.color,
+                                                        color: colors.dark
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                            className: `${statusDisplay.icon} mr-1`
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/CULTURE/page.tsx",
+                                                            lineNumber: 293,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        statusDisplay.text
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/CULTURE/page.tsx",
+                                                    lineNumber: 289,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/CULTURE/page.tsx",
+                                                lineNumber: 288,
+                                                columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                        lineNumber: 219,
-                                        columnNumber: 15
+                                        lineNumber: 278,
+                                        columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "p-5 flex-1",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "font-bold text-lg mb-2",
+                                                className: `font-bold text-lg mb-2 ${statusDisplay.opacity}`,
                                                 children: motif.title
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 230,
-                                                columnNumber: 17
+                                                lineNumber: 301,
+                                                columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm opacity-80 mb-4",
+                                                className: `text-sm opacity-80 mb-4 ${statusDisplay.opacity}`,
                                                 children: motif.description
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 231,
-                                                columnNumber: 17
+                                                lineNumber: 302,
+                                                columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex justify-between items-center text-xs opacity-70",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: statusDisplay.opacity,
                                                         children: motif.origin
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 234,
-                                                        columnNumber: 19
+                                                        lineNumber: 305,
+                                                        columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].span, {
                                                         whileHover: {
                                                             scale: 1.1
                                                         },
-                                                        className: "px-2 py-1 rounded-full flex items-center",
+                                                        className: `px-2 py-1 rounded-full flex items-center ${motif.status !== 'available' ? 'opacity-50' : 'cursor-pointer'}`,
                                                         style: {
                                                             backgroundColor: `${colors.primary}20`,
                                                             color: colors.primary
@@ -438,29 +516,29 @@ function Culture() {
                                                                 className: "pi pi-info-circle mr-1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                                lineNumber: 240,
-                                                                columnNumber: 21
+                                                                lineNumber: 314,
+                                                                columnNumber: 45
                                                             }, this),
                                                             "Details"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 235,
-                                                        columnNumber: 19
+                                                        lineNumber: 306,
+                                                        columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 233,
-                                                columnNumber: 17
+                                                lineNumber: 304,
+                                                columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                        lineNumber: 229,
-                                        columnNumber: 15
+                                        lineNumber: 300,
+                                        columnNumber: 33
                                     }, this),
-                                    activeMotif?.id === motif.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                                    activeMotif?.id === motif.id && motif.status === 'available' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                         initial: {
                                             opacity: 0
                                         },
@@ -490,8 +568,8 @@ function Culture() {
                                                             children: motif.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                            lineNumber: 261,
-                                                            columnNumber: 23
+                                                            lineNumber: 335,
+                                                            columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: ()=>setActiveMotif(null),
@@ -500,19 +578,19 @@ function Culture() {
                                                                 className: "pi pi-times"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                                lineNumber: 263,
-                                                                columnNumber: 25
+                                                                lineNumber: 337,
+                                                                columnNumber: 53
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                            lineNumber: 262,
-                                                            columnNumber: 23
+                                                            lineNumber: 336,
+                                                            columnNumber: 49
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 260,
-                                                    columnNumber: 21
+                                                    lineNumber: 334,
+                                                    columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "relative h-64 mb-4",
@@ -523,21 +601,21 @@ function Culture() {
                                                         className: "object-cover rounded-lg"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 268,
-                                                        columnNumber: 23
+                                                        lineNumber: 342,
+                                                        columnNumber: 49
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 267,
-                                                    columnNumber: 21
+                                                    lineNumber: 341,
+                                                    columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "mb-3",
                                                     children: motif.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 276,
-                                                    columnNumber: 21
+                                                    lineNumber: 350,
+                                                    columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-sm opacity-80 mb-2",
@@ -546,16 +624,16 @@ function Culture() {
                                                             children: "Origine:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                            lineNumber: 277,
-                                                            columnNumber: 60
+                                                            lineNumber: 351,
+                                                            columnNumber: 84
                                                         }, this),
                                                         " ",
                                                         motif.origin
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 277,
-                                                    columnNumber: 21
+                                                    lineNumber: 351,
+                                                    columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-sm opacity-80",
@@ -564,16 +642,16 @@ function Culture() {
                                                             children: "Utilisation:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                            lineNumber: 278,
-                                                            columnNumber: 55
+                                                            lineNumber: 352,
+                                                            columnNumber: 79
                                                         }, this),
                                                         " ",
                                                         motif.usage
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 278,
-                                                    columnNumber: 21
+                                                    lineNumber: 352,
+                                                    columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "mt-6 flex justify-end",
@@ -587,41 +665,42 @@ function Culture() {
                                                         children: "Fermer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 281,
-                                                        columnNumber: 23
+                                                        lineNumber: 355,
+                                                        columnNumber: 49
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 280,
-                                                    columnNumber: 21
+                                                    lineNumber: 354,
+                                                    columnNumber: 45
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 254,
-                                            columnNumber: 19
+                                            lineNumber: 328,
+                                            columnNumber: 41
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                        lineNumber: 248,
-                                        columnNumber: 17
+                                        lineNumber: 322,
+                                        columnNumber: 37
                                     }, this)
                                 ]
                             }, motif.id, true, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 212,
-                                columnNumber: 13
-                            }, this))
+                                lineNumber: 266,
+                                columnNumber: 29
+                            }, this);
+                        })
                     }, void 0, false, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 210,
-                        columnNumber: 9
+                        lineNumber: 261,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                lineNumber: 197,
-                columnNumber: 7
+                lineNumber: 248,
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].section, {
                 ref: ref2,
@@ -645,8 +724,8 @@ function Culture() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                    lineNumber: 308,
-                                    columnNumber: 13
+                                    lineNumber: 382,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "text-3xl font-bold mx-4",
@@ -656,8 +735,8 @@ function Culture() {
                                     children: "Savoir & Sagesse"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                    lineNumber: 309,
-                                    columnNumber: 13
+                                    lineNumber: 383,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex-1 h-0.5",
@@ -666,14 +745,14 @@ function Culture() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                    lineNumber: 310,
-                                    columnNumber: 13
+                                    lineNumber: 384,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                            lineNumber: 307,
-                            columnNumber: 11
+                            lineNumber: 381,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8",
@@ -696,21 +775,21 @@ function Culture() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 323,
-                                                columnNumber: 19
+                                                lineNumber: 397,
+                                                columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 321,
-                                            columnNumber: 17
+                                            lineNumber: 395,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "italic text-center mb-4 text-lg",
                                             children: cite.text
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 325,
-                                            columnNumber: 17
+                                            lineNumber: 399,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-right text-sm opacity-80 mb-4",
@@ -720,8 +799,8 @@ function Culture() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 326,
-                                            columnNumber: 17
+                                            lineNumber: 400,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "text-xs opacity-60 mt-3",
@@ -730,37 +809,37 @@ function Culture() {
                                                     className: "pi pi-info-circle mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                    lineNumber: 328,
-                                                    columnNumber: 19
+                                                    lineNumber: 402,
+                                                    columnNumber: 37
                                                 }, this),
                                                 cite.explanation
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 327,
-                                            columnNumber: 17
+                                            lineNumber: 401,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                    lineNumber: 315,
-                                    columnNumber: 15
+                                    lineNumber: 389,
+                                    columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                            lineNumber: 313,
-                            columnNumber: 11
+                            lineNumber: 387,
+                            columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                    lineNumber: 306,
-                    columnNumber: 9
+                    lineNumber: 380,
+                    columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                lineNumber: 298,
-                columnNumber: 7
+                lineNumber: 372,
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].section, {
                 ref: ref3,
@@ -779,8 +858,8 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 346,
-                                columnNumber: 11
+                                lineNumber: 420,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-3xl font-bold mx-4",
@@ -790,8 +869,8 @@ function Culture() {
                                 children: "Éducation & Innovation Digitale"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 347,
-                                columnNumber: 11
+                                lineNumber: 421,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex-1 h-0.5",
@@ -800,14 +879,14 @@ function Culture() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 348,
-                                columnNumber: 11
+                                lineNumber: 422,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 345,
-                        columnNumber: 9
+                        lineNumber: 419,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                         variants: fadeInUp,
@@ -818,8 +897,8 @@ function Culture() {
                                 children: "Les motifs Ndop, Wax, Adinkra et autres trésors visuels africains inspirent l’UX moderne en apportant des courbes organiques, des couleurs vibrantes et une symbolique riche. Je travaille à intégrer ces éléments dans mes designs pour préserver et valoriser notre héritage face à l’uniformisation visuelle occidentale."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 352,
-                                columnNumber: 11
+                                lineNumber: 426,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid md:grid-cols-2 gap-8",
@@ -837,16 +916,16 @@ function Culture() {
                                                 children: element.title
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 361,
-                                                columnNumber: 17
+                                                lineNumber: 435,
+                                                columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "mb-3 opacity-90",
                                                 children: element.description
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 362,
-                                                columnNumber: 17
+                                                lineNumber: 436,
+                                                columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-sm mb-2",
@@ -855,16 +934,16 @@ function Culture() {
                                                         children: "Utilisation dans mes designs:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 363,
-                                                        columnNumber: 45
+                                                        lineNumber: 437,
+                                                        columnNumber: 61
                                                     }, this),
                                                     " ",
                                                     element.usage
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 363,
-                                                columnNumber: 17
+                                                lineNumber: 437,
+                                                columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-sm opacity-80",
@@ -873,33 +952,33 @@ function Culture() {
                                                         children: "Exemple:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                        lineNumber: 364,
-                                                        columnNumber: 51
+                                                        lineNumber: 438,
+                                                        columnNumber: 67
                                                     }, this),
                                                     " ",
                                                     element.example
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                                lineNumber: 364,
-                                                columnNumber: 17
+                                                lineNumber: 438,
+                                                columnNumber: 33
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                                        lineNumber: 360,
-                                        columnNumber: 15
+                                        lineNumber: 434,
+                                        columnNumber: 29
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 358,
-                                columnNumber: 11
+                                lineNumber: 432,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 351,
-                        columnNumber: 9
+                        lineNumber: 425,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                         variants: fadeInUp,
@@ -916,16 +995,16 @@ function Culture() {
                                 children: "Contribuez à cette vision"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 375,
-                                columnNumber: 11
+                                lineNumber: 449,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "mb-6 max-w-2xl mx-auto",
                                 children: "Vous avez des connaissances sur les motifs africains ou souhaitez suggérer des éléments culturels à intégrer dans des designs modernes?"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 376,
-                                columnNumber: 11
+                                lineNumber: 450,
+                                columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                 whileHover: {
@@ -935,7 +1014,7 @@ function Culture() {
                                     scale: 0.95
                                 },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/contact",
+                                    href: "/CONTACT",
                                     className: "inline-flex items-center px-8 py-3 rounded-lg font-semibold",
                                     style: {
                                         backgroundColor: colors.primary,
@@ -946,38 +1025,38 @@ function Culture() {
                                             className: "pi pi-send mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/CULTURE/page.tsx",
-                                            lineNumber: 388,
-                                            columnNumber: 15
+                                            lineNumber: 462,
+                                            columnNumber: 29
                                         }, this),
                                         "Partager une suggestion"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/CULTURE/page.tsx",
-                                    lineNumber: 383,
-                                    columnNumber: 13
+                                    lineNumber: 457,
+                                    columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                                lineNumber: 379,
-                                columnNumber: 11
+                                lineNumber: 453,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/CULTURE/page.tsx",
-                        lineNumber: 370,
-                        columnNumber: 9
+                        lineNumber: 444,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/CULTURE/page.tsx",
-                lineNumber: 338,
-                columnNumber: 7
+                lineNumber: 412,
+                columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/CULTURE/page.tsx",
-        lineNumber: 153,
-        columnNumber: 5
+        lineNumber: 202,
+        columnNumber: 9
     }, this);
 }
 }),
