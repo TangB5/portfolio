@@ -393,7 +393,7 @@ export default function Solutions() {
                                 style={{ backgroundColor: colors.primary, color: colors.dark }}
                                 onClick={() => setSelectedSolution(null)} // Ferme le modal après avoir cliqué sur le lien
                             >
-                                Passer à l'action maintenant <i className="pi pi-arrow-right ml-2"></i>
+                                Passer à l&rsquo;action maintenant <i className="pi pi-arrow-right ml-2"></i>
                             </Link>
                         </div>
 
