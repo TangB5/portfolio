@@ -141,7 +141,8 @@ export default function Solutions() {
                 className="max-w-6xl mx-auto text-center relative z-10"
                 variants={containerVariants}
                 initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
+
+                animate="visible"
             >
                 <motion.div variants={itemVariants} className="mb-4">
                     <div className="inline-flex items-center justify-center p-2 rounded-full mb-2" style={{ backgroundColor: "rgba(233, 184, 38, 0.1)" }}>

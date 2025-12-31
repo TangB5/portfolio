@@ -132,7 +132,7 @@ export default function Footer() {
 >
   <span className="transition-all duration-500 rotate-40 group-hover:scale-110 p-2 border-[#D4AF37] border rounded-md overflow-hidden">
     <Image
-        src="/lettreK1.png" // ton logo
+        src="/lettrejaune.png" // ton logo
         alt="KingTang Logo"
         width={30}
         height={30}
