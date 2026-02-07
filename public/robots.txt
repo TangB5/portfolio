@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://kingtang.vercel.app/sitemap.xml
