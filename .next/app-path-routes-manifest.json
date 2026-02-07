@@ -1,0 +1,10 @@
+{
+  "/ABOUT/page": "/ABOUT",
+  "/CONTACT/page": "/CONTACT",
+  "/CULTURE/page": "/CULTURE",
+  "/PROJECT/page": "/PROJECT",
+  "/SOLUTION/page": "/SOLUTION",
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/sitemap.xml/route": "/sitemap.xml"
+}

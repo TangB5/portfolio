@@ -5,5 +5,6 @@
   "/PROJECT/page": "app/PROJECT/page.js",
   "/SOLUTION/page": "app/SOLUTION/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

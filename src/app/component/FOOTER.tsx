@@ -1,315 +1,172 @@
 'use client'
 import Link from 'next/link';
-import { motion, easeInOut, easeOut } from 'framer-motion';
+import { motion, easeOut } from 'framer-motion';
 import Image from 'next/image';
-// Couleurs inspirées de l'art africain
+import 'primeicons/primeicons.css';
+
 const colors = {
-  primary: '#E9B826', // Or africain
-  secondary: '#BB141A', // Rouge terre
-  tertiary: '#2D5D2A', // Vert forêt
-  dark: '#0A0A0A',   // Noir profond
-  light: '#F5F5DC'   // Beige naturel
+  primary: '#E9B826',
+  secondary: '#BB141A',
+  tertiary: '#2D5D2A',
+  dark: '#0A0A0A',
+  light: '#F5F5DC',
+  border: 'rgba(233, 184, 38, 0.1)'
 };
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   const socialNetworks = [
-    { 
-      icon: 'linkedin', 
-      url: 'https://www.linkedin.com/in/ndoh-yannick-tang-5b004934a', 
-      label: 'LinkedIn',
-      description: 'Rejoignez mon réseau professionnel'
-    },
-    { 
-      icon: 'github', 
-      url: 'https://github.com/TangB5', 
-      label: 'GitHub',
-      description: 'Découvrez mes projets open source'
-    },
-    { 
-      icon: 'whatsapp', 
-      url: 'https://wa.me/237653539102', 
-      label: 'WhatsApp',
-      description: 'Contactez-moi directement'
-    },
-    { 
-      icon: 'instagram', 
-      url: 'https://www.instagram.com/kingtang337', 
-      label: 'instagram',
-      description: 'suivez mes avetures'
-    },
-    
-    
+    { icon: 'linkedin', url: 'https://linkedin.com/in/ndoh-yannick-tang-5b004934a', label: 'LinkedIn' },
+    { icon: 'github', url: 'https://github.com/TangB5', label: 'GitHub' },
+    { icon: 'whatsapp', url: 'https://wa.me/237653539102', label: 'WhatsApp' },
+    { icon: 'instagram', url: 'https://instagram.com/kingtang337', label: 'Instagram' },
   ];
 
   const quickLinks = [
-    { name: 'Accueil', path: '/' },
-    { name: 'À Propos', path: '/ABOUT' },
-    { name: 'Projets', path: '/PROJECT' },
-    { name: 'Culture', path: '/CULTURE' },
-    { name: 'Contact', path: '/CONTACT' }
+    { name: 'ARCHIVES.ABOUT', path: '/ABOUT' },
+    { name: 'REGISTRY.PROJECTS', path: '/PROJECT' },
+    { name: 'CORE.CULTURE', path: '/CULTURE' },
+    { name: 'NODE.SOLUTIONS', path: '/SOLUTION' },
+    { name: 'INIT.CONTACT', path: '/CONTACT' }
   ];
-
-  const serviceLinks = [
-    { name: 'Développement Frontend', path: '/services#frontend' },
-    { name: 'Design UX/UI', path: '/services#design' },
-    { name: 'Design Culturel', path: '/services#cultural' },
-    { name: 'Consultation', path: '/services#consultation' }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: easeOut
-      }
-    }
-  };
 
   return (
     <motion.footer 
-      className="relative pt-16 pb-8 overflow-hidden"
-      style={{ backgroundColor: colors.dark }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
+      className="relative pt-32 pb-12 overflow-hidden border-t"
+      style={{ backgroundColor: colors.dark, borderColor: colors.border }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
     >
-      {/* Ligne décorative supérieure */}
-      <div className="absolute top-0 left-0 right-0 h-1" style={{ 
-        background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.tertiary})` 
-      }}></div>
-      
-      {/* Motifs décoratifs africains */}
-      <div className="absolute inset-0 opacity-100 pointer-events-none">
-        <div className="absolute top-10 left-10 w-20 h-20" style={{
-          backgroundImage: "url('/images/image1.png')",
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
-        }}></div>
-        <div className="absolute bottom-20 right-10 w-20 h-20 z-0" style={{
-          backgroundImage: "url('/images/image2.png')",
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
-        }}></div>
-        <div className="absolute top-[42%] left-[40%] w-16 h-16" style={{
-          backgroundImage: "url('/images/image3.png')",
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          filter: 'drop-shadow(0 0 5px white)' // contour lumineux
-        }}></div>
-      </div>
+      {/* Background Decor - Blueprint Grid */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+           style={{ backgroundImage: `linear-gradient(${colors.primary} 1px, transparent 1px), linear-gradient(90deg, ${colors.primary} 1px, transparent 1px)`, backgroundSize: '100px 100px' }} />
 
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Section Principale */}
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
-          {/* Brand */}
-          <motion.div variants={itemVariants} className="md:col-span-1">
-            <Link
-  href="/"
-  className="text-2xl font-bold flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark focus-visible:ring-primary rounded mb-6"
-  
->
-  <span className="transition-all duration-500 rotate-40 group-hover:scale-110 p-2 border-[#D4AF37] border rounded-md overflow-hidden">
-    <Image
-        src="/lettreK1.png" // ton logo
-        alt="KingTang Logo"
-        width={30}
-        height={30}
-        className="transition-all duration-500 -rotate-45 group-hover:brightness-110"
-        style={{filter: 'drop-shadow(0 0 0.1px #D4AF37)'}}
-    />
-  </span>
-</Link>
-            <p className="text-sm opacity-80 mb-4" style={{ color: colors.light }}>
-              Fusion innovation technologique et patrimoine culturel africain pour créer des expériences digitales uniques et mémorables.
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div className="grid lg:grid-cols-4 gap-16 mb-24">
+          
+          {/* BRAND MODULE: THE SEAL OF AUTHENTICITY */}
+          <div className="lg:col-span-1 space-y-8">
+            <div className="relative group inline-block">
+              {/* Radial glow around the new logo */}
+              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="relative flex items-center gap-4">
+                <div className="relative p-1 border border-primary/20 bg-black">
+                  <Image 
+                    src="/logojaune.png" 
+                    alt="KingTang Totem" 
+                    width={50} 
+                    height={50} 
+                    className="z-10 transition-transform duration-700 group-hover:rotate-[360deg]"
+                  />
+                  {/* Micro Scanline on logo */}
+                  <motion.div 
+                    className="absolute inset-0 w-full h-[1px] bg-primary/40"
+                    animate={{ y: [0, 50, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                </div>
+                <div>
+                  <span className="block text-[9px] font-mono tracking-[0.4em] text-gray-500 uppercase leading-none mb-1">Authentic_Node</span>
+                  <span className="block text-lg font-black tracking-tighter uppercase" style={{ color: colors.light }}>KING<span style={{ color: colors.primary }}>.</span></span>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-[11px] font-mono text-gray-400 leading-relaxed uppercase tracking-tight">
+              Ingénierie logicielle & héritage visuel. <br/>
+              Bâtir des ponts entre les algorithmes modernes et la culture ancestrale.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link 
-                href="/CONTACT" 
-                className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{ 
-                  backgroundColor: colors.primary, 
-                  color: colors.dark,
-                  boxShadow: `0 4px 14px 0 ${colors.primary}40`
-                }}
-              >
-                <i className="pi pi-send mr-2"></i>
-                Discutons de votre projet
-              </Link>
-            </motion.div>
-          </motion.div>
 
-          {/* Liens Rapides */}
-          <motion.div variants={itemVariants} className="md:col-span-1">
-            <h4 className="text-lg font-semibold mb-4 uppercase tracking-wider" style={{ color: colors.primary }}>
-              Navigation
-            </h4>
-            <ul className="space-y-2">
+            <Link 
+                href="/CONTACT" 
+                className="group inline-flex items-center gap-4 text-[10px] font-mono tracking-[0.3em] uppercase transition-all"
+                style={{ color: colors.primary }}
+              >
+                <span className="h-[1px] w-8 bg-primary/30 group-hover:w-12 group-hover:bg-primary transition-all" />
+                Open_Channel
+            </Link>
+          </div>
+
+          {/* NAVIGATION NODES */}
+          <div>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10 text-primary" style={{ color: colors.primary }}> SYSTEM_MAP</h4>
+            <ul className="space-y-5">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link 
-                    href={link.path}
-                    className="text-sm transition-all hover:opacity-100 flex items-center group"
-                    style={{ color: colors.light, opacity: 0.8 }}
-                  >
-                    <span className="w-1 h-1 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: colors.primary }}></span>
+                  <Link href={link.path} className="text-[11px] font-black tracking-[0.2em] hover:text-primary transition-all flex items-center gap-3 group">
+                    <span className="text-gray-700 group-hover:text-primary transition-colors">0{index + 1}</span>
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Services */}
-          <motion.div variants={itemVariants} className="md:col-span-1">
-            <h4 className="text-lg font-semibold mb-4 uppercase tracking-wider" style={{ color: colors.primary }}>
-              Services
-            </h4>
-            <ul className="space-y-2">
-              {serviceLinks.map((service, index) => (
-                <li key={index}>
-                  <Link 
-                    href={service.path}
-                    className="text-sm transition-all hover:opacity-100 flex items-center group"
-                    style={{ color: colors.light, opacity: 0.8 }}
-                  >
-                    <span className="w-1 h-1 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: colors.primary }}></span>
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Réseaux Sociaux */}
-          <motion.div variants={itemVariants} className="md:col-span-1">
-            <h4 className="text-lg font-semibold mb-4 uppercase tracking-wider" style={{ color: colors.primary }}>
-              Connectons-nous
-            </h4>
-            <p className="text-sm opacity-80 mb-4" style={{ color: colors.light }}>
-              Suivez-moi pour découvrir mes dernières créations et insights sur le design africain moderne.
-            </p>
-            <div className="flex space-x-3">
+          {/* UPLINKS (SOCIALS) */}
+          <div>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10"> EXTERNAL_LINKS</h4>
+            <div className="grid grid-cols-1 gap-3">
               {socialNetworks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all relative group"
-                  style={{ 
-                    backgroundColor: 'rgba(245, 245, 220, 0.1)',
-                    color: colors.light
-                  }}
-                  aria-label={social.label}
+                <a 
+                  key={index} href={social.url} target="_blank" 
+                  className="flex items-center justify-between p-4 border border-white/5 bg-white/[0.01] hover:bg-primary/5 hover:border-primary/30 transition-all group"
                 >
-                  <i className={`pi pi-${social.icon}`}></i>
-                  {/* Tooltip */}
-                  <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-                        style={{ 
-                          backgroundColor: colors.primary, 
-                          color: colors.dark 
-                        }}>
+                  <span className="text-[10px] font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all">
                     {social.label}
                   </span>
-                </motion.a>
+                  <i className={`pi pi-${social.icon} text-xs text-gray-600 group-hover:text-primary`} />
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
+
+          {/* NEWSLETTER: ENCRYPTED FEED */}
+          <div>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10"> DATA_SUBSCRIPTION</h4>
+            <div className="space-y-4">
+              <div className="relative">
+                <input 
+                  type="email" placeholder="ACCESS_ID@NETWORK.COM"
+                  className="w-full bg-transparent border-b border-white/10 px-0 py-4 text-[10px] font-mono outline-none focus:border-primary transition-colors"
+                />
+                <div className="absolute bottom-0 left-0 h-[1px] bg-primary w-0 transition-all duration-500 group-focus-within:w-full" />
+              </div>
+              <button className="w-full py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold transition-colors" style={{ backgroundColor: colors.primary }}>
+                Connect_to_Feed
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Section Newsletter */}
-        <motion.div 
-          variants={itemVariants}
-          className="p-6 rounded-xl mb-8 text-center"
-          style={{ backgroundColor: 'rgba(233, 184, 38, 0.1)' }}
-        >
-          <h4 className="text-lg font-semibold mb-2" style={{ color: colors.primary }}>
-            Restons connectés
-          </h4>
-          <p className="text-sm opacity-80 mb-4 max-w-md mx-auto" style={{ color: colors.light }}>
-            Recevez des insights exclusifs sur le design africain moderne et mes derniers projets.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Votre email"
-              className="flex-1 px-4 py-2 rounded-lg text-sm"
-              style={{ 
-                backgroundColor: 'rgba(245, 245, 220, 0.1)', 
-                color: colors.light,
-                border: `1px solid ${colors.primary}30`
-              }}
-            />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 rounded-lg text-sm font-medium"
-              style={{ 
-                backgroundColor: colors.primary, 
-                color: colors.dark 
-              }}
-            >
-              S&rsquo;abonner
-            </motion.button>
+        {/* BOTTOM METADATA: FINAL CLEARANCE */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-10">
+            <div className="flex flex-col">
+              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Protocol_Year</span>
+              <span className="text-[10px] font-black tracking-widest uppercase">© {currentYear} Global_Registry</span>
+            </div>
+            <div className="flex flex-col border-l border-white/10 pl-10">
+              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Base_Location</span>
+              <span className="text-[10px] font-black tracking-widest text-primary uppercase" style={{ color: colors.primary }}>Douala, CM.AFR</span>
+            </div>
           </div>
-        </motion.div>
 
-        {/* Ligne de séparation */}
-        <div className="h-px w-full mb-6" style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}></div>
-
-        {/* Copyright */}
-        <motion.div 
-          variants={itemVariants}
-          className="flex flex-col md:flex-row justify-between items-center"
-        >
-          <p className="text-sm opacity-75 mb-4 md:mb-0" style={{ color: colors.light }}>
-            &copy; {currentYear} KingTang. Tous droits réservés.
-            <span className="block md:inline md:ml-2 mt-1 md:mt-0" style={{ color: colors.primary }}>
-              Fièrement Camerounais
-            </span>
-          </p>
-          
-          <div className="flex items-center space-x-6 text-xs opacity-75" style={{ color: colors.light }}>
-            <Link href="/privacy" className="hover:opacity-100 transition-opacity">
-              Confidentialité
-            </Link>
-            <Link href="/terms" className="hover:opacity-100 transition-opacity">
-              Conditions
-            </Link>
-            <span>•</span>
-            <span className="flex items-center">
-              <i className="pi pi-heart mr-1" style={{ color: colors.secondary, fontSize: '0.9em' }}></i>
-              Fabriqué avec passion
-            </span>
+          <div className="flex items-center gap-8 text-[9px] font-mono text-gray-600 tracking-[0.2em]">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-green-500/50" />
+              <span className="text-gray-400">ENCRYPTED_SESSION_ACTIVE</span>
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
+
+      {/* Decorative Large Background Text */}
+      <div className="absolute -bottom-20 -right-10 text-[20rem] font-black opacity-[0.01] pointer-events-none select-none tracking-tighter uppercase italic">
+        KINGTANG
       </div>
     </motion.footer>
   );
