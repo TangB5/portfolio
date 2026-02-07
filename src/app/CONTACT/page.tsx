@@ -1,376 +1,210 @@
 'use client'
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
 import 'primeicons/primeicons.css';
-import { easeOut } from "framer-motion";
 import Plan from '../component/arrierplan';
 
-
-
-// Couleurs inspirées de l'art africain
 const colors = {
-  primary: '#E9B826', // Or africain
-  secondary: '#BB141A', // Rouge terre
-  tertiary: '#2D5D2A', // Vert forêt
-  dark: '#0A0A0A',   // Noir profond
-  light: '#F5F5DC'   // Beige naturel
-};
-
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: easeOut } 
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2
-    }
-  }
+  primary: '#E9B826',
+  secondary: '#BB141A',
+  tertiary: '#2D5D2A',
+  dark: '#0A0A0A',
+  light: '#F5F5DC',
+  border: 'rgba(245, 245, 220, 0.1)'
 };
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulation d'envoi (à remplacer par Formspree ou autre)
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
-
-      // Reset du statut après 5 secondes
       setTimeout(() => setSubmitStatus(null), 5000);
     }, 2000);
   };
 
-
-  const contactMethods = [
-    {
-      icon: 'pi-envelope',
-      label: 'Email',
-      value: 'kingtang337@gmail.com',
-      link: 'mailto:kingtang337@gmail.com',
-      color: colors.primary
-    },
-    {
-      icon: 'pi-whatsapp',
-      label: 'WhatsApp',
-      value: '+237 653 53 91 02',
-      link: 'https://wa.me/237 653 53 91 02',
-      color: '#25D366'
-    },
-    {
-      icon: 'pi-map-marker',
-      label: 'Localisation',
-      value: 'Cameroun, Afrique',
-      link: '#',
-      color: colors.secondary
-    }
-  ];
-
-  const socialNetworks = [
-    { icon: 'linkedin', url: 'https://www.linkedin.com/in/ndoh-yannick-tang-5b004934a', label: 'LinkedIn' },
-    { icon: 'github', url: 'https://github.com/TangB5', label: 'GitHub' },
-    { icon: 'instagram', url: 'https://www.instagram.com/kingtang337', label: 'instagram' },
-    { icon: 'facebook', url: 'https://twitter.com/kingtang', label: 'facebook' }
-  ];
-
   return (
-    <div className="min-h-screen relative" style={{ backgroundColor: colors.dark, color: colors.light }}>
-     
-
-      {/* Hero Section Contact */}
-      <div className="pt-28 pb-16 px-4 text-center relative overflow-hidden">
-        <Plan/>
-        
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-playfair font-bold mb-6 relative z-10"
-          style={{ color: colors.primary }}
-        >
-          Travaillons Ensemble
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-xl max-w-2xl mx-auto mb-10 relative z-10"
-        >
-          {`Discutons de votre projet et créons quelque chose d'extraordinaire qui célèbre l'innovation et le patrimoine africain`}
-        </motion.p>
+    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: colors.dark, color: colors.light }}>
+      
+      {/* --- BACKGROUND LAYER --- */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <Plan />
       </div>
 
-      {/* Section Contact Principale */}
-      <motion.section 
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={staggerContainer}
-        className="py-16 px-4 max-w-6xl mx-auto"
-      >
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Formulaire de Contact */}
-          <motion.div variants={fadeInUp}>
-            <div className="flex items-center mb-8">
-              <div className="flex-1 h-0.5" style={{ backgroundColor: colors.primary }}></div>
-              <h2 className="text-2xl font-bold mx-4" style={{ color: colors.primary }}>Envoyez un message</h2>
-              <div className="flex-1 h-0.5" style={{ backgroundColor: colors.primary }}></div>
-            </div>
-            
-            <form
-              onSubmit={handleSubmit}
-              className="p-8 rounded-xl shadow-2xl"
-              style={{ backgroundColor: 'rgba(245, 245, 220, 0.05)' }}
-            >
-              <div className="mb-6">
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Nom complet *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg border transition-colors"
-                  style={{ 
-                    backgroundColor: 'rgba(245, 245, 220, 0.1)', 
-                    borderColor: 'rgba(233, 184, 38, 0.3)',
-                    color: colors.light
-                  }}
-                  required
-                  placeholder="Votre nom"
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Adresse email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg border transition-colors"
-                  style={{ 
-                    backgroundColor: 'rgba(245, 245, 220, 0.1)', 
-                    borderColor: 'rgba(233, 184, 38, 0.3)',
-                    color: colors.light
-                  }}
-                  required
-                  placeholder="votre@email.com"
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full p-3 rounded-lg border transition-colors"
-                  style={{ 
-                    backgroundColor: 'rgba(245, 245, 220, 0.1)', 
-                    borderColor: 'rgba(233, 184, 38, 0.3)',
-                    color: colors.light
-                  }}
-                  required
-                  placeholder="Parlez-moi de votre projet..."
-                ></textarea>
-              </div>
-              
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 px-6 rounded-lg font-semibold flex items-center justify-center transition-all"
-                style={{ 
-                  backgroundColor: isSubmitting ? '#888' : colors.primary,
-                  color: colors.dark
-                }}
-              >
-                {isSubmitting ? (
-                  <>
-                    <i className="pi pi-spin pi-spinner mr-2"></i>
-                    Envoi en cours...
-                  </>
-                ) : (
-                  <>
-                    <i className="pi pi-send mr-2"></i>
-                    Envoyer le message
-                  </>
-                )}
-              </motion.button>
-
-              {submitStatus === 'success' && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-3 rounded-lg text-center"
-                  style={{ backgroundColor: `${colors.tertiary}30`, color: colors.light }}
-                >
-                  <i className="pi pi-check-circle mr-2" style={{ color: colors.tertiary }}></i>
-                  Message envoyé avec succès ! Je vous répondrai très soon.
-                </motion.div>
-              )}
-            </form>
-          </motion.div>
-
-          {/* Informations de Contact */}
-          <motion.div variants={fadeInUp}>
-            <div className="flex items-center mb-8">
-              <div className="flex-1 h-0.5" style={{ backgroundColor: colors.secondary }}></div>
-              <h2 className="text-2xl font-bold mx-4" style={{ color: colors.secondary }}>Autres moyens</h2>
-              <div className="flex-1 h-0.5" style={{ backgroundColor: colors.secondary }}></div>
-            </div>
-            
-            <div className="space-y-6 mb-10">
-              {contactMethods.map((method, index) => (
-                <motion.a
-                  key={index}
-                  href={method.link}
-                  target={method.icon !== 'pi-map-marker' ? '_blank' : '_self'}
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="flex items-center p-4 rounded-xl transition-all group"
-                  style={{ backgroundColor: 'rgba(245, 245, 220, 0.03)' }}
-                >
-                  <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform"
-                    style={{ backgroundColor: `${method.color}20` }}
-                  >
-                    <i className={`pi ${method.icon} text-xl`} style={{ color: method.color }}></i>
-                  </div>
-                  <div>
-                    <div className="font-medium" style={{ color: method.color }}>{method.label}</div>
-                    <div className="text-sm opacity-80">{method.value}</div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Réseaux Sociaux */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4" style={{ color: colors.primary }}>Suivez-moi</h3>
-              <div className="flex flex-wrap gap-3">
-                {socialNetworks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -3, scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-                    style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}
-                    aria-label={social.label}
-                  >
-                    <i className={`pi pi-${social.icon}`} style={{ color: colors.primary }}></i>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            {/* Message d'inspiration */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="p-6 rounded-xl text-center mt-8"
-              style={{ backgroundColor: 'rgba(233, 184, 38, 0.1)' }}
-            >
-              <i className="pi pi-heart text-xl mb-2 block" style={{ color: colors.secondary }}></i>
-              <p className="font-playfair italic mb-2">{`"Merci, ensemble préservons l'Afrique !"`}</p>
-              <p className="text-sm opacity-75">Chaque projet est une occasion de célébrer notre héritage culturel</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Section FAQ */}
-      <motion.section 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-        className="py-16 px-4 max-w-4xl mx-auto"
-      >
-        <div className="flex items-center mb-12">
-          <div className="flex-1 h-0.5" style={{ backgroundColor: colors.tertiary }}></div>
-          <h2 className="text-3xl font-bold mx-4" style={{ color: colors.tertiary }}>Questions Fréquentes</h2>
-          <div className="flex-1 h-0.5" style={{ backgroundColor: colors.tertiary }}></div>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
         
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            {
-              question: "Proposez-vous des consultations gratuites?",
-              answer: "Oui, je propose une consultation initiale de 30 minutes pour discuter de votre projet et voir comment nous pouvons collaborer."
-            },
-            {
-              question: "Travaillez-vous avec des clients internationaux?",
-              answer: "Absolument! Je travaille avec des clients du monde entier. Les différences culturelles enrichissent nos collaborations."
-            },
-            {
-              question: "Combien de temps pour un projet typical?",
-              answer: "Cela dépend de la complexité. Un site vitrine peut prendre 2-4 semaines, tandis qu'une application complète peut nécessiter 2-3 mois."
-            },
-            {
-              question: "Intégrez-vous vraiment des éléments culturels?",
-              answer: "Oui, c'est ma spécialité! Je travaille avec vous pour intégrer des motifs, symboles et esthétiques africains authentiques dans des designs modernes."
-            }
-          ].map((faq, index) => (
-            <div key={index} className="p-5 rounded-lg" style={{ backgroundColor: 'rgba(245, 245, 220, 0.03)' }}>
-              <h3 className="font-semibold mb-2 flex items-center">
-                <i className="pi pi-question-circle mr-2" style={{ color: colors.primary }}></i>
-                {faq.question}
-              </h3>
-              <p className="text-sm opacity-80">{faq.answer}</p>
-            </div>
-          ))}
+        {/* --- HERO: BRIDGE PROTOCOL --- */}
+        <div className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="font-mono text-[10px] tracking-[0.5em] text-gray-500 mb-4 uppercase"
+          >
+           PROTOCOL: BRIDGE_INITIATION
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6"
+          >
+            LET&#39;S <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(to right, ${colors.primary}, #FFF)` }}>CONNECT</span>
+          </motion.h1>
+          <p className="max-w-xl text-gray-400 text-lg border-l-2 pl-6" style={{ borderColor: colors.secondary }}>
+            Prêt à injecter de l&#39;authenticité africaine dans votre prochain projet digital ? 
+            Établissons une connexion.
+          </p>
         </div>
-      </motion.section>
 
-      
+        <div className="grid lg:grid-cols-2 gap-1 px-1 bg-white/5 border border-white/10">
+          
+          {/* --- LEFT: THE TERMINAL (FORM) --- */}
+          <div className="bg-[#0A0A0A] p-8 md:p-12 border border-white/5">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: colors.primary }} />
+              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50">Data_Input_Field</span>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="group relative">
+                <label className="text-[10px] font-mono text-gray-500 uppercase mb-2 block">Identity.Name</label>
+                <input 
+                  type="text" name="name" value={formData.name} onChange={handleChange} required
+                  placeholder="NOM COMPLET"
+                  className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-primary transition-colors font-bold tracking-tight"
+                />
+              </div>
+
+              <div className="group relative">
+                <label className="text-[10px] font-mono text-gray-500 uppercase mb-2 block">Node.Email</label>
+                <input 
+                  type="email" name="email" value={formData.email} onChange={handleChange} required
+                  placeholder="VOTRE@EMAIL.COM"
+                  className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-primary transition-colors font-bold tracking-tight"
+                />
+              </div>
+
+              <div className="group relative">
+                <label className="text-[10px] font-mono text-gray-500 uppercase mb-2 block">Payload.Message</label>
+                <textarea 
+                  name="message" value={formData.message} onChange={handleChange} required rows={4}
+                  placeholder="DÉCRIVEZ VOTRE VISION..."
+                  className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-primary transition-colors font-medium text-sm"
+                />
+              </div>
+
+              <div className="relative pt-4">
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  disabled={isSubmitting}
+                  className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] text-xs hover:bg-gold transition-all flex items-center justify-center gap-3"
+                  style={{ backgroundColor: colors.primary }}
+                >
+                  {isSubmitting ? <i className="pi pi-spin pi-spinner" /> : <><i className="pi pi-send" /> TRANSMIT_DATA</>}
+                </motion.button>
+
+                <AnimatePresence>
+                  {submitStatus === 'success' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                      className="absolute -bottom-12 left-0 right-0 text-center text-[10px] font-mono text-green-500"
+                    >
+                      [SUCCESS]: MESSAGE_DEPOSITED_IN_VAULT
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </form>
+          </div>
+
+          {/* --- RIGHT: COMMUNICATION NODES --- */}
+          <div className="bg-[#0F0F0F] p-8 md:p-12 border border-white/5 flex flex-col justify-between">
+            <div className="space-y-12">
+              <div>
+                <span className="font-mono text-[10px] tracking-widest text-gray-500 uppercase block mb-6">ACTIVE_NODES</span>
+                <div className="space-y-6">
+                  {[
+                    { label: 'DIRECT_MAIL', value: 'kingtang337@gmail.com', icon: 'pi-envelope', color: colors.primary },
+                    { label: 'ENCRYPTED_WHATSAPP', value: '+237 653 53 91 02', icon: 'pi-whatsapp', color: '#25D366' },
+                    { label: 'BASE_LOCATION', value: 'Cameroun, Africa', icon: 'pi-map-marker', color: colors.secondary },
+                  ].map((node, i) => (
+                    <div key={i} className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors">
+                        <i className={`pi ${node.icon} text-xs`} style={{ color: node.color }} />
+                      </div>
+                      <div>
+                        <div className="text-[9px] font-mono text-gray-500 tracking-tighter">{node.label}</div>
+                        <div className="text-sm font-bold uppercase tracking-tight">{node.value}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <span className="font-mono text-[10px] tracking-widest text-gray-500 uppercase block mb-6"> SOCIAL_GRID</span>
+                <div className="flex gap-4">
+                  {[
+                    { icon: 'linkedin', url: 'https://linkedin.com/in/ndoh-yannick-tang-5b004934a' },
+                    { icon: 'github', url: 'https://github.com/TangB5' },
+                    { icon: 'instagram', url: 'https://instagram.com/kingtang337' }
+                  ].map((social, i) => (
+                    <a key={i} href={social.url} target="_blank" className="w-12 h-12 border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <i className={`pi pi-${social.icon}`} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 p-6 border border-white/5 bg-black/50">
+              <i className="pi pi-heart text-xs mb-3 block opacity-30" />
+              <p className="text-[11px] font-mono leading-relaxed opacity-60 uppercase tracking-tighter">
+                &rdquo;Every project is a chance to re-code our visual history. Thank you for being part of the movement.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* --- FAQ: KNOWLEDGE BASE --- */}
+        <section className="mt-32">
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-2xl font-black uppercase tracking-widest">Knowledge Base</h2>
+            <div className="h-[1px] flex-grow bg-white/10" />
+            <span className="font-mono text-[10px] text-gray-500">FAQ_v1.0</span>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+            {[
+              { q: "Consultations ?", a: "Affirmatif. 30 min de protocole initial offert pour analyser vos besoins." },
+              { q: "International ?", a: "Système global. Je collabore avec des clients sur tous les fuseaux horaires." },
+              { q: "Délais ?", a: "Optimisés. 2-4 semaines pour les interfaces, 2-3 mois pour les écosystèmes complets." },
+              { q: "Héritage ?", a: "C'est le noyau (Core). L'intégration culturelle est le moteur de chaque design." }
+            ].map((item, i) => (
+              <div key={i} className="bg-[#0A0A0A] p-8 hover:bg-white/[0.02] transition-colors">
+                <div className="flex gap-4">
+                  <span className="font-mono text-gold text-[10px] pt-1" style={{ color: colors.primary }}>0{i+1}.</span>
+                  <div>
+                    <h3 className="font-bold uppercase tracking-tight mb-3 text-sm">{item.q}</h3>
+                    <p className="text-xs text-gray-500 leading-relaxed font-mono">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

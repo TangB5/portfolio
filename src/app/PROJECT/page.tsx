@@ -1,61 +1,37 @@
 'use client'
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
 import 'primeicons/primeicons.css';
-import { easeOut } from "framer-motion";
-import Plan from '../component/arrierplan';
 
-
-
-
-// Couleurs inspirées de l'art africain
 const colors = {
-    primary: '#E9B826', // Or africain
-    secondary: '#BB141A', // Rouge terre
-    tertiary: '#2D5D2A', // Vert forêt
-    dark: '#0A0A0A',   // Noir profond
-    light: '#F5F5DC'   // Beige naturel
+  gold: '#E9B826',
+  red: '#BB141A',
+  green: '#2D5D2A',
+  dark: '#0A0A0A',
+  light: '#F5F5DC',
+  grey: '#1A1A1A'
 };
 
-// Animation variants
-const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: easeOut }
-    }
+type ProjectDividerProps = {
+  label: string;
 };
+// --- COMPOSANTS UI CONSISTANTS ---
 
-const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2
-        }
-    }
-};
-
-const scaleUp = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.5 }
-    }
-};
+const ProjectDivider = ({ label }:ProjectDividerProps) => (
+  <div className="flex items-center gap-4 py-12 opacity-30">
+    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent" />
+    <span className="text-[10px] font-mono uppercase tracking-[0.3em] whitespace-nowrap">{label}</span>
+    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent" />
+  </div>
+);
 
 export default function Projects() {
-    const [filter, setFilter] = useState('all');
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [filter, setFilter] = useState('all');
 
-    const projects = [
+  const projects = [
         {
             id: 4,
             title: 'MarketPlace Africaine "AfroShop"',
@@ -66,7 +42,8 @@ export default function Projects() {
             tech: ['Next.js', 'Tailwind CSS', 'Stripe', 'Node.js'],
             category: 'web',
             featured: true,
-            isCompleted: false // ✅ Projet terminé
+            isCompleted: false ,
+            version: 'v2.0',
         },
         {
             id: 2,
@@ -78,7 +55,8 @@ export default function Projects() {
             tech: ['html', 'tailwindcss', 'Framer Motion','Nextjs'],
             category: 'mobile',
             featured: false,
-            isCompleted: false // ⏳ Projet en cours/à venir
+            isCompleted: false ,
+            version: 'v2.0',
         },
         {
             id: 3,
@@ -128,328 +106,195 @@ export default function Projects() {
         },
     ];
 
-    const filteredProjects = filter === 'all'
-        ? projects
-        : projects.filter(project => project.category === filter);
+  const categories = [
+    { id: 'all', name: 'All Modules' },
+    { id: 'web', name: 'Web-Systems' },
+    { id: 'mobile', name: 'Mobile-App' },
+    { id: 'design', name: 'Visual-ID' },
+  ];
 
-    const categories = [
-        { id: 'all', name: 'Tous les projets', icon: 'pi pi-th-large' },
-        { id: 'web', name: 'Développement Web', icon: 'pi pi-desktop' },
-        { id: 'mobile', name: 'Mobile', icon: 'pi pi-mobile' },
-        { id: 'design', name: 'Design', icon: 'pi pi-palette' },
-    ];
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === filter);
 
-    return (
-        <div className="min-h-screen relative" style={{ backgroundColor: colors.dark, color: colors.light }}>
+  return (
+    <div className="min-h-screen relative" style={{ backgroundColor: colors.dark, color: colors.light }}>
+      
+      {/* --- SECTION 1: HEADER "CONTROL CENTER" --- */}
+      <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-block px-3 py-1 mb-6 border border-white/10 bg-white/5 rounded-full font-mono text-[10px] tracking-widest uppercase"
+        >
+           PROJECT REPOSITORY 2026
+        </motion.div>
+        
+        <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-12">
+          ENGINEERED <br/>
+          <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(to right, ${colors.gold}, #FFF)` }}>
+            SOLUTIONS
+          </span>
+        </h1>
 
-
-            {/* Hero Section Projets */}
-            <div className="pt-28 pb-16 px-4 text-center relative overflow-hidden">
-                {/* Arrière-plan avec motif Adinkra */}
-                <Plan/>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-5xl md:text-6xl font-playfair font-bold mb-6 relative z-10"
-                    style={{ color: colors.primary }}
-                >
-                    Mes Réalisations
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    className="text-xl max-w-2xl mx-auto mb-10 relative z-10"
-                >
-                    Découvrez des projets qui fusionnent expertise technique et richesses culturelles africaines
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                    className="flex justify-center mb-16  relative z-10 bg-primary-black/50 md:bg-none "
-                >
-                    <div className="inline-flex rounded-lg relative z-10 p-1" style={{ backgroundColor: 'rgba(245, 245, 220, 0.1)' }}>
-                        {categories.map((category) => (
-                            <button
-                                key={category.id}
-                                onClick={() => setFilter(category.id)}
-                                className={`px-4 py-2 rounded-md text-sm font-medium flex items-center  transition-all ${filter === category.id ? 'bg-opacity-20' : ''}`}
-                                style={{
-                                    backgroundColor: filter === category.id ? `${colors.primary}30` : 'transparent',
-                                    color: filter === category.id ? colors.primary : colors.light
-                                }}
-                            >
-                                <i className={`${category.icon} mr-2`}></i>
-                                <div className="hidden md:flex">{category.name}</div>
-
-                            </button>
-                        ))}
-                    </div>
-                </motion.div>
-            </div>
-
-            {/* Section Projets en Vedette */}
-            ---
-            <motion.section
-                ref={ref}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                variants={staggerContainer}
-                className="py-10 px-4 max-w-7xl mx-auto"
+        {/* Filter Navigation */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setFilter(cat.id)}
+              className="group relative px-6 py-2 font-mono text-xs uppercase tracking-widest transition-all"
+              style={{ color: filter === cat.id ? colors.gold : '#666' }}
             >
-                <div className="flex items-center mb-12">
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: colors.primary }}></div>
-                    <h2 className="text-3xl font-bold mx-4" style={{ color: colors.primary }}>Projets en Vedette</h2>
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: colors.primary }}></div>
-                </div>
-
-                <div className="grid grid-cols-1 gap-12">
-                    {filteredProjects.filter(p => p.featured).map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            variants={fadeInUp}
-                            className="rounded-2xl overflow-hidden shadow-2xl group relative"
-                            style={{ backgroundColor: 'rgba(245, 245, 220, 0.03)' }}
-                        >
-                            <div className="md:flex">
-                                <div className="md:flex-1 relative h-80 md:h-auto">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70 md:hidden"></div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-6">
-                                        <div className="flex space-x-3">
-                                            {project.tech.map((tech, i) => (
-                                                <span
-                                                    key={i}
-                                                    className="px-3 py-1 rounded-full text-xs"
-                                                    style={{ backgroundColor: colors.primary, color: colors.dark }}
-                                                >
-                          {tech}
-                        </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="md:flex-1 p-8 flex flex-col justify-center">
-                                    <div>
-                                        <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                                        <p className="mb-6 opacity-90 leading-relaxed">{project.description}</p>
-
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tech.map((tech, i) => (
-                                                <span
-                                                    key={i}
-                                                    className="px-3 py-1 rounded-full text-xs hidden md:inline-block"
-                                                    style={{ backgroundColor: `${colors.primary}20`, color: colors.primary }}
-                                                >
-                          {tech}
-                        </span>
-                                            ))}
-                                        </div>
-
-                                        <div className="flex space-x-4">
-                                            {/* LOGIQUE CONDITIONNELLE POUR LE BOUTON 'Voir le projet' */}
-                                            {project.isCompleted ? (
-                                                <motion.a
-                                                    href={project.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    whileHover={{ scale: 1.05 }}
-                                                    whileTap={{ scale: 0.95 }}
-                                                    className="md:px-5 py-2 rounded-lg font-medium flex items-center px-2"
-                                                    style={{ backgroundColor: colors.primary, color: colors.dark }}
-                                                >
-                                                    <i className="pi pi-external-link mr-2"></i>
-                                                    Voir le projet
-                                                </motion.a>
-                                            ) : (
-                                                <div
-                                                    className="md:px-5 py-2 rounded-lg font-medium flex items-center px-2 opacity-50"
-                                                    style={{ backgroundColor: colors.secondary, color: colors.dark }}
-                                                    title="Ce projet n'est pas encore en ligne"
-                                                >
-                                                    <i className="pi pi-hourglass mr-2"></i>
-                                                    Upcomming
-                                                </div>
-                                            )}
-
-                                            {/* LOGIQUE CONDITIONNELLE POUR LE BOUTON 'Code source' */}
-                                            {project.github && project.isCompleted && (
-                                                <motion.a
-                                                    href={project.github}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    whileHover={{ scale: 1.05 }}
-                                                    whileTap={{ scale: 0.95 }}
-                                                    className="px-5 py-2 rounded-lg font-medium flex items-center border"
-                                                    style={{ borderColor: colors.primary, color: colors.primary }}
-                                                >
-                                                    <i className="pi pi-github mr-2"></i>
-                                                    Code source
-                                                </motion.a>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.section>
-
-            {/* Section Tous les Projets */}
-            ---
-            <motion.section
-                ref={ref2}
-                initial="hidden"
-                animate={inView2 ? "visible" : "hidden"}
-                variants={staggerContainer}
-                className="py-16 px-4 max-w-7xl mx-auto"
-            >
-                <div className="flex items-center mb-12">
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: colors.secondary }}></div>
-                    <h2 className="text-3xl font-bold mx-4" style={{ color: colors.secondary }}>Tous mes Projets</h2>
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: colors.secondary }}></div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.filter(p => !p.featured).map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            variants={scaleUp}
-                            className="rounded-xl overflow-hidden group h-full flex flex-col"
-                            style={{ backgroundColor: 'rgba(245, 245, 220, 0.03)' }}
-                        >
-                            <div className="relative h-48 overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition duration-500"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 group-hover:opacity-30 transition duration-500"></div>
-                                <div className="absolute top-4 right-4">
-                  <span className="px-2 py-1 rounded text-xs capitalize"
-                        style={{ backgroundColor: colors.primary, color: colors.dark }}>
-                    {project.category}
-                  </span>
-                                </div>
-                            </div>
-
-                            <div className="p-5 flex-1 flex flex-col">
-                                <h3 className="font-bold text-lg mb-2">{project.title}</h3>
-                                <p className="text-sm opacity-80 mb-4 flex-1">{project.description}</p>
-
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tech.slice(0, 3).map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-2 py-1 rounded-full text-xs"
-                                            style={{ backgroundColor: `${colors.primary}20`, color: colors.primary }}
-                                        >
-                      {tech}
-                    </span>
-                                    ))}
-                                    {project.tech.length > 3 && (
-                                        <span className="px-2 py-1 rounded-full text-xs"
-                                              style={{ backgroundColor: `${colors.secondary}20`, color: colors.secondary }}>
-                      +{project.tech.length - 3}
-                    </span>
-                                    )}
-                                </div>
-
-                                <div className="flex justify-between items-center">
-                                    {/* LOGIQUE CONDITIONNELLE POUR LE LIEN */}
-                                    {project.isCompleted ? (
-                                        <motion.a
-                                            href={project.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ x: 5 }}
-                                            className="text-sm font-medium flex items-center"
-                                            style={{ color: colors.primary }}
-                                        >
-                                            Voir le projet <i className="pi pi-arrow-right ml-1"></i>
-                                        </motion.a>
-                                    ) : (
-                                        <div
-                                            className="text-sm font-medium flex items-center opacity-70"
-                                            style={{ color: colors.secondary }}
-                                        >
-                                            Projet à venir (Upcomming)
-                                        </div>
-                                    )}
-
-                                    {/* LOGIQUE CONDITIONNELLE POUR GITHUB */}
-                                    {project.github && project.isCompleted && (
-                                        <motion.a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.2 }}
-                                            className="text-lg"
-                                            style={{ color: colors.light }}
-                                        >
-                                            <i className="pi pi-github"></i>
-                                        </motion.a>
-                                    )}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.section>
-
-            {/* CTA Section */}
-            ---
-            <section className="py-20 px-4 text-center" style={{ backgroundColor: 'rgba(233, 184, 38, 0.1)' }}>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="max-w-2xl mx-auto"
-                >
-                    <h2 className="text-3xl font-bold mb-6" style={{ color: colors.primary }}>Un Projet en Tête?</h2>
-                    <p className="text-xl mb-8">
-                        Discutons de la création d&rsquo;une solution unique qui marie innovation technique et identité culturelle.
-                    </p>
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex justify-center gap-4"
-                    >
-                        <Link
-                            href="/CONTACT"
-                            className="inline-flex items-center md:px-8 md:py-4 rounded-lg font-semibold text-lg py-1 px-1"
-                            style={{ backgroundColor: colors.primary, color: colors.dark }}
-                        >
-                            <i className="pi pi-send mr-2"></i>
-                            Me contacter
-                        </Link>
-                        <Link
-                            href="/CULTURE"
-                            className="inline-flex items-center md:px-8 py-4 rounded-lg font-semibold text-lg border px-4"
-                            style={{ borderColor: colors.primary, color: colors.primary }}
-                        >
-                            <i className="pi pi-compass mr-2"></i>
-                            Voir ma vision
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            </section>
-
-
+              {filter === cat.id && (
+                <motion.div layoutId="activeFilter" className="absolute inset-0 border border-white/20 bg-white/5" />
+              )}
+              <span className="relative z-10">{cat.name}</span>
+            </button>
+          ))}
         </div>
-    );
+      </section>
+
+      {/* --- SECTION 2: FEATURED PROJECT (SPLIT DESIGN) --- */}
+      <section className="px-6 max-w-7xl mx-auto">
+        <ProjectDivider label="FEATURED_MODULES" />
+        
+        <div className="space-y-32">
+          {projects.filter(p => p.featured).map((project, i) => (
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+            >
+              {/* Image Box avec Frame Technique */}
+              <div className="w-full lg:w-1/2 relative group">
+                <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2" style={{ borderColor: colors.gold }} />
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2" style={{ borderColor: colors.red }} />
+                
+                <div className="relative aspect-[16/9] overflow-hidden bg-gray-900 border border-white/10">
+                  <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill 
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                  />
+                  {/* Status Overlay */}
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono">
+                    STATUS: {project.isCompleted ? 'LIVE' : 'IN_DEV'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Text Specs */}
+              <div className="w-full lg:w-1/2 space-y-6">
+                <div className="space-y-2">
+                  <span className="font-mono text-xs" style={{ color: colors.gold }}>{project.version}</span>
+                  <h3 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">{project.title}</h3>
+                </div>
+                
+                <p className="text-gray-400 text-lg leading-relaxed border-l-2 pl-6" style={{ borderColor: colors.red }}>
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map(t => (
+                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono text-gray-300">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-6 pt-6">
+                  {project.isCompleted ? (
+                    <Link href={project.link} target="_blank" className="flex items-center gap-2 group text-white font-bold uppercase text-sm tracking-widest">
+                      Launch System <i className="pi pi-external-link group-hover:translate-x-1 transition-transform" style={{ color: colors.gold }}></i>
+                    </Link>
+                  ) : (
+                    <span className="flex items-center gap-2 text-gray-600 font-bold uppercase text-sm tracking-widest cursor-not-allowed">
+                      System Locked <i className="pi pi-lock text-xs"></i>
+                    </span>
+                  )}
+                  {project.github && (
+                    <Link href={project.github} target="_blank" className="text-gray-500 hover:text-white transition-colors">
+                      <i className="pi pi-github text-xl"></i>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- SECTION 3: PROJECT GRID --- */}
+      <section className="py-32 px-6 max-w-7xl mx-auto">
+        <ProjectDivider label="ALL_ARCHIVES" />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode='popLayout'>
+            {filteredProjects.filter(p => !p.featured).map((project) => (
+              <motion.div
+                layout
+                key={project.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="group p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all relative overflow-hidden"
+              >
+                {/* Background Pattern subtile */}
+                <div className="absolute top-0 right-0 p-2 opacity-10 font-mono text-[40px] font-black select-none pointer-events-none">
+                  {project.id}
+                </div>
+
+                <div className="relative z-10 space-y-4">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[10px] font-mono px-2 py-1 rounded" style={{ backgroundColor: `${colors.gold}20`, color: colors.gold }}>
+                      {project.category.toUpperCase()}
+                    </span>
+                    {!project.isCompleted && <i className="pi pi-clock text-xs text-red-500 animate-pulse"></i>}
+                  </div>
+
+                  <h4 className="text-xl font-bold group-hover:text-[#E9B826] transition-colors uppercase">{project.title}</h4>
+                  <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.tech.slice(0, 3).map(t => (
+                      <span key={t} className="text-[9px] font-mono text-gray-400">#{t}</span>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 flex justify-between items-center">
+                    {project.isCompleted ? (
+                      <Link href={project.link} className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 text-white">
+                        Access <i className="pi pi-arrow-right text-[8px]"></i>
+                      </Link>
+                    ) : (
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-700">Restricted</span>
+                    )}
+                    {project.github && <Link href={project.github} className="text-gray-500 hover:text-white"><i className="pi pi-github"></i></Link>}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* --- SECTION 4: CTA --- */}
+      <section className="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-white/[0.02] text-center">
+        <h2 className="text-3xl font-bold mb-6 tracking-tighter uppercase">Besoin d&apos;un module sur mesure ?</h2>
+        <Link 
+          href="/contact" 
+          className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black font-black uppercase tracking-tighter hover:bg-gold transition-colors"
+          style={{ backgroundColor: colors.gold }}
+        >
+          Initialize Brief <i className="pi pi-send"></i>
+        </Link>
+      </section>
+
+    </div>
+  );
 }
