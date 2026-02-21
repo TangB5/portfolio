@@ -3,8 +3,12 @@ import Script from 'next/script';
 import Footer from './component/FOOTER';
 import LogoIntro from './component/LogoIntro';
 import Navigation from './component/NAV';
-import './globals.css';
+import '../globals.css';
 import { Roboto, Playfair_Display, Ubuntu } from 'next/font/google';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
+import { getMessages } from 'next-intl/server';
 
 // --- Configuration des Polices ---
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-roboto' });
@@ -74,13 +78,23 @@ const jsonLd = {
   knowsAbout: ['React', 'Next.js', 'UX Design', 'Web Development', 'Tailwind CSS','full stack'],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{locale: string}>;
+};
+ 
+
+export default async function LocaleLayout({children, params}: Props) {
+  const { locale } = await params;
+  
+  if (!routing.locales.includes(locale as "fr" | "en")) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
   return (
-    <html lang="fr" className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
+    <html lang={locale} className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         <Script
           id="structured-data"
@@ -91,14 +105,16 @@ export default function RootLayout({
         </Script>
 
         <LogoIntro />
+        <NextIntlClientProvider>
         <Navigation />
         
         
         <main className="flex-grow">
           {children}
         </main>
-
+      
         <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

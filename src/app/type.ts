@@ -8,3 +8,18 @@ export type Motif = {
   origin: string;
   usage: string;
 };
+export type Category = 'web' | 'mobile' | 'design';
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  github: string;
+  tech: string[];
+  category: Category;
+  featured: boolean;
+  isCompleted: boolean;
+  version: string;
+}
