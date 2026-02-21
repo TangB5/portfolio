@@ -1,0 +1,31 @@
+{
+  "nav": { "home": "Accueil", "projects": "Projets", "contact": "Contact" },
+  "hero": { "role": "Développeur Frontend", "desc": "Je crée des sites web." },
+
+
+  "projects": {
+    "heading1": "Projets",
+    "heading2": "Sélectionnés",
+    "intro": "Une sélection de projets mêlant ingénierie logicielle et esthétique culturelle.",
+    "p1": { "title": "MarketPlace Africaine", "desc": "Plateforme e-commerce artisanale." },
+    "p2": { "title": "Culture AFRICAINE", "desc": "Site éducatif sur la sagesse ancestrale." },
+    "p3": { "title": "Visual Branding", "desc": "Identité visuelle panafricaine." }
+  },
+  "status": {
+    "ready": "Prêt",
+    "progress": "En cours"
+  },
+  "actions": {
+    "access": "Exécuter Accès",
+    "denied": "Accès Refusé",
+    "vision": "Entrer dans la Vision"
+  },
+  "mission": {
+    "title1": "Relier",
+    "heritage": "l'Héritage",
+    "title2": "& le Futur",
+    "future": "Numérique",
+    "desc": "Mon travail n'est pas qu'une question de code. C'est insuffler l'âme de l'art africain dans le Web Moderne."
+  }
+
+}
