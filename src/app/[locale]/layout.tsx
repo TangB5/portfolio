@@ -104,10 +104,10 @@ export default async function LocaleLayout({children, params}: Props) {
           {JSON.stringify(jsonLd)}
         </Script>
 
-        <LogoIntro />
-        <NextIntlClientProvider>
-        <Navigation />
         
+        <NextIntlClientProvider messages={messages} locale={locale}>
+        <Navigation />
+        <LogoIntro />
         
         <main className="flex-grow">
           {children}
