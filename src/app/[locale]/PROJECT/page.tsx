@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import 'primeicons/primeicons.css';
+import { Project } from '@/app/type';
+import { useTranslations } from 'next-intl';
 
 const colors = {
   gold: '#E9B826',
@@ -29,9 +30,10 @@ const ProjectDivider = ({ label }:ProjectDividerProps) => (
 );
 
 export default function Projects() {
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState<string>('all');
+  const t = useTranslations('ProjectsPage');
 
-  const projects = [
+  const projects:Project[] = [
         {
             id: 4,
             title: 'MarketPlace Africaine "AfroShop"',
@@ -40,9 +42,9 @@ export default function Projects() {
             link: 'https://afroshop.vercel.app',
             github: 'https://github.com/kingtang/afroshop',
             tech: ['Next.js', 'Tailwind CSS', 'Stripe', 'Node.js'],
-            category: 'web',
+            category: "web" as const,
             featured: true,
-            isCompleted: false ,
+            isCompleted: false,
             version: 'v2.0',
         },
         {
@@ -53,9 +55,9 @@ export default function Projects() {
             link: 'https://culture-cameroun.vercel.app',
             github: 'https://github.com/kingtang/culture-cameroun',
             tech: ['html', 'tailwindcss', 'Framer Motion','Nextjs'],
-            category: 'mobile',
+            category: "mobile" as const,
             featured: false,
-            isCompleted: false ,
+            isCompleted: false,
             version: 'v2.0',
         },
         {
@@ -66,9 +68,10 @@ export default function Projects() {
             link: 'https://behance.net/kingtang/ngano-fashion',
             github: '',
             tech: ['Adobe Suite', 'Branding', 'UI Design', 'Illustration'],
-            category: 'design',
+            category: "design" as const,
             featured: true,
-            isCompleted: false // ✅ Projet terminé
+            isCompleted: false,
+            version: 'v1.0',
         },
         {
             id: 1,
@@ -78,9 +81,10 @@ export default function Projects() {
             link: 'https://cultureafricaine.vercel.app',
             github: 'https://github.com/TangB5/mvp',
             tech: ['Next.js', 'Tailwind CSS', 'html/css'],
-            category: 'web',
+            category: "web" as const,
             featured: true,
-            isCompleted: true // ✅ Projet terminé
+            isCompleted: true,
+            version: 'v1.0',
         },
         {
             id: 5,
@@ -90,8 +94,10 @@ export default function Projects() {
             link: 'https://african-customizer.vercel.app',
             github: 'https://github.com/kingtang/african-customizer',
             tech: ['Next.js', 'Fabric.js', 'Canvas API'],
-            category: 'web',
-            isCompleted: false // ⏳ Projet en cours/à venir
+            category: "web" as const,
+            featured: false,
+            isCompleted: false,
+            version: 'v1.0',
         },
         {
             id: 6,
@@ -101,8 +107,10 @@ export default function Projects() {
             link: 'https://github.com/kingtang/angular-project',
             github: 'https://github.com/kingtang/angular-project',
             tech: ['Angular', 'TypeScript', 'RxJS'],
-            category: 'web',
-            isCompleted: false // ✅ Projet terminé
+            category: "web" as const,
+            featured: false,
+            isCompleted: false,
+            version: 'v1.0',
         },
     ];
 
@@ -127,37 +135,22 @@ export default function Projects() {
           animate={{ opacity: 1, y: 0 }}
           className="inline-block px-3 py-1 mb-6 border border-white/10 bg-white/5 rounded-full font-mono text-[10px] tracking-widest uppercase"
         >
-           PROJECT REPOSITORY 2026
+           {t('header.badge')}
         </motion.div>
         
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-12">
-          ENGINEERED <br/>
+          {t('header.title_main')} <br/>
           <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(to right, ${colors.gold}, #FFF)` }}>
-            SOLUTIONS
+            {t('header.title_sub')}
           </span>
         </h1>
 
-        {/* Filter Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setFilter(cat.id)}
-              className="group relative px-6 py-2 font-mono text-xs uppercase tracking-widest transition-all"
-              style={{ color: filter === cat.id ? colors.gold : '#666' }}
-            >
-              {filter === cat.id && (
-                <motion.div layoutId="activeFilter" className="absolute inset-0 border border-white/20 bg-white/5" />
-              )}
-              <span className="relative z-10">{cat.name}</span>
-            </button>
-          ))}
-        </div>
+        
       </section>
 
       {/* --- SECTION 2: FEATURED PROJECT (SPLIT DESIGN) --- */}
       <section className="px-6 max-w-7xl mx-auto">
-        <ProjectDivider label="FEATURED_MODULES" />
+        <ProjectDivider label={t('dividers.featured')} />
         
         <div className="space-y-32">
           {projects.filter(p => p.featured).map((project, i) => (
@@ -175,13 +168,13 @@ export default function Projects() {
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-900 border border-white/10">
                   <Image 
                     src={project.image} 
-                    alt={project.title} 
+                    alt={t(`items.${project.id}.title`)}
                     fill 
                     className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
                   />
                   {/* Status Overlay */}
                   <div className="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono">
-                    STATUS: {project.isCompleted ? 'LIVE' : 'IN_DEV'}
+                    STATUS: {project.isCompleted ? t('status.live') : t('status.dev')}
                   </div>
                 </div>
               </div>
@@ -190,11 +183,11 @@ export default function Projects() {
               <div className="w-full lg:w-1/2 space-y-6">
                 <div className="space-y-2">
                   <span className="font-mono text-xs" style={{ color: colors.gold }}>{project.version}</span>
-                  <h3 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">{project.title}</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">{t(`items.${project.id}.title`)}</h3>
                 </div>
                 
                 <p className="text-gray-400 text-lg leading-relaxed border-l-2 pl-6" style={{ borderColor: colors.red }}>
-                  {project.description}
+                  {t(`items.${project.id}.description`)}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
@@ -208,11 +201,11 @@ export default function Projects() {
                 <div className="flex gap-6 pt-6">
                   {project.isCompleted ? (
                     <Link href={project.link} target="_blank" className="flex items-center gap-2 group text-white font-bold uppercase text-sm tracking-widest">
-                      Launch System <i className="pi pi-external-link group-hover:translate-x-1 transition-transform" style={{ color: colors.gold }}></i>
+                      {t('status.launch')} <i className="pi pi-external-link group-hover:translate-x-1 transition-transform" style={{ color: colors.gold }}></i>
                     </Link>
                   ) : (
                     <span className="flex items-center gap-2 text-gray-600 font-bold uppercase text-sm tracking-widest cursor-not-allowed">
-                      System Locked <i className="pi pi-lock text-xs"></i>
+                      {t('status.locked')}<i className="pi pi-lock text-xs"></i>
                     </span>
                   )}
                   {project.github && (
@@ -227,9 +220,28 @@ export default function Projects() {
         </div>
       </section>
 
+      
+
       {/* --- SECTION 3: PROJECT GRID --- */}
       <section className="py-32 px-6 max-w-7xl mx-auto">
-        <ProjectDivider label="ALL_ARCHIVES" />
+        <ProjectDivider label={t('dividers.archives')} />
+
+        {/* Filter Navigation */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setFilter(cat.id)}
+              className="group relative px-6 py-2 font-mono text-xs uppercase tracking-widest transition-all"
+              style={{ color: filter === cat.id ? colors.gold : '#666' }}
+            >
+              {filter === cat.id && (
+                <motion.div layoutId="activeFilter" className="absolute inset-0 border border-white/20 bg-white/5" />
+              )}
+              <span className="relative z-10">{t(`filters.${cat.id}`)}</span>
+            </button>
+          ))}
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode='popLayout'>
@@ -255,9 +267,9 @@ export default function Projects() {
                     {!project.isCompleted && <i className="pi pi-clock text-xs text-red-500 animate-pulse"></i>}
                   </div>
 
-                  <h4 className="text-xl font-bold group-hover:text-[#E9B826] transition-colors uppercase">{project.title}</h4>
+                  <h4 className="text-xl font-bold group-hover:text-[#E9B826] transition-colors uppercase">{t(`items.${project.id}.title`)}</h4>
                   <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed">
-                    {project.description}
+                    {t(`items.${project.id}.description`)}
                   </p>
 
                   <div className="flex flex-wrap gap-2 pt-2">
@@ -269,10 +281,10 @@ export default function Projects() {
                   <div className="pt-4 flex justify-between items-center">
                     {project.isCompleted ? (
                       <Link href={project.link} className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 text-white">
-                        Access <i className="pi pi-arrow-right text-[8px]"></i>
+                        {t('status.access')} <i className="pi pi-arrow-right text-[8px]"></i>
                       </Link>
                     ) : (
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-700">Restricted</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('status.restricted')}</span>
                     )}
                     {project.github && <Link href={project.github} className="text-gray-500 hover:text-white"><i className="pi pi-github"></i></Link>}
                   </div>
@@ -285,13 +297,13 @@ export default function Projects() {
 
       {/* --- SECTION 4: CTA --- */}
       <section className="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-white/[0.02] text-center">
-        <h2 className="text-3xl font-bold mb-6 tracking-tighter uppercase">Besoin d&apos;un module sur mesure ?</h2>
+        <h2 className="text-3xl font-bold mb-6 tracking-tighter uppercase">{t('cta.title')}</h2>
         <Link 
           href="/contact" 
           className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black font-black uppercase tracking-tighter hover:bg-gold transition-colors"
           style={{ backgroundColor: colors.gold }}
         >
-          Initialize Brief <i className="pi pi-send"></i>
+          {t('cta.button')} <i className="pi pi-send"></i>
         </Link>
       </section>
 

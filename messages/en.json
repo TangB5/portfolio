@@ -1,0 +1,274 @@
+{
+  "Nav": {
+    "about": "ABOUT",
+    "projects": "PROJECTS",
+    "culture": "CULTURE",
+    "solution": "SOLUTION",
+    "contact": "CONTACT"
+  },
+  "Hero": {
+    "badge": "Open to Work 2026",
+    "title_top": "DIGITAL",
+    "title_highlight": "ARCHITECT",
+    "description": "I build digital bridges between <culture>culture</culture> and <tech>technology</tech>. Front-End Developer specializing in responsive and immersive interfaces.",
+    "cta_projects": "Explore my projects",
+    "cta_contact": "Contact me",
+    "scroll": "Scroll",
+    "alt_portrait": "KingTang Mascot - Tech Vision"
+  },
+  "HomePage": {
+    "projects": {
+      "label": "ACTIVE_DEPLOYMENTS",
+      "title_part1": "Selected",
+      "title_part2": "Works",
+      "intro": "A selection of projects blending software engineering and cultural aesthetics.",
+      "status_ready": "Ready",
+      "status_progress": "In_Progress",
+      "access_grant": "Execute_Access",
+      "access_deny": "Access_Denied",
+      "view_archive": "View full archive",
+      "items": {
+        "01": {
+          "title": "African MarketPlace",
+          "description": "E-commerce platform showcasing local craftsmanship."
+        },
+        "02": {
+          "title": "AFRICAN Culture",
+          "description": "Educational site about proverbs and ancestral wisdom."
+        },
+        "03": {
+          "title": "Visual Branding",
+          "description": "Visual identity for a pan-African fashion brand."
+        }
+      }
+    },
+    "fusion": {
+      "title": "Bridging Heritage & Digital Future",
+      "description": "My work isn't just about code. It's a mission: infusing the soul of African art into the rigid structures of the Modern Web.",
+      "cta": "Enter the Vision",
+      "stats": {
+        "origin": "Cameroon",
+        "medium": "Digital Art",
+        "legacy": "Legacy",
+        "vision": "Innovation"
+      }
+    }
+  },
+  "ProjectsPage": {
+    "header": {
+      "badge": "PROJECT REPOSITORY 2026",
+      "title_main": "ENGINEERED",
+      "title_sub": "SOLUTIONS"
+    },
+    "filters": {
+      "all": "All Modules",
+      "web": "Web-Systems",
+      "mobile": "Mobile-Apps",
+      "design": "Visual-ID"
+    },
+    "dividers": {
+      "featured": "FEATURED_MODULES",
+      "archives": "ALL_ARCHIVES"
+    },
+    "status": {
+      "live": "LIVE",
+      "dev": "IN_DEV",
+      "launch": "Launch System",
+      "locked": "System Locked",
+      "access": "Access",
+      "restricted": "Restricted"
+    },
+    "cta": {
+      "title": "Need a custom module?",
+      "button": "Initialize Brief"
+    },
+    "items": {
+      "4": {
+        "title": "African MarketPlace \"AfroShop\"",
+        "description": "E-commerce platform showcasing local craftsmanship with a modern interface inspired by African textiles. Includes a payment system tailored for African markets."
+      },
+      "2": {
+        "title": "Application \"Cameroon Culture\"",
+        "description": "Immersive educational app exploring Cameroon's cultural riches. Features visual galleries, historical documents, and interactive experiences."
+      },
+      "3": {
+        "title": "Visual Identity \"Ngano Fashion\"",
+        "description": "Full artistic direction for a contemporary African fashion brand. Logo, color palette, packaging, and website design inspired by Adinkra patterns."
+      },
+      "1": {
+        "title": "Mini-site \"Culture Africa\"",
+        "description": "Interactive site to explore and promote African culture through animations and visual storytelling. Includes an interactive map of African traditions."
+      },
+      "5": {
+        "title": "African Visual Customizer",
+        "description": "Web tool for customizing designs with authentic African patterns. High-resolution export for print and digital media."
+      },
+      "6": {
+        "title": "Academic Project \"Angular Commerce\"",
+        "description": "E-commerce application developed with Angular in an academic setting, focusing on performance and user experience."
+      }
+    }
+  },
+  "AboutPage": {
+    "identity": {
+      "id_label": "ID",
+      "class_label": "CLASS",
+      "class_value": "ARCHITECT",
+      "origin_label": "ORIGIN",
+      "origin_value": "CAMEROON, AFRICA"
+    },
+    "header": {
+      "title_prefix": "WHO IS",
+      "name": "NDOH YANNICK TANG?"
+    },
+    "bio": {
+      "quote": "I don't just code websites. I build digital bridges between ancestral tradition and future innovation.",
+      "p1": "With a degree in Computer Science (Systems & Networks), I quickly pivoted to my true passion: creation. My rigorous technical background allows me to understand the machine, but my artist's soul guides my fingers.",
+      "p2": "My mission is clear: to counter the uniformity of the Western web by injecting African visual DNA (Adinkra patterns, warm palettes, storytelling) into ultra-high-performance React & Next.js architectures."
+    },
+    "timeline": {
+      "title": "EVOLUTION LOG",
+      "subtitle": "SKILL UPDATE CHRONOLOGY",
+      "items": {
+        "2025": {
+          "title": "FULLSTACK EXPANSION",
+          "subtitle": "Backend Integration",
+          "desc": "Database architecture with MongoDB and REST ExpressJS API creation. The missing link."
+        },
+        "2024": {
+          "title": "CULTURAL UI/UX",
+          "subtitle": "Design System",
+          "desc": "Defining my graphic signature: merging modern minimalism with the complexity of African patterns."
+        },
+        "2023": {
+          "title": "FRONTEND SPECIALIST",
+          "subtitle": "Framework Mastery",
+          "desc": "Deep dive into the React, Next.js, and TailwindCSS ecosystem. Transitioning from spaghetti code to modular architecture."
+        },
+        "2022": {
+          "title": "SYSTEM INIT",
+          "subtitle": "The Beginning",
+          "desc": "First line of code. HTML, CSS, PHP. Understanding how the web breathes."
+        }
+      }
+    },
+    "skills": {
+      "title": "SYSTEM DIAGNOSTICS",
+      "efficiency": "EFFICIENCY",
+      "items": {
+        "frontend": "FRONTEND ARCHITECTURE (Next.js/React)",
+        "styling": "STYLING ENGINE (Tailwind/CSS)",
+        "logic": "CREATIVE LOGIC (JS/TS)",
+        "design": "VISUAL DESIGN (Ps/Canva/Figma)",
+        "backend": "BACKEND OPS (Node/Mongo)"
+      }
+    },
+    "values": {
+      "title": "CORE PROTOCOLS",
+      "items": {
+        "heritage": {
+          "title": "Heritage First",
+          "desc": "Code is universal, but identity is local. I code with pride."
+        },
+        "performance": {
+          "title": "High Performance",
+          "desc": "A beautiful site that is slow is useless. I optimize every pixel and every function."
+        },
+        "clean": {
+          "title": "Clean Architecture",
+          "desc": "Maintainable, scalable, and secure code. No shortcuts."
+        }
+      }
+    },
+    "cta": {
+      "title": "READY TO COLLABORATE?",
+      "subtitle": "Initialize communication protocol to start a unique project.",
+      "button": "Start Project"
+    },
+    "ui": {
+      "section_break": "SECTION BREAK"
+    }
+  },
+  "CulturePage": {
+    "hero": {
+      "badge": "SYSTEM_INIT: CULTURAL_HERITAGE_VAULT",
+      "title_main": "ROOTS",
+      "title_sub": "& BYTES",
+      "description": "I treat African visual heritage as source code. Every pattern is a data-set of history, reinvented for the digital architecture of tomorrow."
+    },
+    "library": {
+      "title": "Pattern Library",
+      "subtitle": "Digital Archives",
+      "status": {
+        "available": "AVAILABLE",
+        "upcoming": "UPCOMING",
+        "revision": "REVISION"
+      },
+      "motifs": {
+        "1": {
+          "title": "WAX_CORE",
+          "origin": "West Africa",
+          "desc": "Vector reinterpretation of Wax color flows for high-performance site backgrounds."
+        },
+        "2": {
+          "title": "ADINKRA_UI",
+          "origin": "Akan Culture",
+          "desc": "Philosophical symbols converted into intelligent navigation icons."
+        },
+        "3": {
+          "title": "NDOP_GRID",
+          "origin": "Bamoun Kingdom",
+          "desc": "Cameroonian sacred geometry adapted for modern CSS grid systems."
+        },
+        "4": {
+          "title": "KENTE_STRIPE",
+          "origin": "Ashanti",
+          "desc": "Weaving rhythms transformed into responsive section dividers."
+        }
+      }
+    },
+    "philosophy": {
+      "logs": {
+        "0": {
+          "text": "Knowledge is like a Baobab tree; one person's arms cannot embrace it.",
+          "ref": "African Proverb",
+          "note": "// OPEN_SOURCE_MINDSET"
+        },
+        "1": {
+          "text": "Innovation is born from the deepest roots.",
+          "ref": "KingTang",
+          "note": "// CORE_VALUE_01"
+        },
+        "2": {
+          "text": "If you want to go far, go together.",
+          "ref": "African Proverb",
+          "note": "// COLLABORATION_PROTOCOL"
+        }
+      }
+    },
+    "specs": {
+      "title": "Specifications",
+      "subtitle": "Tech x Culture",
+      "main_text": "Web uniformity is a system error. My mission is to reinject algorithmic diversity using African visual structures.",
+      "items": {
+        "adinkra": { "title": "ADINKRA SYMBOLS", "use": "Metaphoric Navigation & Icons" },
+        "ndop": { "title": "NDOP GEOMETRY", "use": "Grids & Structural Layouts" },
+        "wax": { "title": "WAX TEXTURES", "use": "Dynamic Backgrounds & Motion" }
+      },
+      "framework": {
+        "title": "Cultural Framework v1.0",
+        "desc": "Ready for integration in modern UX/UI systems."
+      }
+    },
+    "modal": {
+      "encoding": "ENCODING:",
+      "origin": "ORIGIN:",
+      "button": "Request Asset Access"
+    },
+    "cta": {
+      "title": "Contribute to the Archive",
+      "button": "Open Protocol"
+    }
+  }
+}
+

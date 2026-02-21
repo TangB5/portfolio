@@ -1,0 +1,274 @@
+{
+  "Nav": {
+    "about": "À PROPOS",
+    "projects": "PROJETS",
+    "culture": "CULTURE",
+    "solution": "SOLUTION",
+    "contact": "CONTACT"
+  },
+  "Hero": {
+    "badge": "Disponible pour missions 2026",
+    "title_top": "ARCHITECTE",
+    "title_highlight": "NUMÉRIQUE",
+    "description": "Je construis des ponts numériques entre <culture>culture</culture> et <tech>technologie</tech>. Développeur Front-End spécialisé en interfaces réactives et immersives.",
+    "cta_projects": "Explorer mes projets",
+    "cta_contact": "Me contacter",
+    "scroll": "Défiler",
+    "alt_portrait": "Mascotte KingTang - Vision Tech"
+  },
+  "HomePage": {
+    "projects": {
+      "label": "DÉPLOIEMENTS_ACTIFS",
+      "title_part1": "Travaux",
+      "title_part2": "Sélectionnés",
+      "intro": "Une sélection de projets mêlant ingénierie logicielle et esthétique culturelle.",
+      "status_ready": "Prêt",
+      "status_progress": "En cours",
+      "access_grant": "Exécuter_Accès",
+      "access_deny": "Accès_Refusé",
+      "view_archive": "Voir toute l'archive",
+      "items": {
+        "01": {
+          "title": "MarketPlace Africaine",
+          "description": "Plateforme e-commerce mettant en avant l'artisanat local."
+        },
+        "02": {
+          "title": "Culture AFRICAINE",
+          "description": "Site éducatif sur les proverbes et la sagesse ancestrale."
+        },
+        "03": {
+          "title": "Visual Branding",
+          "description": "Identité visuelle pour une marque de mode panafricaine."
+        }
+      }
+    },
+    "fusion": {
+      "title": "Relier l'Héritage & le Futur Numérique",
+      "description": "Mon travail n'est pas qu'une question de code. C'est une mission : infuser l'âme de l'art africain dans les structures rigides du Web Moderne.",
+      "cta": "Entrer dans la Vision",
+      "stats": {
+        "origin": "Cameroun",
+        "medium": "Art Numérique",
+        "legacy": "Tradition",
+        "vision": "Innovation"
+      }
+    }
+  },
+  "ProjectsPage": {
+    "header": {
+      "badge": "RÉPERTOIRE DE PROJETS 2026",
+      "title_main": "SOLUTIONS",
+      "title_sub": "INGÉNIÉES"
+    },
+    "filters": {
+      "all": "Tous les Modules",
+      "web": "Systèmes-Web",
+      "mobile": "App-Mobiles",
+      "design": "ID-Visuelle"
+    },
+    "dividers": {
+      "featured": "MODULES_VEDETTES",
+      "archives": "TOUTES_LES_ARCHIVES"
+    },
+    "status": {
+      "live": "EN LIGNE",
+      "dev": "EN DÉV",
+      "launch": "Lancer le Système",
+      "locked": "Système Verrouillé",
+      "access": "Accéder",
+      "restricted": "Accès Restreint"
+    },
+    "cta": {
+      "title": "Besoin d'un module sur mesure ?",
+      "button": "Initialiser le Brief"
+    },
+    "items": {
+      "4": {
+        "title": "MarketPlace Africaine \"AfroShop\"",
+        "description": "Plateforme e-commerce mettant en avant l'artisanat local avec une interface moderne inspirée des textiles africains. Intègre un système de paiement adapté aux marchés africains."
+      },
+      "2": {
+        "title": "Application \"Culture Cameroun\"",
+        "description": "Application éducative immersive explorant les richesses culturelles du Cameroun. Contient des galeries visuelles, des documents historiques et des expériences interactives."
+      },
+      "3": {
+        "title": "Identité Visuelle \"Ngano Fashion\"",
+        "description": "Direction artistique complète pour une marque de mode africaine contemporaine. Logo, palette de couleurs, packaging et site web avec design inspiré des motifs Adinkra."
+      },
+      "1": {
+        "title": "Mini-site \"Culture Africa\"",
+        "description": "Site interactif pour explorer et promouvoir la culture africaine à travers des animations et récits visuels. Intègre une carte interactive des traditions africaines."
+      },
+      "5": {
+        "title": "Customizer de Visuels Africains",
+        "description": "Outil web permettant de personnaliser des designs avec motifs africains authentiques. Export en haute résolution pour supports print et digitaux."
+      },
+      "6": {
+        "title": "Projet Académique \"Angular Commerce\"",
+        "description": "Application e-commerce développée avec Angular dans un cadre académique, avec une attention particulière aux performances et à l'expérience utilisateur."
+      }
+    }
+  },
+  "AboutPage": {
+    "identity": {
+      "id_label": "ID",
+      "class_label": "CLASSE",
+      "class_value": "ARCHITECTE",
+      "origin_label": "ORIGINE",
+      "origin_value": "CAMEROUN, AFRIQUE"
+    },
+    "header": {
+      "title_prefix": "QUI EST",
+      "name": "NDOH YANNICK TANG ?"
+    },
+    "bio": {
+      "quote": "Je ne code pas juste des sites web. Je construis des ponts digitaux entre la tradition ancestrale et l'innovation future.",
+      "p1": "Titulaire d'une licence en informatique (Systèmes & Réseaux), j'ai rapidement pivoté vers ma véritable passion : la création. Mon background technique rigoureux me permet de comprendre la machine, mais c'est mon âme d'artiste qui guide mes doigts.",
+      "p2": "Ma mission est claire : contrer l'uniformité du web occidental en injectant l'ADN visuel africain (motifs Adinkra, palettes chaudes, storytelling) dans des architectures React & Next.js ultra-performantes."
+    },
+    "timeline": {
+      "title": "JOURNAL D'ÉVOLUTION",
+      "subtitle": "CHRONOLOGIE DES MISES À JOUR DE COMPÉTENCES",
+      "items": {
+        "2025": {
+          "title": "EXPANSION FULLSTACK",
+          "subtitle": "Intégration Backend",
+          "desc": "Architecture de bases de données avec MongoDB et création d'API REST ExpressJS. Le chaînon manquant."
+        },
+        "2024": {
+          "title": "UI/UX CULTUREL",
+          "subtitle": "Design System",
+          "desc": "Définition de ma signature graphique : fusionner le minimalisme moderne avec la complexité des motifs africains."
+        },
+        "2023": {
+          "title": "SPÉCIALISTE FRONTEND",
+          "subtitle": "Maîtrise des Frameworks",
+          "desc": "Plongée profonde dans l'écosystème React, Next.js et TailwindCSS. Transition du code spaghetti vers l'architecture modulaire."
+        },
+        "2022": {
+          "title": "INIT SYSTÈME",
+          "subtitle": "Le Commencement",
+          "desc": "Première ligne de code. HTML, CSS, PHP. Comprendre comment le web respire."
+        }
+      }
+    },
+    "skills": {
+      "title": "DIAGNOSTICS SYSTÈME",
+      "efficiency": "EFFICACITÉ",
+      "items": {
+        "frontend": "ARCHITECTURE FRONTEND (Next.js/React)",
+        "styling": "MOTEUR DE STYLE (Tailwind/CSS)",
+        "logic": "LOGIQUE CRÉATIVE (JS/TS)",
+        "design": "DESIGN VISUEL (Ps/Canva/Figma)",
+        "backend": "OPS BACKEND (Node/Mongo)"
+      }
+    },
+    "values": {
+      "title": "PROTOCOLES DE BASE",
+      "items": {
+        "heritage": {
+          "title": "L'Héritage d'Abord",
+          "desc": "Le code est universel, mais l'identité est locale. Je code avec fierté."
+        },
+        "performance": {
+          "title": "Haute Performance",
+          "desc": "Un site beau qui est lent est inutile. J'optimise chaque pixel et chaque fonction."
+        },
+        "clean": {
+          "title": "Architecture Propre",
+          "desc": "Code maintenable, scalable et sécurisé. Pas de bricolage."
+        }
+      }
+    },
+    "cta": {
+      "title": "PRÊT À COLLABORER ?",
+      "subtitle": "Initialiser le protocole de communication pour démarrer un projet unique.",
+      "button": "Démarrer le Projet"
+    },
+    "ui": {
+      "section_break": "RUPTURE DE SECTION"
+    }
+  },
+  "CulturePage": {
+    "hero": {
+      "badge": "INITIALISATION_SYSTÈME : COFFRE_DU_PATRIMOINE",
+      "title_main": "ROOTS",
+      "title_sub": "& BYTES",
+      "description": "Je traite l'héritage visuel africain comme du code source. Chaque motif est un ensemble de données historiques, réinventé pour l'architecture digitale de demain."
+    },
+    "library": {
+      "title": "Bibliothèque de Motifs",
+      "subtitle": "Archives Numériques",
+      "status": {
+        "available": "DISPONIBLE",
+        "upcoming": "À VENIR",
+        "revision": "RÉVISION"
+      },
+      "motifs": {
+        "1": {
+          "title": "WAX_CORE",
+          "origin": "Afrique de l'Ouest",
+          "desc": "Réinterprétation vectorielle des flux de couleurs Wax pour les fonds de sites haute performance."
+        },
+        "2": {
+          "title": "ADINKRA_UI",
+          "origin": "Culture Akan",
+          "desc": "Symboles philosophiques convertis en icônes de navigation intelligentes."
+        },
+        "3": {
+          "title": "NDOP_GRID",
+          "origin": "Royaume Bamoun",
+          "desc": "Géométrie sacrée camerounaise adaptée aux systèmes de grilles CSS modernes."
+        },
+        "4": {
+          "title": "KENTE_STRIPE",
+          "origin": "Ashanti",
+          "desc": "Rythmes de tissage transformés en séparateurs de sections responsifs."
+        }
+      }
+    },
+    "philosophy": {
+      "logs": {
+        "0": {
+          "text": "Le savoir est comme un baobab ; les bras d'une seule personne ne peuvent l'embrasser.",
+          "ref": "Proverbe Africain",
+          "note": "// ESPRIT_OPEN_SOURCE"
+        },
+        "1": {
+          "text": "L'innovation naît des racines les plus profondes.",
+          "ref": "KingTang",
+          "note": "// VALEUR_CLÉ_01"
+        },
+        "2": {
+          "text": "Si tu veux aller loin, voyageons ensemble.",
+          "ref": "Proverbe Africain",
+          "note": "// PROTOCOLE_COLLABORATION"
+        }
+      }
+    },
+    "specs": {
+      "title": "Spécifications",
+      "subtitle": "Tech x Culture",
+      "main_text": "L'uniformisation du web est une erreur système. Ma mission est de réinjecter de la diversité algorithmique en utilisant des structures visuelles africaines.",
+      "items": {
+        "adinkra": { "title": "SYMBOLES ADINKRA", "use": "Navigation métaphorique & Icônes" },
+        "ndop": { "title": "GÉOMÉTRIE NDOP", "use": "Grilles & Layouts structurels" },
+        "wax": { "title": "TEXTURES WAX", "use": "Fonds Dynamiques & Motion" }
+      },
+      "framework": {
+        "title": "Framework Culturel v1.0",
+        "desc": "Prêt pour l'intégration dans les systèmes UX/UI modernes."
+      }
+    },
+    "modal": {
+      "encoding": "ENCODAGE :",
+      "origin": "ORIGINE :",
+      "button": "Demander l'accès à l'Asset"
+    },
+    "cta": {
+      "title": "Contribuer à l'Archive",
+      "button": "Ouvrir le Protocole"
+    }
+  }
+
+}
