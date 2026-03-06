@@ -269,6 +269,180 @@
       "title": "Contribute to the Archive",
       "button": "Open Protocol"
     }
+  },
+  "ContactPage": {
+    "hero": {
+      "protocol": "PROTOCOL: BRIDGE_INITIATION",
+      "title_main": "LET'S",
+      "title_highlight": "CONNECT",
+      "description": "Ready to inject African authenticity into your next digital project? Let's establish a connection."
+    },
+    "form": {
+      "section_title": "Data_Input_Field",
+      "name_label": "Identity.Name",
+      "name_placeholder": "FULL NAME",
+      "email_label": "Node.Email",
+      "email_placeholder": "YOUR@EMAIL.COM",
+      "message_label": "Payload.Message",
+      "message_placeholder": "DESCRIBE YOUR VISION...",
+      "submit_button": "TRANSMIT_DATA",
+      "success_message": "[SUCCESS]: MESSAGE_DEPOSITED_IN_VAULT"
+    },
+    "contact_nodes": {
+      "title": "ACTIVE_NODES",
+      "email_label": "DIRECT_MAIL",
+      "whatsapp_label": "ENCRYPTED_WHATSAPP",
+      "location_label": "BASE_LOCATION"
+    },
+    "social": {
+      "title": "SOCIAL_GRID"
+    },
+    "quote": {
+      "text": "Every project is a chance to re-code our visual history. Thank you for being part of the movement."
+    },
+    "faq": {
+      "title": "Knowledge Base",
+      "subtitle": "FAQ_v1.0",
+      "items": {
+        "0": {
+          "q": "Consultations?",
+          "a": "Affirmative. 30 min initial protocol offered to analyze your needs."
+        },
+        "1": {
+          "q": "International?",
+          "a": "Global system. I collaborate with clients across all time zones."
+        },
+        "2": {
+          "q": "Timelines?",
+          "a": "Optimized. 2-4 weeks for interfaces, 2-3 months for complete ecosystems."
+        },
+        "3": {
+          "q": "Heritage?",
+          "a": "It's the core. Cultural integration is the engine of every design."
+        }
+      }
+    }
+  },
+  "SolutionPage": {
+    "hero": {
+      "badge": "SOLUTIONS_CATALOG_2026",
+      "title_main": "BUILDING",
+      "title_highlight": "NEW STANDARDS"
+    },
+    "solutions": {
+      "0": {
+        "id": "SOL-001",
+        "category": "ENGINE",
+        "title": "Dynamic Pattern Engine",
+        "description": "Visual generation interface merging Ndop and Adinkra for your digital assets.",
+        "features": [
+          "Vector generation",
+          "HD Export (SVG/PNG)",
+          "Color customization"
+        ],
+        "full_description": "An interactive rendering engine designed to allow creatives to manipulate African visual DNA without loss of meaning. Ideal for countering global design uniformity.",
+        "benefits": [
+          "Strong identity",
+          "Web-ready",
+          "Symbolic respect"
+        ],
+        "target_audience": "Designers & Content Creators",
+        "price": "FREE / 10,000 FCFA"
+      },
+      "1": {
+        "id": "SOL-002",
+        "category": "PROTOCOL",
+        "title": "African Design Protocol",
+        "description": "The ultimate guide (African UX/UI) to build interfaces that speak to the continent.",
+        "features": [
+          "UX White Paper",
+          "UI Components (Figma)",
+          "Color Psychology"
+        ],
+        "full_description": "Much more than a guide, it's a protocol for building interfaces based on local ergonomics and ancestral visual philosophy adapted to mobile-first.",
+        "benefits": [
+          "Increased user engagement",
+          "Professional standardization",
+          "Cultural scalability"
+        ],
+        "target_audience": "Product Managers & Developers",
+        "price": "25,000 FCFA / Year"
+      },
+      "2": {
+        "id": "SOL-003",
+        "category": "LAB",
+        "title": "Heritage & Tech Workshop",
+        "description": "Immersive sessions on integrating culture into technology products.",
+        "features": [
+          "Live Workshops",
+          "Case Studies",
+          "PDF Resources"
+        ],
+        "full_description": "An idea lab where we break down how African heritage can influence tomorrow's algorithms and user experience.",
+        "benefits": [
+          "Exclusive network access",
+          "Participation certificate",
+          "Prospective vision"
+        ],
+        "target_audience": "Students & CSR Companies",
+        "price": "5,000 FCFA (Donation)"
+      }
+    },
+    "newsletter": {
+      "title": "Join the Movement",
+      "description": "Receive design protocols directly in your inbox.",
+      "placeholder": "root@culture-innovation.io",
+      "button": "Subscribe"
+    },
+    "modal": {
+      "overview_title": "Solution_Overview",
+      "benefits_title": "Core_Benefits",
+      "audience_title": "Target_Audience",
+      "investment_title": "Investment",
+      "cta_button": "Initialize Integration"
+    }
+  },
+  "Footer": {
+    "brand": {
+      "tagline": "Software engineering & visual heritage. Building bridges between modern algorithms and ancestral culture.",
+      "open_channel": "Open_Channel"
+    },
+    "system_map": "SYSTEM_MAP",
+    "nav_items": {
+      "0": "ARCHIVES.ABOUT",
+      "1": "REGISTRY.PROJECTS",
+      "2": "CORE.CULTURE",
+      "3": "NODE.SOLUTIONS",
+      "4": "INIT.CONTACT"
+    },
+    "external_links": "EXTERNAL_LINKS",
+    "data_subscription": "DATA_SUBSCRIPTION",
+    "newsletter_placeholder": "ACCESS_ID@NETWORK.COM",
+    "newsletter_button": "Connect_to_Feed",
+    "metadata": {
+      "protocol_year": "Protocol_Year",
+      "global_registry": "Global_Registry",
+      "base_location": "Base_Location",
+      "location": "Douala, CM.AFR",
+      "status": "ENCRYPTED_SESSION_ACTIVE"
+    }
+  },
+  "NotFound": {
+    "title": "SYSTEM_ERROR: 404",
+    "subtitle": "PAGE_NOT_FOUND",
+    "description": "The path you're searching for doesn't exist in our network. It might have been relocated, archived, or hidden behind a digital firewall.",
+    "error_code": "ERROR_CODE",
+    "code": "404_VOID_REFERENCE",
+    "suggestions": "TROUBLESHOOTING_PROTOCOLS",
+    "suggestion_1": "Double-check the URL for typos",
+    "suggestion_2": "Navigate back to the home page",
+    "suggestion_3": "Explore our project archive",
+    "suggestion_4": "Contact support for assistance",
+    "cta_home": "RETURN_HOME",
+    "cta_projects": "EXPLORE_ARCHIVE",
+    "cta_contact": "CALL_SUPPORT",
+    "back_message": "Going back to safety...",
+    "quote": "\"In code, as in life: every error is just a message waiting to be understood.\""
   }
 }
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import "primeicons/primeicons.css";
 
 const colors = {
@@ -31,43 +32,68 @@ export default function Solutions() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
     const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
+    const t = useTranslations('SolutionPage');
 
     const solutions: Solution[] = [
         {
-            id: "SOL-001",
-            category: "ENGINE",
-            title: "Moteur de Motifs Dynamiques",
-            description: "Interface de génération visuelle fusionnant Ndop et Adinkra pour vos actifs digitaux.",
-            price: "FREE / 10 000 FCFA",
+            id: t('solutions.0.id'),
+            category: t('solutions.0.category') as "ENGINE" | "PROTOCOL" | "LAB",
+            title: t('solutions.0.title'),
+            description: t('solutions.0.description'),
+            price: t('solutions.0.price'),
             icon: "pi pi-box",
-            features: ["Génération vectorielle", "Export HD (SVG/PNG)", "Customisation de couleurs"],
-            fullDescription: "Un moteur de rendu interactif conçu pour permettre aux créatifs de manipuler l'ADN visuel africain sans perte de sens. Idéal pour contrer l'uniformisation du design global.",
-            benefits: ["Identité forte", "Prêt pour le Web", "Respect des symboliques"],
-            targetAudience: "Designers & Créateurs de contenu"
+            features: [
+              t('solutions.0.features.0'),
+              t('solutions.0.features.1'),
+              t('solutions.0.features.2')
+            ],
+            fullDescription: t('solutions.0.full_description'),
+            benefits: [
+              t('solutions.0.benefits.0'),
+              t('solutions.0.benefits.1'),
+              t('solutions.0.benefits.2')
+            ],
+            targetAudience: t('solutions.0.target_audience')
         },
         {
-            id: "SOL-002",
-            category: "PROTOCOL",
-            title: "Protocole Design Africain",
-            description: "Le guide ultime (African UX/UI) pour construire des interfaces qui parlent au continent.",
-            price: "25 000 FCFA / Year",
+            id: t('solutions.1.id'),
+            category: t('solutions.1.category') as "ENGINE" | "PROTOCOL" | "LAB",
+            title: t('solutions.1.title'),
+            description: t('solutions.1.description'),
+            price: t('solutions.1.price'),
             icon: "pi pi-shield",
-            features: ["Livre blanc UX", "Composants UI (Figma)", "Psychologie des couleurs"],
-            fullDescription: "Bien plus qu'un guide, c'est un protocole de construction d'interfaces basé sur l'ergonomie locale et la philosophie visuelle ancestrale adaptée au mobile-first.",
-            benefits: ["Engagement utilisateur accru", "Standardisation pro", "Scalabilité culturelle"],
-            targetAudience: "Product Managers & Développeurs"
+            features: [
+              t('solutions.1.features.0'),
+              t('solutions.1.features.1'),
+              t('solutions.1.features.2')
+            ],
+            fullDescription: t('solutions.1.full_description'),
+            benefits: [
+              t('solutions.1.benefits.0'),
+              t('solutions.1.benefits.1'),
+              t('solutions.1.benefits.2')
+            ],
+            targetAudience: t('solutions.1.target_audience')
         },
         {
-            id: "SOL-003",
-            category: "LAB",
-            title: "Atelier Heritage & Tech",
-            description: "Sessions immersives sur l'intégration de la culture dans les produits technologiques.",
-            price: "5 000 FCFA (Donation)",
+            id: t('solutions.2.id'),
+            category: t('solutions.2.category') as "ENGINE" | "PROTOCOL" | "LAB",
+            title: t('solutions.2.title'),
+            description: t('solutions.2.description'),
+            price: t('solutions.2.price'),
             icon: "pi pi-microchip",
-            features: ["Live Workshops", "Études de cas", "Ressources PDF"],
-            fullDescription: "Un laboratoire d'idées où nous décortiquons comment le patrimoine africain peut influencer les algorithmes et l'expérience utilisateur de demain.",
-            benefits: ["Accès réseau exclusif", "Certificat de participation", "Vision prospective"],
-            targetAudience: "Étudiants & Entreprises RSE"
+            features: [
+              t('solutions.2.features.0'),
+              t('solutions.2.features.1'),
+              t('solutions.2.features.2')
+            ],
+            fullDescription: t('solutions.2.full_description'),
+            benefits: [
+              t('solutions.2.benefits.0'),
+              t('solutions.2.benefits.1'),
+              t('solutions.2.benefits.2')
+            ],
+            targetAudience: t('solutions.2.target_audience')
         },
     ];
 
@@ -87,16 +113,16 @@ export default function Solutions() {
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         className="font-mono text-[10px] tracking-[0.5em] text-gray-500 mb-4 uppercase"
                     >
-                        SOLUTIONS_CATALOG_2026
+                        {t('hero.badge')}
                     </motion.div>
                     <motion.h1 
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         className="text-6xl md:text-8xl font-black tracking-tighter leading-none"
                     >
-                        BUILDING <br/>
+                        {t('hero.title_main')} <br/>
                         <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(to right, ${colors.primary}, #FFF)` }}>
-                            NEW STANDARDS
+                            {t('hero.title_highlight')}
                         </span>
                     </motion.h1>
                 </div>
@@ -162,17 +188,17 @@ export default function Solutions() {
                 >
                     <div className="p-8 border border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
-                            <h3 className="text-xl font-bold uppercase tracking-widest mb-2">Join the Movement</h3>
-                            <p className="text-xs font-mono text-gray-500 tracking-tight">Recevez les protocoles de design directement dans votre boîte mail.</p>
+                            <h3 className="text-xl font-bold uppercase tracking-widest mb-2">{t('newsletter.title')}</h3>
+                            <p className="text-xs font-mono text-gray-500 tracking-tight">{t('newsletter.description')}</p>
                         </div>
                         <div className="flex w-full md:w-auto gap-2">
                             <input 
                                 type="email" 
-                                placeholder="root@culture-innovation.io" 
+                                placeholder={t('newsletter.placeholder')}
                                 className="bg-black border border-white/10 px-6 py-3 font-mono text-xs outline-none focus:border-primary flex-grow"
                             />
                             <button className="bg-white text-black px-8 py-3 text-xs font-bold uppercase tracking-tighter hover:bg-primary transition-colors">
-                                Subscribe
+                                {t('newsletter.button')}
                             </button>
                         </div>
                     </div>
@@ -208,14 +234,14 @@ export default function Solutions() {
                             <div className="grid md:grid-cols-2 gap-12">
                                 <div className="space-y-8">
                                     <div>
-                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-3">Solution_Overview</div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-3">{t('modal.overview_title')}</div>
                                         <p className="text-gray-300 leading-relaxed italic border-l-2 pl-6" style={{ borderColor: colors.primary }}>
                                             &rdquo;{selectedSolution.fullDescription}&rdquo;
                                         </p>
                                     </div>
                                     
                                     <div>
-                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-4">Core_Benefits</div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-4">{t('modal.benefits_title')}</div>
                                         <ul className="space-y-3">
                                             {selectedSolution.benefits.map((b, idx) => (
                                                 <li key={idx} className="flex items-center gap-3 text-sm">
@@ -229,12 +255,12 @@ export default function Solutions() {
 
                                 <div className="space-y-8 bg-white/[0.02] p-8 border border-white/5">
                                     <div>
-                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-2">Target_Audience</div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-2">{t('modal.audience_title')}</div>
                                         <p className="text-xs font-mono">{selectedSolution.targetAudience}</p>
                                     </div>
                                     
                                     <div className="pt-6 border-t border-white/10">
-                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-4">Investment</div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-4">{t('modal.investment_title')}</div>
                                         <div className="text-4xl font-black" style={{ color: colors.primary }}>{selectedSolution.price}</div>
                                     </div>
 
@@ -243,7 +269,7 @@ export default function Solutions() {
                                         className="block w-full py-4 bg-white text-black text-center font-bold uppercase tracking-widest text-xs hover:bg-primary transition-all"
                                         onClick={() => setSelectedSolution(null)}
                                     >
-                                        Initialize Integration <i className="pi pi-arrow-right ml-2 text-[10px]"></i>
+                                        {t('modal.cta_button')} <i className="pi pi-arrow-right ml-2 text-[10px]"></i>
                                     </Link>
                                 </div>
                             </div>
