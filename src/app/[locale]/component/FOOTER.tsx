@@ -25,14 +25,6 @@ export default function Footer() {
     { icon: 'instagram', url: 'https://instagram.com/kingtang337', label: 'Instagram' },
   ];
 
-  const quickLinks = [
-    { name: 'ARCHIVES.ABOUT', path: '/ABOUT' },
-    { name: 'REGISTRY.PROJECTS', path: '/PROJECT' },
-    { name: 'CORE.CULTURE', path: '/CULTURE' },
-    { name: 'NODE.SOLUTIONS', path: '/SOLUTION' },
-    { name: 'INIT.CONTACT', path: '/CONTACT' }
-  ];
-
   return (
     <motion.footer 
       className="relative pt-32 pb-12 overflow-hidden border-t"

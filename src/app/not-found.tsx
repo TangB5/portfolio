@@ -29,18 +29,12 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, type: 'easeOut' },
+    transition: { duration: 0.8 },
   },
 };
 
 export default function RootNotFound() {
   const [isLoading, setIsLoading] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    setMousePosition({ x: clientX, y: clientY });
-  };
 
   const handleGoHome = () => {
     setIsLoading(true);
@@ -51,7 +45,6 @@ export default function RootNotFound() {
     <div 
       className="min-h-screen relative overflow-hidden flex items-center justify-center"
       style={{ backgroundColor: colors.dark }}
-      onMouseMove={handleMouseMove}
     >
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 pointer-events-none">

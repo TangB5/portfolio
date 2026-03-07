@@ -2,7 +2,7 @@
 "use client";
 
 // 1. UTILISE LES IMPORTS DE TON FICHIER NAVIGATION
-import { Link, usePathname, useRouter } from "@/i18n/navigation"; 
+import { Link, usePathname } from "@/i18n/navigation"; 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";

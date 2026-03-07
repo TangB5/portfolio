@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { useTranslations } from 'next-intl';
 import 'primeicons/primeicons.css';
 import Plan from '../component/arrierplan';
