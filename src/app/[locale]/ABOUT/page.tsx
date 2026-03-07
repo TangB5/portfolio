@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Link } from '@/i18n/navigation';
 import { motion } from "framer-motion";
 import "primeicons/primeicons.css";
-import { use } from "react";
 import { useTranslations } from "next-intl";
 
 // Palette de couleurs

@@ -50,7 +50,7 @@ export default function Culture() {
     </div>
   );
   const [activeMotif, setActiveMotif] = useState<Motif | null>(null);
-  const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref1] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const motifs: Motif[] = [
     { id: 1, src: "/motif-wax.jpg", version: "v2.1", status: "available" },
