@@ -1,9 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from '@/i18n/navigation';
 import { useState } from 'react';
 import 'primeicons/primeicons.css';
 
@@ -35,18 +33,26 @@ const itemVariants = {
   },
 };
 
-export default function NotFound() {
-  const t = useTranslations('NotFound');
-  const router = useRouter();
+export default function RootNotFound() {
   const [isLoading, setIsLoading] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    setMousePosition({ x: clientX, y: clientY });
+  };
 
   const handleGoHome = () => {
     setIsLoading(true);
-    setTimeout(() => router.push('/'), 800);
+    setTimeout(() => window.location.href = '/', 800);
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{ backgroundColor: colors.dark }}>
+    <div 
+      className="min-h-screen relative overflow-hidden flex items-center justify-center"
+      style={{ backgroundColor: colors.dark }}
+      onMouseMove={handleMouseMove}
+    >
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -122,7 +128,7 @@ export default function NotFound() {
                   animate={{ scale: [1, 1.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-xs font-mono tracking-widest text-gray-400 uppercase">{t('error_code')}</span>
+                <span className="text-xs font-mono tracking-widest text-gray-400 uppercase">Error Detected</span>
                 <motion.div
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: colors.secondary }}
@@ -139,17 +145,17 @@ export default function NotFound() {
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              {t('title')}
+              404
             </motion.h1>
 
             <motion.h2 className="text-3xl md:text-5xl font-bold tracking-wider">
               <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})` }}>
-                {t('subtitle')}
+                Page Lost in Space
               </span>
             </motion.h2>
 
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              {t('description')}
+              The page you&apos;re searching for has disappeared into the digital void. But don&apos;t worry, we&apos;ll help you find your way back.
             </p>
           </motion.div>
 
@@ -171,15 +177,15 @@ export default function NotFound() {
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-sm font-mono text-gray-400 uppercase tracking-widest">{t('suggestions')}</span>
+                <span className="text-sm font-mono text-gray-400 uppercase tracking-widest">What You Can Do</span>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {[
-                  { icon: 'pi-home', text: t('suggestion_1') },
-                  { icon: 'pi-compass', text: t('suggestion_2') },
-                  { icon: 'pi-inbox', text: t('suggestion_3') },
-                  { icon: 'pi-phone', text: t('suggestion_4') },
+                  { icon: 'pi-home', text: 'Return to Homepage' },
+                  { icon: 'pi-compass', text: 'Explore Our Projects' },
+                  { icon: 'pi-inbox', text: 'Check Our Portfolio' },
+                  { icon: 'pi-phone', text: 'Get in Touch' },
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -221,18 +227,18 @@ export default function NotFound() {
               {isLoading ? (
                 <span className="flex items-center gap-2 justify-center">
                   <i className="pi pi-spin pi-spinner" />
-                  {t('back_message')}
+                  Returning...
                 </span>
               ) : (
                 <span className="flex items-center gap-2 justify-center">
                   <i className="pi pi-arrow-left" />
-                  {t('cta_home')}
+                  Back to Home
                 </span>
               )}
             </motion.button>
 
             <Link
-              href="/PROJECT"
+              href="/"
               className="px-8 py-4 font-bold uppercase tracking-widest text-sm rounded-lg border-2 transition-all duration-300 hover:scale-105"
               style={{
                 borderColor: colors.primary,
@@ -242,7 +248,7 @@ export default function NotFound() {
             >
               <span className="flex items-center gap-2 justify-center">
                 <i className="pi pi-briefcase" />
-                {t('cta_projects')}
+                View Projects
               </span>
             </Link>
           </motion.div>
@@ -254,7 +260,7 @@ export default function NotFound() {
             animate={{ opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
-            {t('quote')}
+            &ldquo;Not all those who wander are lost... most of them just need better directions.&rdquo;
           </motion.p>
         </div>
       </motion.div>
