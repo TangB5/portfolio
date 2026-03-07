@@ -1,32 +1,15 @@
-// middleware.ts
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './src/i18n/routing';
+import { NextRequest } from 'next/server';
 
-import { i18n } from '@/app/i18n-config';
+const handleI18nRouting = createMiddleware(routing);
 
-function getLocale(request: NextRequest): string | undefined {
- 
-  return i18n.defaultLocale;
-}
-
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-    return NextResponse.redirect(
-      new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url)
-    );
-  }
+export default function middleware(request: NextRequest) {
+  return handleI18nRouting(request);
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\..*).*)', 
-    '/'
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\..*).*)'
   ],
 };

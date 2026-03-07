@@ -5,7 +5,7 @@ import LogoIntro from './component/LogoIntro';
 import Navigation from './component/NAV';
 import '../globals.css';
 import { Roboto, Playfair_Display, Ubuntu } from 'next/font/google';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getMessages } from 'next-intl/server';
@@ -91,31 +91,30 @@ export default async function LocaleLayout({children, params}: Props) {
     notFound();
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages({locale});
 
   return (
-    <html lang={locale} className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col">
-        <Script
-          id="structured-data"
-          type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify(jsonLd)}
-        </Script>
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(jsonLd)}
+      </Script>
 
-        <LogoIntro />
-        <NextIntlClientProvider>
-        <Navigation />
+      <div className={`${roboto.variable} ${playfair.variable} ${ubuntu.variable} antialiased min-h-screen flex flex-col`} lang={locale}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <Navigation />
+          <LogoIntro />
+          
+          <main className="flex-grow">
+            {children}
+          </main>
         
-        
-        <main className="flex-grow">
-          {children}
-        </main>
-      
-        <Footer />
+          <Footer />
         </NextIntlClientProvider>
-      </body>
-    </html>
+      </div>
+    </>
   );
 }

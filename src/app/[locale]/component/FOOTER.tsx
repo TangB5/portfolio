@@ -1,7 +1,8 @@
 'use client'
 import Link from 'next/link';
-import { motion, easeOut } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import 'primeicons/primeicons.css';
 
 const colors = {
@@ -15,6 +16,7 @@ const colors = {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const t = useTranslations('Footer');
   
   const socialNetworks = [
     { icon: 'linkedin', url: 'https://linkedin.com/in/ndoh-yannick-tang-5b004934a', label: 'LinkedIn' },
@@ -77,8 +79,7 @@ export default function Footer() {
             </div>
 
             <p className="text-[11px] font-mono text-gray-400 leading-relaxed uppercase tracking-tight">
-              Ingénierie logicielle & héritage visuel. <br/>
-              Bâtir des ponts entre les algorithmes modernes et la culture ancestrale.
+              {t('brand.tagline')}
             </p>
 
             <Link 
@@ -87,19 +88,19 @@ export default function Footer() {
                 style={{ color: colors.primary }}
               >
                 <span className="h-[1px] w-8 bg-primary/30 group-hover:w-12 group-hover:bg-primary transition-all" />
-                Open_Channel
+                {t('brand.open_channel')}
             </Link>
           </div>
 
           {/* NAVIGATION NODES */}
           <div>
-            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10 text-primary" style={{ color: colors.primary }}> SYSTEM_MAP</h4>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10 text-primary" style={{ color: colors.primary }}>{t('system_map')}</h4>
             <ul className="space-y-5">
-              {quickLinks.map((link, index) => (
+              {[0, 1, 2, 3, 4].map((index) => (
                 <li key={index}>
-                  <Link href={link.path} className="text-[11px] font-black tracking-[0.2em] hover:text-primary transition-all flex items-center gap-3 group">
+                  <Link href={index === 0 ? '/ABOUT' : index === 1 ? '/PROJECT' : index === 2 ? '/CULTURE' : index === 3 ? '/SOLUTION' : '/CONTACT'} className="text-[11px] font-black tracking-[0.2em] hover:text-primary transition-all flex items-center gap-3 group">
                     <span className="text-gray-700 group-hover:text-primary transition-colors">0{index + 1}</span>
-                    {link.name}
+                    {t(`nav_items.${index}`)}
                   </Link>
                 </li>
               ))}
@@ -108,7 +109,7 @@ export default function Footer() {
 
           {/* UPLINKS (SOCIALS) */}
           <div>
-            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10"> EXTERNAL_LINKS</h4>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10">{t('external_links')}</h4>
             <div className="grid grid-cols-1 gap-3">
               {socialNetworks.map((social, index) => (
                 <a 
@@ -126,17 +127,17 @@ export default function Footer() {
 
           {/* NEWSLETTER: ENCRYPTED FEED */}
           <div>
-            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10"> DATA_SUBSCRIPTION</h4>
+            <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-10">{t('data_subscription')}</h4>
             <div className="space-y-4">
               <div className="relative">
                 <input 
-                  type="email" placeholder="ACCESS_ID@NETWORK.COM"
+                  type="email" placeholder={t('newsletter_placeholder')}
                   className="w-full bg-transparent border-b border-white/10 px-0 py-4 text-[10px] font-mono outline-none focus:border-primary transition-colors"
                 />
                 <div className="absolute bottom-0 left-0 h-[1px] bg-primary w-0 transition-all duration-500 group-focus-within:w-full" />
               </div>
               <button className="w-full py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold transition-colors" style={{ backgroundColor: colors.primary }}>
-                Connect_to_Feed
+                {t('newsletter_button')}
               </button>
             </div>
           </div>
@@ -146,19 +147,19 @@ export default function Footer() {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-10">
             <div className="flex flex-col">
-              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Protocol_Year</span>
-              <span className="text-[10px] font-black tracking-widest uppercase">© {currentYear} Global_Registry</span>
+              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{t('metadata.protocol_year')}</span>
+              <span className="text-[10px] font-black tracking-widest uppercase">© {currentYear} {t('metadata.global_registry')}</span>
             </div>
             <div className="flex flex-col border-l border-white/10 pl-10">
-              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Base_Location</span>
-              <span className="text-[10px] font-black tracking-widest text-primary uppercase" style={{ color: colors.primary }}>Douala, CM.AFR</span>
+              <span className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{t('metadata.base_location')}</span>
+              <span className="text-[10px] font-black tracking-widest text-primary uppercase" style={{ color: colors.primary }}>{t('metadata.location')}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-8 text-[9px] font-mono text-gray-600 tracking-[0.2em]">
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-green-500/50" />
-              <span className="text-gray-400">ENCRYPTED_SESSION_ACTIVE</span>
+              <span className="text-gray-400">{t('metadata.status')}</span>
             </div>
           </div>
         </div>

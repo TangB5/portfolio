@@ -1,11 +1,9 @@
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
- 
-export default createMiddleware(routing);
- 
+// src/middleware.ts
+// Disabled duplicate middleware: root `middleware.ts` at project root is the canonical middleware.
+// Keeping this file as a no-op to avoid duplicate middleware execution.
+
+export const disabledMiddleware = true;
+
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+  matcher: []
 };

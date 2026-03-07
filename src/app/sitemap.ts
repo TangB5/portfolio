@@ -3,6 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://kingtang.vercel.app';
   const lastModified = new Date();
+  const locales = ['en', 'fr'];
 
   const routes = [
     {
@@ -43,10 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route.url}`,
-    lastModified: route.lastModified,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  return locales.flatMap((locale) =>
+    routes.map((route) => ({
+      url: `${baseUrl}/${locale}${route.url}`,
+      lastModified: route.lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    }))
+  );
 }
